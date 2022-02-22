@@ -66,9 +66,11 @@ namespace Testing1
         public void TestOrderDescription2()
         {
             orders.setOrderDescription(null);
-            Assert.AreEqual("null", orders.getOrderDescription());
+            Assert.AreEqual("LOOKUP FAILED!", orders.getOrderDescription());
         }
 
+        [TestMethod]
+        public void Test
 
     }
 }

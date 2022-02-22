@@ -43,7 +43,7 @@ namespace ClassLibrary
             }
             else
             {
-                this.orderDescription = "null";
+                this.orderDescription = "LOOKUP FAILED!";
             }
         }
 
@@ -61,7 +61,25 @@ namespace ClassLibrary
         {
             
         }
+
         public void getCustomerId()
+        {
+
+        }
+
+        /// <summary>
+        /// standardizeAddress takes an input and standardizes it into a string where the system can process it. Stored in [X=Y,A=B] style.
+        /// </summary>
+        /// <param name="houseNo"> Number of the house</param>
+        /// <param name="strtName">Name of the street</param>
+        /// <param name="city">Name of the city</param>
+        /// <param name="postcode">Postcode of the customer</param>
+        public void standardizeAddress(string houseNo, string strtName, string city, string postcode)
+        {   
+            this.setOrderDescription($"[HouseNo={houseNo},StreetName={strtName},City={city},Postcode={postcode}]");
+        }
+
+        public void breakupOrder(string order)
         {
 
         }
