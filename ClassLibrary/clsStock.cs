@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary; 
+
 
 namespace ClassLibrary
 {
-    class clsStock
+    public class clsStock
     {
+        public string ProductCategory; 
+
     }
 }
