@@ -31,7 +31,7 @@
             <br />
             <asp:Label ID="lblAvailable" runat="server" Text="Available" width="49px"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="DropDownList1" runat="server" Height="21px" width="107px">
+            <asp:DropDownList ID="tbAvailable" runat="server" Height="21px" width="107px">
                 <asp:ListItem>Yes</asp:ListItem>
                 <asp:ListItem>No</asp:ListItem>
             </asp:DropDownList>

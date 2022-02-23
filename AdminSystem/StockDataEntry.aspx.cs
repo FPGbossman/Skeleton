@@ -17,6 +17,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsStock AStock = new clsStock();
         AStock.ProductCategory = tbProductCategory.Text;
+        AStock.Quantity = int.Parse(tbQuantity.Text);
+        AStock.Date = tbDate.Text;
+        AStock.Available = tbAvailable.Text;
+        AStock.ProductName = tbProductName.Text;
         Session["AStock"] = AStock;
         Response.Redirect("Stock Viewer.aspx");
     }
