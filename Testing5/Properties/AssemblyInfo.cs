@@ -23,5 +23,9 @@ namespace Testing5
 {
     class clsStock
     {
+        public string Date { get; internal set; }
+        public object ProductCategory { get; internal set; }
+        public bool Available { get; internal set; }
+        public string ProductName { get; internal set; }
     }
 }
