@@ -14,12 +14,12 @@
 <body>
     <form id="form1" runat="server">
         Delete page<p id="lblOrderNo">
-            Enter an order number to delete<asp:TextBox ID="orderNo" runat="server" Height="16px" style="margin-left: 11px"></asp:TextBox>
+            Enter an order number to delete<asp:TextBox ID="orderNo" runat="server" Height="16px" style="margin-left: 11px" OnTextChanged="orderNo_TextChanged"></asp:TextBox>
         </p>
         <p>
             [lblError]</p>
         <p>
-            <asp:Button ID="Button1" runat="server" Text="OK" />
+            <asp:Button ID="Button1" runat="server" Text="OK" OnClick="Button1_Click" />
             <asp:Button ID="Button2" runat="server" Text="Cancel" />
         </p>
     </form>
