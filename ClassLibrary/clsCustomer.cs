@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    class clsCustomer
+    public class clsCustomer
     {
+
+        public string CustomerFirstname;
+        public string CustomerSurnamename;
+        public string CustomerEmail;
+        public string CustomerDOB;
+        public Boolean Gender;
+        public DateTime dateTime;
+        public int staffID;
+        public int customerId;
     }
+
+        
 }
