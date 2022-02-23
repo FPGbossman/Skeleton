@@ -16,6 +16,7 @@ namespace ClassLibrary
         public string Available;
         public string ProductName; 
 
+       public bool Active { get; set;}
 
     }
 }
