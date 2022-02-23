@@ -39,7 +39,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-		<Compile Include="clsCustomer.cs"/>
+  <Compile Include="clsCustomer.cs">
 	<Compile Include="clsOrders.cs"/>
 	<Compile Include="clsStaff.cs"/>
 	<Compile Include="clsStock.cs"/>

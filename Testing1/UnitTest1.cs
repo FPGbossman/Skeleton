@@ -62,13 +62,46 @@ namespace Testing1
             Assert.AreEqual(orders.getOrderDescription(), "hello world");
         }
 
+        /**
+         * Tests to see if, when order description is passed, the system returns the default for a null value.
+         */
         [TestMethod]
         public void TestOrderDescription2()
         {
             orders.setOrderDescription(null);
-            Assert.AreEqual("null", orders.getOrderDescription());
+            Assert.AreEqual("LOOKUP FAILED!", orders.getOrderDescription());
         }
 
+        /**
+         *Tests to see if the order address is in the standard convention format.
+         */
+        [TestMethod]
+        public void TestOrderAddressFormat()
+        {
+            orders.setStandardAddress("12", "Test Street", "Test City", "TST1 9MQ");
+            Assert.AreEqual("[HouseNo=12,StreetName=Test Street,City=Test City,Postcode=TST1 9MQ]", orders.getOrderAddress());
+        }
+
+        /**
+         * Tests to see if the order address sets correctly.
+         */
+        [TestMethod]
+        public void TestOrderAddress()
+        {
+            orders.setOrderAddress("test address");
+            Assert.AreEqual("test address", orders.getOrderAddress());
+        }
+
+
+        /**
+         * Tests to see if the default fallback for a null value is correctly asserted.
+         */
+        [TestMethod]
+        public void TestOrderAddressNull()
+        {
+            orders.setOrderAddress(null);
+            Assert.AreEqual("LOOKUP FAILED!", orders.getOrderDescription());
+        }
 
     }
 }
