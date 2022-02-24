@@ -10,13 +10,13 @@ namespace ClassLibrary
 {
     public class clsStock
     {
+        public string StockId;
         public string ProductCategory;
-        public int Quantity;
+        public string Quantity;
         public string Date;
         public string Available;
         public string ProductName; 
-
-       public bool Active { get; set;}
-
     }
+
 }
+
