@@ -10,7 +10,6 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsOrders orders = new clsOrders();
     }
 
     protected void orderNo_TextChanged(object sender, EventArgs e)
@@ -21,6 +20,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
 
+        clsOrders orders = new clsOrders();
         orders = (clsOrders)Session["Orders"];
     }
 }

@@ -8,17 +8,56 @@ namespace ClassLibrary
     public class clsOrders {
 
         private ArrayList orders;
+        private int orderNo;
         private string orderDescription;
         private string orderAddress;
         private int orderPrice;
         private DateTime dateTime;
         private int stockID;
         private int customerId;
-        private string[] operands;
+
+        /// <summary>
+        /// This method will return a boolean depending on if the order id could be found.
+        /// 
+        /// </summary>
+        public bool find(int orderId)
+        {
+            try
+            {
+                Console.WriteLine("hello");
+                clsDataConnection db = new clsDataConnection();
+                if (db != null)
+                {
+                    db.AddParameter("@orderid", orderId);
+                    db.Execute("proc_Order_Search");
+                    if (db.Count == 0)
+                    {
+                        orderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);
+                        orderDescription = Convert.ToString(db.DataTable.Rows[0]["AddressNo"]);
+                        orderAddress = Convert.ToString(db.DataTable.Rows[0]["Address"]);
+                        orderPrice = Convert.ToInt32(db.DataTable.Rows[0]["OrderPrice"]);
+                        //customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
+                        dateTime = Convert.ToDateTime(db.DataTable.Rows[0]["OrderDate"]);
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                } else
+                {
+                    return false;
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine("====");
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
 
         public void setOrderPrice(int orderPrice)
         {
-            if (orderPrice < 0)
+            if (orderPrice >= 0)
             {
                 this.orderPrice = orderPrice;
             }

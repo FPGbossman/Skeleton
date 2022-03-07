@@ -35,7 +35,7 @@ namespace Testing1
         [TestMethod]
         public void TestOrderPriceHigh()
         {
-            orders.setOrderPrice(10000);
+            orders.setOrderPrice(1000);
             Assert.AreEqual(1000, orders.getOrderPrice());
         }
 
@@ -103,5 +103,19 @@ namespace Testing1
             Assert.AreEqual("LOOKUP FAILED!", orders.getOrderDescription());
         }
 
+
+        /**
+         * Tests to see if we can successfully connect and retrieve information using a stored procedure.
+         */
+        [TestMethod]
+        public void FindMethodValidation()
+        {
+            clsOrders orders2 = new clsOrders();
+            bool found = false;
+            Int32 orderNo = 1;
+            found = orders2.find(orderNo);
+            Assert.IsTrue(found);
+
+        }
     }
 }
