@@ -50,7 +50,7 @@ public partial class _1_List : System.Web.UI.Page
         orders.setDateTime(DateTime.Now);
         orders.setStandardAddress(HouseNo.Text, StrtName.Text, City.Text, Postcode.Text);
         Session["Orders"] = orders;
-        Response.Redirect("ProcessViewer.aspx");
+        Response.Redirect("OrderViewer.aspx");
     }
 
     protected void Cancel_Click(object sender, EventArgs e)

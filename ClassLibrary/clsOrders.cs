@@ -8,17 +8,56 @@ namespace ClassLibrary
     public class clsOrders {
 
         private ArrayList orders;
+        private int orderNo;
         private string orderDescription;
         private string orderAddress;
         private int orderPrice;
         private DateTime dateTime;
         private int stockID;
         private int customerId;
-        private string[] operands;
+
+        /// <summary>
+        /// This method will return a success state depending on if the order id could be found, 
+        /// and set the tables values to internal values.
+        /// 
+        /// </summary>
+        public string find(int orderId)
+        {
+            try
+            {
+                clsDataConnection db = new clsDataConnection();
+                if (db != null)
+                {
+                    db.AddParameter("@orderid", orderId);
+                    db.Execute("proc_Order_Search");
+                    if (db.Count == 1)
+                    {
+                        orderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);
+                        orderDescription = Convert.ToString(db.DataTable.Rows[0]["OrderDescription"]);
+                        orderAddress = Convert.ToString(db.DataTable.Rows[0]["Address"]);
+                        orderPrice = Convert.ToInt32(db.DataTable.Rows[0]["OrderPrice"]);
+                        //customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
+                        dateTime = Convert.ToDateTime(db.DataTable.Rows[0]["OrderDate"]);
+                        return "Success!";
+                    } else
+                    {
+                        return "ERROR: Tables returned 0! The query you have selected does not exist.";
+                    }
+                } else
+                {
+                    return "ERROR: DB connection failed!";
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine("====");
+                Console.WriteLine(e.Message);
+                return e.Message;
+            }
+        }
 
         public void setOrderPrice(int orderPrice)
         {
-            if (orderPrice < 0)
+            if (orderPrice >= 0)
             {
                 this.orderPrice = orderPrice;
             }
@@ -36,6 +75,11 @@ namespace ClassLibrary
         public String getOrderDescription()
         {
             return this.orderDescription;
+        }
+
+        public int getOrderNo()
+        {
+            return this.orderNo;
         }
 
         public void setOrderDescription(String orderDescription)
