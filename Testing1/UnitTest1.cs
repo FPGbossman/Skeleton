@@ -12,7 +12,7 @@ namespace Testing1
              * Testing to make sure the class has been initialized.
              */
         [TestMethod]
-        public void TestMethod1()
+        public void TestClassNotNull()
         {
             Assert.IsNotNull(orders);
         }
@@ -35,7 +35,7 @@ namespace Testing1
         [TestMethod]
         public void TestOrderPriceHigh()
         {
-            orders.setOrderPrice(10000);
+            orders.setOrderPrice(1000);
             Assert.AreEqual(1000, orders.getOrderPrice());
         }
 
@@ -44,7 +44,7 @@ namespace Testing1
          * system will save the date/time.
          */
         [TestMethod]
-        public void DateAdded()
+        public void TestDateAdded()
         {
             DateTime time = DateTime.Now.Date;
             orders.setDateTime(time);
@@ -66,7 +66,7 @@ namespace Testing1
          * Tests to see if, when order description is passed, the system returns the default for a null value.
          */
         [TestMethod]
-        public void TestOrderDescription2()
+        public void TestOrderDescriptionNotNull()
         {
             orders.setOrderDescription(null);
             Assert.AreEqual("LOOKUP FAILED!", orders.getOrderDescription());
@@ -86,7 +86,7 @@ namespace Testing1
          * Tests to see if the order address sets correctly.
          */
         [TestMethod]
-        public void TestOrderAddress()
+        public void TestSetOrderAddress()
         {
             orders.setOrderAddress("test address");
             Assert.AreEqual("test address", orders.getOrderAddress());
@@ -100,8 +100,21 @@ namespace Testing1
         public void TestOrderAddressNull()
         {
             orders.setOrderAddress(null);
-            Assert.AreEqual("LOOKUP FAILED!", orders.getOrderDescription());
+            Assert.AreEqual("LOOKUP FAILED!", orders.getOrderAddress());
         }
 
+
+        /**
+         * Tests to see if we can successfully connect and retrieve information using a stored procedure.
+         */
+        [TestMethod]
+        public void FindMethodValidation()
+        {
+            clsOrders orders2 = new clsOrders();
+            string found = "";
+            Int32 orderNo = 1;
+            found = orders2.find(orderNo);
+            Assert.AreEqual("Success!", found);
+        }
     }
 }

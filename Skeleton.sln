@@ -40,7 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer Test", "Testing2\C
 		{E32146CF-EC09-4709-9881-42ADF1B0735B} = {E32146CF-EC09-4709-9881-42ADF1B0735B}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Process Test", "Testing1\Process Test.csproj", "{4186B3B3-EBEA-434E-844F-F79D774C252B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order Test", "Testing1\Order Test.csproj", "{4186B3B3-EBEA-434E-844F-F79D774C252B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
