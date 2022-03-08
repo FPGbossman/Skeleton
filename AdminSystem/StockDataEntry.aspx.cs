@@ -16,11 +16,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock AStock = new clsStock();
-        AStock.StockId = tbStockId.Text;
+        AStock.StockId = int.Parse(tbStockId.Text); 
         AStock.ProductCategory = tbProductCategory.Text;
-        AStock.Quantity = tbQuantity.Text;
-        AStock.Date = tbDate.Text;
-        AStock.Available = tbAvailable.Text;
+        AStock.Quantity = int.Parse(tbQuantity.Text);
+        AStock.Date = DateTime.Parse(tbDate.Text); 
+        AStock.Available = bool.Parse(tbAvailable.Text);
         AStock.ProductName = tbProductName.Text;
 
         Session["AStock"] = AStock;
