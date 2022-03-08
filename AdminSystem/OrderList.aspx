@@ -13,7 +13,7 @@
             <h1> Order entry </h1>
             <h2>Enter order id: </h2>
             <asp:Label ID="OrderIDSubLbl" runat="server" Text="Order ID:" width="111px"></asp:Label>
-            <asp:TextBox ID="OrderIDSub" runat="server" width="111px" OnTextChanged="TextBox7_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="OrderIDSub" runat="server" width="111px" OnTextChanged="OrderIDSub_TextChanged"></asp:TextBox>
              <br />   <asp:Button ID="Query" runat="server" OnClick="Button1_Click" Text="Query" />
             <br />
 
@@ -21,13 +21,13 @@
         <div>
             <h1>Order information</h1>
             <asp:Label ID="OrderID" runat="server" Text="Order ID: " width="111px"></asp:Label>
-            <asp:TextBox ID="OrderIDReq" runat="server" width="111px" ReadOnly="True"></asp:TextBox>
+            <asp:TextBox ID="OrderIDReq" runat="server" width="111px" ReadOnly="True" OnTextChanged="OrderIDReq_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="OrderAddress" runat="server" Text="Order Address: " width="111px"></asp:Label>
-            <asp:TextBox ID="OrderAddressReq" runat="server" width="111px" ReadOnly="True" OnTextChanged="OrderAddressReq_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="OrderAddressReq" runat="server" width="250px" ReadOnly="True" OnTextChanged="OrderAddressReq_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="OrderDesc" runat="server" Text="Order Description: " width="111px"></asp:Label>
-            <asp:TextBox ID="OrderDescReq" runat="server" width="111px" ReadOnly="True"></asp:TextBox>
+            <asp:TextBox ID="OrderDescReq" runat="server" width="250px" ReadOnly="True" OnTextChanged="OrderDescReq_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="OrderTime" runat="server" Text="Time of order: " width="111px"></asp:Label>
             <asp:TextBox ID="OrderTimeReq" runat="server" width="111px" ReadOnly="True"></asp:TextBox>

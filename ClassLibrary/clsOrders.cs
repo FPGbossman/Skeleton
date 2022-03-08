@@ -33,7 +33,7 @@ namespace ClassLibrary
                     if (db.Count == 1)
                     {
                         orderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);
-                        orderDescription = Convert.ToString(db.DataTable.Rows[0]["Address"]);
+                        orderDescription = Convert.ToString(db.DataTable.Rows[0]["OrderDescription"]);
                         orderAddress = Convert.ToString(db.DataTable.Rows[0]["Address"]);
                         orderPrice = Convert.ToInt32(db.DataTable.Rows[0]["OrderPrice"]);
                         //customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
@@ -41,7 +41,7 @@ namespace ClassLibrary
                         return "Success!";
                     } else
                     {
-                        return "ERROR: Tables returned 0!";
+                        return "ERROR: Tables returned 0! The query you have selected does not exist.";
                     }
                 } else
                 {
@@ -75,6 +75,11 @@ namespace ClassLibrary
         public String getOrderDescription()
         {
             return this.orderDescription;
+        }
+
+        public int getOrderNo()
+        {
+            return this.orderNo;
         }
 
         public void setOrderDescription(String orderDescription)
