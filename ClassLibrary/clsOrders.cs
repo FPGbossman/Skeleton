@@ -17,41 +17,41 @@ namespace ClassLibrary
         private int customerId;
 
         /// <summary>
-        /// This method will return a boolean depending on if the order id could be found.
+        /// This method will return a success state depending on if the order id could be found, 
+        /// and set the tables values to internal values.
         /// 
         /// </summary>
-        public bool find(int orderId)
+        public string find(int orderId)
         {
             try
             {
-                Console.WriteLine("hello");
                 clsDataConnection db = new clsDataConnection();
                 if (db != null)
                 {
                     db.AddParameter("@orderid", orderId);
                     db.Execute("proc_Order_Search");
-                    if (db.Count == 0)
+                    if (db.Count == 1)
                     {
                         orderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);
-                        orderDescription = Convert.ToString(db.DataTable.Rows[0]["AddressNo"]);
+                        orderDescription = Convert.ToString(db.DataTable.Rows[0]["Address"]);
                         orderAddress = Convert.ToString(db.DataTable.Rows[0]["Address"]);
                         orderPrice = Convert.ToInt32(db.DataTable.Rows[0]["OrderPrice"]);
                         //customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
                         dateTime = Convert.ToDateTime(db.DataTable.Rows[0]["OrderDate"]);
-                        return true;
+                        return "Success!";
                     } else
                     {
-                        return false;
+                        return "ERROR: Tables returned 0!";
                     }
                 } else
                 {
-                    return false;
+                    return "ERROR: DB connection failed!";
                 }
             } catch (Exception e)
             {
                 Console.WriteLine("====");
                 Console.WriteLine(e.Message);
-                return false;
+                return e.Message;
             }
         }
 
