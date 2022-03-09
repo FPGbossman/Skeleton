@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -19,13 +20,60 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-namespace Testing5
+namespace ClassLibrary
 {
     class clsStock
     {
-        public string Date { get; internal set; }
-        public object ProductCategory { get; internal set; }
-        public bool Available { get; internal set; }
-        public string ProductName { get; internal set; }
+        private DateTime mDate;
+        public DateTime Date
+        {
+            get
+            {
+                return mDate;
+            }
+            set
+            {
+                mDate = value;
+            }
+        }
+
+        public string ProductCategory { get;  set; }
+
+        public bool Available { get;  set; }
+
+        public string ProductName { get;  set; }
+        public int Quantity { get;  set; }
+        private Int32 mStockId;
+
+        public Int32 StockId
+        {
+            get
+            {
+                return mStockId;
+            }
+            set
+            {
+                mStockId = value;
+
+            }
+        }
+
+        public bool Find(string productCategory)
+        {
+            return true;
+        }
+
+        internal bool Find(int stockId)
+        {
+            mStockId = 1001;
+            mProductCategory = "Nike Air Max 90";
+            mQuantity = 12;
+            mDate = Convert.ToDateTime("09/03/2022");
+            mAvailable = true;
+            mProductName = "Nike";
+            return true;
+
+        }
     }
-}
+} 
+    
