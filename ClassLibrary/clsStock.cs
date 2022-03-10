@@ -8,6 +8,8 @@ using ClassLibrary;
 
 namespace class_Library
 {
+
+
     public class clsStock
     {
         private Int32 mStockId;
@@ -58,9 +60,6 @@ namespace class_Library
                 mQuantity = value; 
             }
         }
-
-        //===========================
-
 
         private DateTime mDate;
         public DateTime Date

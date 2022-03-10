@@ -1,11 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using class_Library;
-using ClassLibrary; 
-
-
-
-namespace Testing5
 
 {
     [TestClass]
