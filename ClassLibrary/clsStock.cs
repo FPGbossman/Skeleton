@@ -61,9 +61,6 @@ namespace class_Library
             }
         }
 
-        //===========================
-
-
         private DateTime mDate;
         public DateTime Date
         {
