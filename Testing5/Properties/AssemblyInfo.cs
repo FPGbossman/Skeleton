@@ -1,78 +1,33 @@
-using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-
-[assembly: AssemblyTitle("Testing5")]
+[assembly: AssemblyTitle("StockTesting")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Testing5")]
+[assembly: AssemblyProduct("StockTesting")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("6b836712-3706-49e8-a57e-add4149d788b")]
+[assembly: Guid("c5039f49-a6d1-4adc-ae53-7cb1c0574514")]
 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
+namespace StockTesting
+{
     class clsStock
     {
-        private DateTime mDate;
-        public DateTime Date
-        {
-            get
-            {
-                return mDate;
-            }
-            set
-            {
-                mDate = value;
-            }
-        }
-
-        public string ProductCategory { get;  set; }
-
-        public bool Available { get;  set; }
-
-        public string ProductName { get;  set; }
-        public int Quantity { get;  set; }
-        private Int32 mStockId;
-
-        public Int32 StockId
-        {
-            get
-            {
-                return mStockId;
-            }
-            set
-            {
-                mStockId = value;
-
-            }
-        }
-
-        public bool Find(string productCategory)
-        {
-            return true;
-        }
-
-        internal bool Find(int stockId)
-        {
-            mStockId = 1001;
-            mProductCategory = "Nike Air Max 90";
-            mQuantity = 12;
-            mDate = Convert.ToDateTime("09/03/2022");
-            mAvailable = true;
-            mProductName = "Nike";
-            return true;
-
-        }
+        public string ProductCategory { get; internal set; }
+        public string Quantity { get; internal set; }
+        public string Date { get; internal set; }
+        public string Available { get; internal set; }
+        public string ProductName { get; internal set; }
+        public string StockId { get; internal set; }
     }
-} 
-    
+}
