@@ -20,9 +20,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AStock = new clsStock();
         AStock.StockId = tbStockId.Text;
         AStock.ProductCategory = tbProductCategory.Text;
-        AStock.Quantity = tbQuantity.Text;
-        AStock.Date = tbDate.Text;
-        AStock.Available = tbAvailable.Text;
+        AStock.Quantity = Convert.ToInt32(tbQuantity.Text);
+        AStock.Date = Convert.ToDateTime(tbDate.Text);
+        AStock.Available = Convert.ToBoolean(tbAvailable.Text);
         AStock.ProductName = tbProductName.Text;
 
         Session["AStock"] = AStock;

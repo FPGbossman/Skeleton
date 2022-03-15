@@ -12,9 +12,9 @@ namespace ClassLibrary
 
         public string StockId;
         public string ProductCategory;
-        public string Quantity;
-        public string Date;
-        public string Available;
+        public int Quantity;
+        public DateTime Date;
+        public Boolean Available;
         public string ProductName;
 
 

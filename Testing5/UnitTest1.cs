@@ -26,7 +26,7 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            string StockId = "1101";
+            string StockId = "1001";
             AStock.StockId = StockId;
 
             Assert.AreEqual(AStock.StockId, StockId);
@@ -42,7 +42,7 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            string ProductCategory = "Beverage";
+            string ProductCategory = "Nike Air Max 90";
             AStock.ProductCategory = ProductCategory;
 
             Assert.AreEqual(AStock.ProductCategory, ProductCategory);
@@ -57,7 +57,7 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            string Quantity = "";
+            string Quantity = "12";
             AStock.Quantity = Quantity;
 
             Assert.AreEqual(AStock.Quantity, Quantity);
@@ -70,7 +70,7 @@ namespace StockTesting
         {
 
             clsStock AStock = new clsStock();
-            string Date = "12/12/22";
+            string Date = "09/03/2022";
             AStock.Date = Date;
             Assert.AreEqual(AStock.Date, Date);
 
@@ -95,6 +95,20 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
+            string ProductName = "Nike";
+            AStock.ProductName = ProductName;
+
+            Assert.AreEqual(AStock.ProductName, ProductName);
+
+        }
+    //=============================================================
+   //==============================================================
+        [TestMethod]
+        public void FindMethodOK()
+        {
+
+            clsStock AStock = new clsStock();
+            Boolean Found = false; 
             string ProductName = "Coke";
             AStock.ProductName = ProductName;
 
@@ -102,4 +116,3 @@ namespace StockTesting
 
         }
     }
-}
