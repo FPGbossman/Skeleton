@@ -36,7 +36,7 @@ namespace ClassLibrary
                         orderDescription = Convert.ToString(db.DataTable.Rows[0]["OrderDescription"]);
                         orderAddress = Convert.ToString(db.DataTable.Rows[0]["Address"]);
                         orderPrice = Convert.ToInt32(db.DataTable.Rows[0]["OrderPrice"]);
-                        //customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
+                        customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
                         dateTime = Convert.ToDateTime(db.DataTable.Rows[0]["OrderDate"]);
                         return "Success!";
                     } else
@@ -108,6 +108,88 @@ namespace ClassLibrary
             }
         }
 
+        public string validate(string address, string description, DateTime timeOfOrder, int customerid, int orderid, int price)
+        {
+            string error = "";
+            try
+            {
+                //Addresses
+                if (string.IsNullOrEmpty(address))
+                {
+                    error += $"address is Null or Empty!\n";
+                } else
+                {
+                    if (address.Length < 10)
+                    {
+                        error += $"address:{address} is less than 10 characters!\n";
+
+                    }
+                    if (address.Length > 50)
+                    {
+                        error += $"address:{address} is greater than 50 characters!\n";
+                    }
+                }
+
+                //Description
+                if (string.IsNullOrEmpty(description))
+                {
+                    error += $"description is Null or Empty!\n";
+                }
+                else
+                {
+                    if (description.Length < 10)
+                    {
+                        error += $"description:{description} is less than 10 characters!\n";
+
+                    }
+                    if (description.Length > 50)
+                    {
+                        error += $"description:{description} is greater than 50 characters!\n";
+                    }
+                }
+
+
+                //DateTime
+                if (timeOfOrder.GetType() != new DateTime().GetType())
+                {
+                    error += $"timeOfOrder is not the correct data type.";
+                } else
+                {
+                    if (DateTime.Now < timeOfOrder)
+                    {
+                        error += $"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n";
+                    }
+                    if (timeOfOrder < Convert.ToDateTime("1/1/2022"))
+                    {
+                        error += $"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n";
+                    }
+                }
+                {
+
+                }
+
+                if (customerid < 0)
+                {
+                    error += $"customerid:{customerid} is less than zero!\n";
+                }
+                if (orderid < 0)
+                {
+                    error += $"orderid:{orderid} is less than zero!\n";
+                }
+                if (price < 0)
+                {
+                    error += $"price:{price} is less than zero!\n";
+                }
+
+
+            } catch (Exception e)
+            {
+                error += $"Critical error!: {e.Message}";
+            }
+
+            return error;
+        }
+
         public string getOrderAddress()
         {
             return this.orderAddress;
@@ -128,9 +210,9 @@ namespace ClassLibrary
             
         }
 
-        public void getCustomerId()
+        public int getCustomerId()
         {
-
+            return this.customerId;
         }
 
         public void deleteOrder()

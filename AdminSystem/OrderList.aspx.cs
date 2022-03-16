@@ -31,6 +31,8 @@ public partial class _1_List : System.Web.UI.Page
                 OrderDescReq.Text = orders.getOrderDescription();
                 OrderTimeReq.Text = Convert.ToString(orders.getDateTime());
                 OrderPriceReq.Text = Convert.ToString(orders.getOrderPrice());
+                CustomerIDReq.Text = Convert.ToString(orders.getCustomerId());
+
             }
 
         }
@@ -62,6 +64,11 @@ public partial class _1_List : System.Web.UI.Page
     }
 
     protected void OrderIDReq_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void CustomerIDReq_TextChanged(object sender, EventArgs e)
     {
 
     }

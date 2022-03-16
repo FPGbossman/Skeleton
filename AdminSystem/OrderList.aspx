@@ -24,16 +24,16 @@
             <asp:TextBox ID="OrderIDReq" runat="server" width="111px" ReadOnly="True" OnTextChanged="OrderIDReq_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="OrderAddress" runat="server" Text="Order Address: " width="111px"></asp:Label>
-            <asp:TextBox ID="OrderAddressReq" runat="server" width="250px" ReadOnly="True" OnTextChanged="OrderAddressReq_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="OrderAddressReq" runat="server" width="407px" ReadOnly="True" OnTextChanged="OrderAddressReq_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="OrderDesc" runat="server" Text="Order Description: " width="111px"></asp:Label>
-            <asp:TextBox ID="OrderDescReq" runat="server" width="250px" ReadOnly="True" OnTextChanged="OrderDescReq_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="OrderDescReq" runat="server" width="412px" ReadOnly="True" OnTextChanged="OrderDescReq_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="OrderTime" runat="server" Text="Time of order: " width="111px"></asp:Label>
-            <asp:TextBox ID="OrderTimeReq" runat="server" width="111px" ReadOnly="True"></asp:TextBox>
+            <asp:TextBox ID="OrderTimeReq" runat="server" width="109px" ReadOnly="True"></asp:TextBox>
             <br />
-            <asp:Label ID="CustomerID" runat="server" Text="Customer ID: "></asp:Label>
-            <asp:TextBox ID="CustomerIDReq" runat="server" width="111px" ReadOnly="True"></asp:TextBox>
+            <asp:Label ID="CustomerID" runat="server" Text="Customer ID: " width="110px"></asp:Label>
+            <asp:TextBox ID="CustomerIDReq" runat="server" width="111px" ReadOnly="True" OnTextChanged="CustomerIDReq_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="OrderPrice" runat="server" Text="Price of order: " width="111px"></asp:Label>
             <asp:TextBox ID="OrderPriceReq" runat="server" width="111px" ReadOnly="True" OnTextChanged="OrderPriceReq_TextChanged"></asp:TextBox>

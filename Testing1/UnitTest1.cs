@@ -116,5 +116,320 @@ namespace Testing1
             found = orders2.find(orderNo);
             Assert.AreEqual("Success!", found);
         }
+
+        /**==================================== 
+         * This is the test specification start, 
+         * in order: address, description, 
+         * timeOfOrder, customerId, stockId
+         * ====================================*/
+
+        string bAddr = "{testa:testa, testa2:test2a}";
+        string bDesc = "{testd:testd, testd2:test2d}";
+        DateTime timeOfOrder = new DateTime(2022, 1, 2);
+        int customerid = 100;
+        int orderid = 100;
+        int price = 10;
+        
+        /** ===============
+         *  Address testing
+         *  ===============*/
+
+        [TestMethod]
+        public void minMinusOneAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtestt";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"address:{bAddr2} is less than 10 characters!\n", error);
+        }
+
+        [TestMethod]
+        public void minBoundaryAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtestte";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"", error);
+        }
+
+        [TestMethod]
+        public void minPlusOneAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtesttes";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"", error);
+        }
+
+
+        [TestMethod]
+        public void maxMinusOneAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtesttesttesttesttesttesttesttesttesttesttestte";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtesttesttesttesttesttesttesttesttesttesttestte";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxPlusOneAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtesttesttesttesttesttesttesttesttesttesttesttestt";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"address:{bAddr2} is greater than 50 characters!\n", error);
+        }
+
+        [TestMethod]
+        public void midAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtesttesttesttesttestt";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"", error);
+        }
+
+        [TestMethod]
+        public void extremeMax()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "testtesttesttesttesttestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+            //185
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"address:{bAddr2} is greater than 50 characters!\n", error);
+        }
+
+        /** ======================
+         *  End of Address testing
+         *  ======================
+         **/
+
+        //===========================================================================================================
+        
+        /** ===================
+         *  Description testing
+         *  ===================
+         **/
+        
+        [TestMethod]
+        public void minMinusOneDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("description is Null or Empty!\n", error);
+        }
+
+        [TestMethod]
+        public void minBoundaryDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "testtestte";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"", error);
+        }
+
+        [TestMethod]
+        public void minPlusOneDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "testtesttes";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"", error);
+        }
+
+
+        [TestMethod]
+        public void maxMinusOneDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "testtesttesttesttesttesttesttesttesttesttesttestte";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "testtesttesttesttesttesttesttesttesttesttesttestte";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxPlusOneDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "testtesttesttesttesttesttesttesttesttesttesttesttestt";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"description:{bDesc2} is greater than 50 characters!\n", error);
+        }
+
+        [TestMethod]
+        public void midDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "testtesttesttesttesttestt";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"", error);
+        }
+
+        [TestMethod]
+        public void extremeDescription()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "testtesttesttesttesttestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+            //185
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"description:{bDesc2} is greater than 50 characters!\n", error);
+        }
+
+        /** ======================
+         *  End of Description testing
+         *  ======================
+         **/
+
+        //===========================================================================================================
+
+        /** ===================
+        *  Time testing
+        *  ===================
+        **/
+
+
+        [TestMethod]
+        public void extremeMinimum()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = DateTime.MinValue;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n", error);
+        }
+
+
+        [TestMethod]
+        public void minMinusOneDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = Convert.ToDateTime("31/12/2021");
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n", error);
+        }
+
+        [TestMethod]
+        public void minBoundaryDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = Convert.ToDateTime("01/01/2022");
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void minPlusOneDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = Convert.ToDateTime("02/01/2022");
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+
+        [TestMethod]
+        public void maxMinusOneDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = DateTime.Now.AddDays(-1);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = DateTime.Now;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxPlusOneDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = DateTime.Now.AddDays(1);
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n", error);
+        }
+
+        [TestMethod]
+        public void midDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = Convert.ToDateTime("02/02/2022");
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"", error);
+        }
+
+        [TestMethod]
+        public void extremeDateTime()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = DateTime.MaxValue;
+            //185
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n", error);
+        }
+
+        /** ======================
+         *  End of Time testing
+         *  ======================
+         **/
+
+        //===========================================================================================================
+
+        /** ===================
+        *  CustomerId testing
+        *  ===================
+        **/
+
     }
 }
