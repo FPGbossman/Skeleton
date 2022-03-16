@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -21,13 +22,97 @@ using System.Runtime.InteropServices;
 
 namespace StockTesting
 {
-    class clsStock
+     class clsStock
     {
-        public string ProductCategory { get; internal set; }
-        public string Quantity { get; internal set; }
-        public string Date { get; internal set; }
-        public string Available { get; internal set; }
-        public string ProductName { get; internal set; }
-        public string StockId { get; internal set; }
-    }
+        private Int32 mStockId;
+        public Int32 StockId
+        {
+            get
+            {
+                return mStockId;
+            }
+            set
+            {
+                mStockId = value;
+            }
+        }
+
+        private string mProductCategory;
+        public string ProductCategory
+        {
+            get
+            {
+                return mProductCategory;
+            }
+            set
+            {
+                mProductCategory = value; 
+            }
+        }
+
+        private Int32 mQuantity;
+        public Int32 Quantity
+        {
+            get
+            {
+                return mQuantity;
+            }
+            set
+            {
+                mQuantity = value;
+            }
+        }
+        private DateTime mDate;
+        public DateTime Date
+        {
+            get
+            {
+                return mDate;
+            }
+            set
+            {
+                mDate = value;
+            }
+        }
+
+        private Boolean mAvailable;
+        public bool Available
+        {
+            get
+            {
+                return mAvailable;
+            }
+            set
+            {
+                mAvailable = value;
+            }
+        }
+
+        private string mProductName;
+        public string ProductName
+        {
+            get
+            {
+                return mProductName;
+            }
+            set
+            {
+                mProductName = value;
+            }
+        }
+
+
+        public bool Find(int StockId)
+        {
+            mStockId = 9;
+            mProductCategory = "Ultraboost 4.0 DNA Shoes";
+            mQuantity = 33;
+            mDate = Convert.ToDateTime("09/03/2022");
+            mAvailable = true;
+            mProductName = "Addidas";
+                return true;
+            }
+           
+        }
+    
 }

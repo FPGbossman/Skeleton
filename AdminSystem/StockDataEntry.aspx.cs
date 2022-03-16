@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ClassLibrary; 
+using ClassLibrary;
 
 
 public partial class _1_DataEntry : System.Web.UI.Page
@@ -20,11 +20,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AStock = new clsStock();
         AStock.StockId = tbStockId.Text;
         AStock.ProductCategory = tbProductCategory.Text;
-        AStock.Quantity = Convert.ToInt32(tbQuantity.Text);
-        AStock.Date = Convert.ToDateTime(tbDate.Text);
-        AStock.Available = Convert.ToBoolean(tbAvailable.Text);
+        AStock.Quantity = tbQuantity.Text;
+        AStock.Date = tbDate.Text;
+        AStock.Available = tbAvailable.Text;
         AStock.ProductName = tbProductName.Text;
-
         Session["AStock"] = AStock;
         Response.Redirect("Stock Viewer.aspx");
     }
