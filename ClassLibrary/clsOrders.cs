@@ -36,7 +36,7 @@ namespace ClassLibrary
                         orderDescription = Convert.ToString(db.DataTable.Rows[0]["OrderDescription"]);
                         orderAddress = Convert.ToString(db.DataTable.Rows[0]["Address"]);
                         orderPrice = Convert.ToInt32(db.DataTable.Rows[0]["OrderPrice"]);
-                        //customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
+                        customerId = Convert.ToInt32(db.DataTable.Rows[0]["CustomerId"]);
                         dateTime = Convert.ToDateTime(db.DataTable.Rows[0]["OrderDate"]);
                         return "Success!";
                     } else
@@ -149,6 +149,7 @@ namespace ClassLibrary
                 }
 
 
+                //DateTime
                 if (timeOfOrder.GetType() != new DateTime().GetType())
                 {
                     error += $"timeOfOrder is not the correct data type.";
@@ -158,7 +159,7 @@ namespace ClassLibrary
                     {
                         error += $"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n";
                     }
-                    if (DateTime.Now > Convert.ToDateTime("1/1/2022"))
+                    if (timeOfOrder < Convert.ToDateTime("1/1/2022"))
                     {
                         error += $"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n";
                     }
@@ -166,6 +167,7 @@ namespace ClassLibrary
                 {
 
                 }
+
                 if (customerid < 0)
                 {
                     error += $"customerid:{customerid} is less than zero!\n";
@@ -208,9 +210,9 @@ namespace ClassLibrary
             
         }
 
-        public void getCustomerId()
+        public int getCustomerId()
         {
-
+            return this.customerId;
         }
 
         public void deleteOrder()

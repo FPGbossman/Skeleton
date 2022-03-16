@@ -125,7 +125,7 @@ namespace Testing1
 
         string bAddr = "{testa:testa, testa2:test2a}";
         string bDesc = "{testd:testd, testd2:test2d}";
-        DateTime timeOfOrder = Convert.ToDateTime("5/2/2022");
+        DateTime timeOfOrder = new DateTime(2022, 1, 2);
         int customerid = 100;
         int orderid = 100;
         int price = 10;
@@ -139,9 +139,9 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "";
+            string bAddr2 = "testtestt";
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
-            Assert.AreNotEqual("", error);
+            Assert.AreEqual($"address:{bAddr2} is less than 10 characters!\n", error);
         }
 
         [TestMethod]
@@ -149,9 +149,9 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "e";
+            string bAddr2 = "testtestte";
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
-            Assert.AreEqual($"address:{bAddr2} is less than 10 characters!\n", error);
+            Assert.AreEqual($"", error);
         }
 
         [TestMethod]
@@ -159,9 +159,9 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "ee";
+            string bAddr2 = "testtesttes";
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, orderid, price);
-            Assert.AreEqual($"address:{bAddr2} is less than 10 characters!\n", error);
+            Assert.AreEqual($"", error);
         }
 
 
@@ -243,9 +243,9 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "e";
+            string bDesc2 = "testtestte";
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
-            Assert.AreEqual($"description:{bDesc2} is less than 10 characters!\n", error);
+            Assert.AreEqual($"", error);
         }
 
         [TestMethod]
@@ -253,9 +253,9 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "ee";
+            string bDesc2 = "testtesttes";
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, orderid, price);
-            Assert.AreEqual($"description:{bDesc2} is less than 10 characters!\n", error);
+            Assert.AreEqual($"", error);
         }
 
 
@@ -322,14 +322,26 @@ namespace Testing1
         *  ===================
         **/
 
-        /**[TestMethod]
+
+        [TestMethod]
+        public void extremeMinimum()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            DateTime timeOfOrder = DateTime.MinValue;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n", error);
+        }
+
+
+        [TestMethod]
         public void minMinusOneDateTime()
         {
             clsOrders orderTest = new clsOrders();
 
             DateTime timeOfOrder = Convert.ToDateTime("31/12/2021");
             string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
-            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("ddmmyy")} is too far in the past!\n", error);
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n", error);
         }
 
         [TestMethod]
@@ -382,7 +394,7 @@ namespace Testing1
             DateTime timeOfOrder = DateTime.Now.AddDays(1);
 
             string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
-            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("ddmmyy")} is in the future!\n", error);
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n", error);
         }
 
         [TestMethod]
@@ -404,8 +416,20 @@ namespace Testing1
             DateTime timeOfOrder = DateTime.MaxValue;
             //185
             string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, orderid, price);
-            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("ddmmyy")} is in the future!\n", error);
-        }*/
+            Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n", error);
+        }
+
+        /** ======================
+         *  End of Time testing
+         *  ======================
+         **/
+
+        //===========================================================================================================
+
+        /** ===================
+        *  CustomerId testing
+        *  ===================
+        **/
 
     }
 }
