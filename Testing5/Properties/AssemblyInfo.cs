@@ -23,6 +23,7 @@ using System.Runtime.InteropServices;
 namespace StockTesting
 {
      class clsStock
+
     {
         private Int32 mStockId;
         public Int32 StockId
@@ -104,14 +105,27 @@ namespace StockTesting
 
         public bool Find(int StockId)
         {
-            mStockId = 9;
-            mProductCategory = "Ultraboost 4.0 DNA Shoes";
-            mQuantity = 33;
-            mDate = Convert.ToDateTime("09/03/2022");
-            mAvailable = true;
-            mProductName = "Addidas";
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StockId", StockId);
+            DB.Execute("sproc_tbStock_FilterByStockId");
+
+            if (DB.Count == 1)
+            {
+
+                mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["StockId"]);
+                mProductCategory = Convert.ToString(DB.DataTable.Rows[0]["ProductCategory"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                mDate = Convert.ToDateTime(DB.DataTable.Rows[0]["Date"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
                 return true;
             }
+            else
+            {
+                return false; 
+
+            }
+        }
            
         }
     

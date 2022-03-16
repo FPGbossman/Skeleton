@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace StockTesting
-{
+{ 
     [TestClass]
     public class tstStock
     {
@@ -103,7 +103,7 @@ namespace StockTesting
 
         }
         //=============================================================
-        //==============================================================
+        //==================================                                                    Find and Found method                                   ============================
         [TestMethod]
         public void FindMethodOk()
         {
@@ -268,3 +268,5 @@ namespace StockTesting
         }
     }
 }
+
+

@@ -12,6 +12,8 @@
             <asp:Label ID="lblStockId" runat="server" Text="StockId"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="tbStockId" runat="server" Width="100px"></asp:TextBox>
+            &nbsp;
+            <asp:Button ID="btnFind" runat="server" Height="28px" Text="Find" Width="53px" OnClick="btnFind_Click" />
             <br />
             <br />
             <asp:Label ID="lblProductCategory" runat="server" Text="ProductCategory" width="49px"></asp:Label>
