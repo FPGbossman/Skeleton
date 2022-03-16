@@ -3,21 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClassLibrary;
+using System.Collections;
 
 namespace ClassLibrary
 {
+
     public class clsStock
     {
-
         public string StockId;
+
         public string ProductCategory;
-        public int Quantity;
-        public DateTime Date;
-        public Boolean Available;
+
+        public string Quantity;
+
+        public string Date;
+
+        public string Available;
+
         public string ProductName;
 
-
-
+        public bool Find(int StockId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

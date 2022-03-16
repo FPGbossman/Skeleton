@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace StockTesting
@@ -26,7 +27,7 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            string StockId = "1001";
+            Int32 StockId = 1;
             AStock.StockId = StockId;
 
             Assert.AreEqual(AStock.StockId, StockId);
@@ -57,7 +58,7 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            string Quantity = "12";
+            Int32 Quantity = 12;
             AStock.Quantity = Quantity;
 
             Assert.AreEqual(AStock.Quantity, Quantity);
@@ -70,7 +71,7 @@ namespace StockTesting
         {
 
             clsStock AStock = new clsStock();
-            string Date = "09/03/2022";
+            DateTime Date = Convert.ToDateTime("09/03/2022");
             AStock.Date = Date;
             Assert.AreEqual(AStock.Date, Date);
 
@@ -83,7 +84,7 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            string Available = "true";
+            Boolean Available = true;
             AStock.Available = Available;
             Assert.AreEqual(AStock.Available, Available);
 
@@ -101,18 +102,169 @@ namespace StockTesting
             Assert.AreEqual(AStock.ProductName, ProductName);
 
         }
-    //=============================================================
-   //==============================================================
+        //=============================================================
+        //==============================================================
         [TestMethod]
-        public void FindMethodOK()
+        public void FindMethodOk()
         {
 
             clsStock AStock = new clsStock();
-            Boolean Found = false; 
-            string ProductName = "Coke";
-            AStock.ProductName = ProductName;
 
-            Assert.AreEqual(AStock.ProductName, ProductName);
+            Boolean Found = false;
+
+            Int32 StockId = 1;
+            Found = AStock.Find(StockId); 
+
+            Assert.IsTrue(Found); 
 
         }
+
+        //===========================================
+        //===========================================
+
+        [TestMethod]
+        public void TestStockIdFound()
+        {
+            
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 StockId = 9;
+
+            Found = AStock.Find(StockId);
+           
+            if (AStock.StockId != 9)
+            {
+                OK = false; 
+            }
+           
+            Assert.IsTrue(OK);
+        }
+
+        //=================================================
+        //=================================================
+
+        [TestMethod]
+        public void TestProductCategoryFound()
+        {
+
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 StockId = 9;
+
+            Found = AStock.Find(StockId);
+
+            if (AStock.ProductCategory != "Ultraboost 4.0 DNA Shoes")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        //=================================================
+        //=================================================
+
+        [TestMethod]
+        public void TestQuantityFound()
+        {
+
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 StockId = 9;
+
+            Found = AStock.Find(StockId);
+
+            if (AStock.Quantity != 33)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        //=================================================
+        //=================================================
+        [TestMethod]
+        public void TestDateFound()
+        {
+
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 StockId = 9;
+
+            Found = AStock.Find(StockId);
+
+            if (AStock.Date != Convert.ToDateTime("09/03/2022"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        //=================================================
+        //=================================================
+        [TestMethod]
+        public void TestAvailableFound()
+        {
+
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 StockId = 9;
+
+            Found = AStock.Find(StockId);
+
+            if (AStock.Available != true)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        //=================================================
+        //=================================================
+        [TestMethod]
+        public void TestProductNameFound()
+        {
+
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 StockId = 9;
+
+            Found = AStock.Find(StockId);
+
+            if (AStock.ProductName != "Addidas")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
     }
+}
