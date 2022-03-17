@@ -84,7 +84,7 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            Boolean Available = true;
+            bool Available = true;
             AStock.Available = Available;
             Assert.AreEqual(AStock.Available, Available);
 

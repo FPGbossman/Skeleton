@@ -18,11 +18,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock AStock = new clsStock();
-        AStock.StockId = tbStockId.Text;
+        AStock.StockId = Convert.ToInt32(tbStockId.Text);
         AStock.ProductCategory = tbProductCategory.Text;
-        AStock.Quantity = tbQuantity.Text;
-        AStock.Date = tbDate.Text;
-        AStock.Available = tbAvailable.Text;
+        AStock.Quantity = Convert.ToInt32(tbQuantity.Text);
+        AStock.Date = Convert.ToDateTime(tbDate.Text);
+        AStock.Available = Convert.ToString(tbAvailable.Text);
         AStock.ProductName = tbProductName.Text;
         Session["AStock"] = AStock;
         Response.Redirect("Stock Viewer.aspx");
@@ -38,11 +38,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Found == true)
         {
-            tbStockId.Text = AStock.StockId;
-            tbProductCategory.Text = AStock.ProductCategory;
-            tbDate.Text = AStock.Date;
-            tbAvailable.Text = AStock.Available;
-            tbProductCategory.Text = AStock.ProductCategory; 
+            tbStockId.Text = Convert.ToString(AStock.StockId);
+            tbProductName.Text = Convert.ToString(AStock.ProductName);
+            tbQuantity.Text = Convert.ToString(AStock.Quantity);
+            tbDate.Text = Convert.ToString(AStock.Date);
+            tbAvailable.Text = Convert.ToString(AStock.Available);
+            tbProductCategory.Text = Convert.ToString(AStock.ProductCategory); 
 
         }
     }
