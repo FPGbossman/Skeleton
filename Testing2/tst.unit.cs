@@ -255,7 +255,7 @@ namespace Testing2
 
             String Error = "";
 
-            string CustomerName = "g";
+            string CustomerFirstName = "g";
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
@@ -268,7 +268,7 @@ namespace Testing2
 
             String Error = "";
 
-            string CustomerName = "gg";
+            string CustomerFirstname = "gg";
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
@@ -281,7 +281,7 @@ namespace Testing2
 
             String Error = "";
 
-            string CustomerName = "ggggg";
+            string CustomerFirstname = "ggggg";
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 

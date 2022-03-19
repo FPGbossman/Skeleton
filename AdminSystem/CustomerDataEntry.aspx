@@ -19,32 +19,29 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="IblCustomerno" runat="server" Text="Customer Number"></asp:Label>
-            <asp:TextBox ID="txt_Customerno" runat="server" style="margin-left: 18px" Width="137px"></asp:TextBox>
+            <asp:TextBox ID="txt_CustomerId" runat="server" style="margin-left: 18px" Width="137px"></asp:TextBox>
             <br />
             <br />
         </div>
         <asp:Label ID="lblCustomerFirstname" runat="server" Text="Customer Firstname "></asp:Label>
-        <asp:TextBox ID="txtcustomerfirstname" runat="server" style="margin-left: 5px" Width="141px"></asp:TextBox>
+        <asp:TextBox ID="txtCustomerFirstname" runat="server" style="margin-left: 5px" Width="141px"></asp:TextBox>
         <br />
         <p>
             <asp:Label ID="lblCustomersurname" runat="server" Text="Customer Surname "></asp:Label>
-            <asp:TextBox ID="txtcustomersurname" runat="server" style="margin-left: 12px" Width="140px"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerSurname" runat="server" style="margin-left: 12px" Width="140px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblcustomeremail" runat="server" Text="Customer Email"></asp:Label>
             <asp:TextBox ID="txtCustomerEmail" runat="server" style="margin-left: 35px; margin-top: 0px" Width="144px"></asp:TextBox>
         </p>
         <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>
-        <asp:RadioButtonList ID="rblGender" runat="server" Height="16px" style="margin-left: 68px; margin-top: 5px" Width="158px">
-            <asp:ListItem>Male</asp:ListItem>
-            <asp:ListItem>Female</asp:ListItem>
-        </asp:RadioButtonList>
+        <asp:TextBox ID="txtGender" runat="server" style="margin-left: 80px" Width="140px"></asp:TextBox>
         <br />
         <asp:Label ID="LBLDOB" runat="server" Text="Customer D.O.B"></asp:Label>
-        <asp:TextBox ID="txtDOB" runat="server" style="margin-left: 21px; margin-top: 1px" Width="143px"></asp:TextBox>
+        <asp:TextBox ID="txtCustomerDOB" runat="server" style="margin-left: 21px; margin-top: 1px" Width="143px"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Find" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         <br />
         <br />
         <asp:Label ID="LblError" runat="server" Text="[lblError]"></asp:Label>
