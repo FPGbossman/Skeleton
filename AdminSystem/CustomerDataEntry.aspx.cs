@@ -42,15 +42,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         Boolean Found = false;
 
-        CustomerId = Convert.ToInt32(txtCustomerId.Text);
+        CustomerID = Convert.ToInt32(txtCustomerID.Text);
 
-        Found = gg.Find(CustomerId);
+        Found = gg.Find(CustomerID);
 
         if (Found == true)
         {
            
             txtCustomerFirstname.Text = gg.CustomerFirstname;
-            txtCustomerSurame.Text = gg.CustomerSurname;
+            txtCustomerSurname.Text = gg.CustomerSurname;
             txtCustomerEmail.Text = gg.CustomerEmail;
             txtCustomerDOB.Text = gg.CustomerDOB.ToString();
             txtGender.Text = gg.Gender;

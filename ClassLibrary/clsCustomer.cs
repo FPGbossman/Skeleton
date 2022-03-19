@@ -112,7 +112,7 @@ namespace ClassLibrary
 
                 if (DB.Count == 1)
                 {
-                    mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                    mCustomerID  = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                     mCustomerFirstname = Convert.ToString(DB.DataTable.Rows[0]["CustomerFirstname"]);
                     mCustomerSurname = Convert.ToString(DB.DataTable.Rows[0]["CustomerSurname"]);
                     mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
