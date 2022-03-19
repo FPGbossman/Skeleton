@@ -44,6 +44,7 @@
         <asp:TextBox ID="txtDOB" runat="server" style="margin-left: 21px; margin-top: 1px" Width="143px"></asp:TextBox>
         <br />
         <br />
+        <asp:Button ID="Button1" runat="server" Text="Find" />
         <br />
         <br />
         <asp:Label ID="LblError" runat="server" Text="[lblError]"></asp:Label>
