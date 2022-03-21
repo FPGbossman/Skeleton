@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace Testing1
 {
@@ -138,7 +139,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtestt";
+            string bAddr2 = new string('#', 9);
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"address:{bAddr2} is less than 10 characters!\n", error);
         }
@@ -148,7 +149,8 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtestte";
+            string bAddr2 = new string('#', 10);
+
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
@@ -158,7 +160,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtesttes";
+            string bAddr2 = new string('#', 11);
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
@@ -169,7 +171,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtesttesttesttesttesttesttesttesttesttesttestestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttes";
+            string bAddr2 = new string('#', 99);
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
@@ -179,7 +181,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtesttesttesttesttesttesttesttesttesttesttestestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+            string bAddr2 = new string('#', 100);
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
@@ -189,7 +191,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtesttesttesttesttesttesttesttesttesttesttestestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestT";
+            string bAddr2 = new string('#', 101);
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"address:{bAddr2} is greater than 100 characters!\n", error);
         }
@@ -199,7 +201,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtesttesttesttesttesttesttesttesttesttesttestTT";
+            string bAddr2 = new string('#', 50);
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
@@ -209,10 +211,10 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bAddr2 = "testtesttesttesttesttestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestesttesttest";
+            string bAddr2 = new string('#', 999);
             //185
             string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid,  price);
-            Assert.AreEqual($"address:{bAddr2} is greater than 50 characters!\n", error);
+            Assert.AreEqual($"address:{bAddr2} is greater than 100 characters!\n", error);
         }
 
         [TestMethod]
@@ -243,9 +245,9 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "";
+            string bDesc2 = new string('#', 9);
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
-            Assert.AreEqual("description is Null or Empty!\n", error);
+            Assert.AreEqual($"description:{bDesc2} is less than 10 characters!\n", error);
         }
 
         [TestMethod]
@@ -253,7 +255,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "testtestte";
+            string bDesc2 = new string('#', 10); ;
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
             Assert.AreEqual($"", error);
         }
@@ -263,7 +265,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "testtesttes";
+            string bDesc2 = new string('#', 11);
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
             Assert.AreEqual($"", error);
         }
@@ -274,7 +276,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "testtesttesttesttesttesttesttesttesttesttesttestte";
+            string bDesc2 = new string('#', 99);
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
             Assert.AreEqual("", error);
         }
@@ -284,7 +286,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "testtesttesttesttesttesttesttesttesttesttesttestte";
+            string bDesc2 = new string('#', 100);
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
             Assert.AreEqual("", error);
         }
@@ -294,9 +296,9 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "testtesttesttesttesttesttesttesttesttesttesttesttestt";
+            string bDesc2 = new string('#', 101);
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
-            Assert.AreEqual($"description:{bDesc2} is greater than 50 characters!\n", error);
+            Assert.AreEqual($"description:{bDesc2} is greater than 100 characters!\n", error);
         }
 
         [TestMethod]
@@ -304,7 +306,7 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "testtesttesttesttesttestt";
+            string bDesc2 = new string('#', 50);
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
             Assert.AreEqual($"", error);
         }
@@ -314,10 +316,10 @@ namespace Testing1
         {
             clsOrders orderTest = new clsOrders();
 
-            string bDesc2 = "testtesttesttesttesttestttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+            string bDesc2 = new string('#', 999); ;
             //185
             string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
-            Assert.AreEqual($"description:{bDesc2} is greater than 50 characters!\n", error);
+            Assert.AreEqual($"description:{bDesc2} is greater than 100 characters!\n", error);
         }
 
         [TestMethod]
@@ -547,5 +549,21 @@ namespace Testing1
             string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
             Assert.AreEqual($"price:{price} is greater than a billion!\n", error);
         }
+
+        /** END OF VALIDATION TESTING **/
+
+        [TestMethod]
+        public void ListAndCountOK()
+        {
+            clsOrderCollection orders = new clsOrderCollection();
+            List<clsOrders> orderList = new List<clsOrders>();
+            orderList.Add(new clsOrders());
+            orderList.Add(new clsOrders());
+            orderList.Add(new clsOrders());
+            orderList.Add(new clsOrders());
+            orders.setOrders(orderList);
+            Assert.AreEqual(orders.getCount(), orderList.Count);
+        }
+
     }
 }
