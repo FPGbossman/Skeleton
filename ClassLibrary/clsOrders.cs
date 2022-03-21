@@ -16,6 +16,9 @@ namespace ClassLibrary
         private int stockID;
         private int customerId;
 
+        public string OrderDescription { get => orderDescription; set => orderDescription = value; }
+        public int OrderNo { get => orderNo; set => orderNo = value; }
+
         /// <summary>
         /// This method will return a success state depending on if the order id could be found, 
         /// and set the tables values to internal values.
@@ -32,7 +35,7 @@ namespace ClassLibrary
                     db.Execute("proc_Order_Search");
                     if (db.Count == 1)
                     {
-                        orderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);
+                        OrderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);
                         orderDescription = Convert.ToString(db.DataTable.Rows[0]["OrderDescription"]);
                         orderAddress = Convert.ToString(db.DataTable.Rows[0]["Address"]);
                         orderPrice = Convert.ToInt32(db.DataTable.Rows[0]["OrderPrice"]);
@@ -101,7 +104,12 @@ namespace ClassLibrary
 
         public int getOrderNo()
         {
-            return this.orderNo;
+            return this.OrderNo;
+        }
+
+        public void setOrderNo(int orderNo)
+        {
+            this.OrderNo = orderNo;
         }
 
         public void setCustomerId(int custid)
@@ -140,7 +148,7 @@ namespace ClassLibrary
                     }
                     if (address.Length > 100)
                     {
-                        error += $"address:{address} is greater than 50 characters!\n";
+                        error += $"address:{address} is greater than 100 characters!\n";
                     }
                 }
 
@@ -156,9 +164,9 @@ namespace ClassLibrary
                         error += $"description:{description} is less than 10 characters!\n";
 
                     }
-                    if (description.Length > 50)
+                    if (description.Length > 100)
                     {
-                        error += $"description:{description} is greater than 50 characters!\n";
+                        error += $"description:{description} is greater than 100 characters!\n";
                     }
                 }
 

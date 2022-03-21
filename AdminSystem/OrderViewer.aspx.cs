@@ -45,6 +45,7 @@ public partial class _1Viewer : System.Web.UI.Page
 
         try
         {
+            Update.Visible = false;
             int orderid = Convert.ToInt32(OrderIDSub.Text);
             string v = orders.find(orderid);
 
@@ -101,10 +102,23 @@ public partial class _1Viewer : System.Web.UI.Page
 
     protected void Button1_Click1(object sender, EventArgs e)
     {
-        string error = orders.validate(OrderAddress.Text, OrderDesc.Text, Convert.ToDateTime(OrderTime.Text), Convert.ToInt32(CustomerID.Text), Convert.ToInt32(OrderPrice.Text));
+        string error = orders.validate(OrderAddressReq.Text, OrderDescReq.Text, Convert.ToDateTime(OrderTimeReq.Text), Convert.ToInt32(CustomerIDReq.Text), Convert.ToInt32(OrderPriceReq.Text));
         if (error == "")
         {
+            clsOrderCollection collect = new clsOrderCollection();
+            clsOrders tempOrder = new clsOrders();
+            tempOrder.setCustomerId(Convert.ToInt32(CustomerIDReq.Text));
+            tempOrder.setOrderAddress(OrderAddressReq.Text);
+            tempOrder.setOrderDescription(OrderDescReq.Text);
+            tempOrder.setDateTime(Convert.ToDateTime(OrderTimeReq.Text));
+            tempOrder.setOrderPrice(Convert.ToInt32(OrderPriceReq.Text));
+            tempOrder.setOrderNo(Convert.ToInt32(OrderIDReq.Text));
+            collect.setOrder(tempOrder);
+            collect.Update();
 
+        } else
+        {
+            QueryInfo.Text = error;
         }
     }
 }

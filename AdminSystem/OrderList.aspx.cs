@@ -47,8 +47,13 @@ public partial class _1_List : System.Web.UI.Page
     {
         clsOrderCollection orderCollection = new clsOrderCollection();
         OrderList.DataSource = orderCollection.getOrders();
-        OrderList.DataValueField = "OrderNo";
-        OrderList.DataTextField = "Order No";
+        OrderList.DataValueField = "orderNo";
+        OrderList.DataTextField = "orderDescription";
         OrderList.DataBind();
+    }
+
+    protected void OrderList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
