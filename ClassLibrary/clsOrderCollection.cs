@@ -31,12 +31,26 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.AddParameter("@OrderDescription", orders.getOrderDescription());
-            DB.AddParameter("@OrderDate", orders.getDateTime());
-            DB.AddParameter("@OrderPrice", orders.getOrderPrice());
-            DB.AddParameter("@CustomerID", orders.getCustomerId());
+            DB.AddParameter("@orderDescription", orders.getOrderDescription());
+            DB.AddParameter("@orderDate", orders.getDateTime());
+            DB.AddParameter("@orderPrice", orders.getOrderPrice());
+            DB.AddParameter("@customerID", orders.getCustomerId());
             DB.AddParameter("@orderPrice", orders.getOrderPrice());
             return DB.Execute("proc_Order_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@orderdescription", orders.getOrderDescription());
+            DB.AddParameter("@orderdate", orders.getDateTime());
+            DB.AddParameter("@orderprice", orders.getOrderPrice());
+            DB.AddParameter("@customeriD", orders.getCustomerId());
+            DB.AddParameter("@orderprice", orders.getOrderPrice());
+            DB.AddParameter("@orderid", orders.getOrderNo());
+            DB.Execute("proc_Order_Update");
+
         }
     }
 }

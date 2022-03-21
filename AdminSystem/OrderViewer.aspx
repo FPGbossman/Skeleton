@@ -45,6 +45,10 @@
             <asp:Label ID="QueryInfo" runat="server" Text="" width="111px"></asp:Label>
 
         </div>
+        </div>
+        <p>
+            <asp:Button ID="Update" runat="server" OnClick="Button1_Click1" Text="Update" Visible="False" />
+        </p>
     </form>
 </body>
 </html>
