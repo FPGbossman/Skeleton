@@ -55,6 +55,16 @@ namespace ClassLibrary
             }
         }
 
+
+        /** ===========
+         *  Order Price
+         *  ===========
+         */
+        public int getOrderPrice()
+        {
+            return this.orderPrice;
+        }
+
         public void setOrderPrice(int orderPrice)
         {
             if (orderPrice >= 0)
@@ -67,20 +77,10 @@ namespace ClassLibrary
             }
         }
 
-        public int getOrderPrice()
-        {
-            return this.orderPrice;
-        }
-
-        public String getOrderDescription()
-        {
-            return this.orderDescription;
-        }
-
-        public int getOrderNo()
-        {
-            return this.orderNo;
-        }
+        /** =================
+         *  Order Description
+         *  =================
+         */
 
         public void setOrderDescription(String orderDescription)
         {
@@ -93,6 +93,20 @@ namespace ClassLibrary
             {
                 this.orderDescription = "LOOKUP FAILED!";
             }
+        }
+        public String getOrderDescription()
+        {
+            return this.orderDescription;
+        }
+
+        public int getOrderNo()
+        {
+            return this.orderNo;
+        }
+
+        public void setCustomerId(int custid)
+        {
+            this.customerId = custid;
         }
 
         public void setOrderAddress(String orderAddress)
@@ -108,7 +122,7 @@ namespace ClassLibrary
             }
         }
 
-        public string validate(string address, string description, DateTime timeOfOrder, int customerid, int orderid, int price)
+        public string validate(string address, string description, DateTime timeOfOrder, int customerid, int price)
         {
             string error = "";
             try
@@ -124,7 +138,7 @@ namespace ClassLibrary
                         error += $"address:{address} is less than 10 characters!\n";
 
                     }
-                    if (address.Length > 50)
+                    if (address.Length > 100)
                     {
                         error += $"address:{address} is greater than 50 characters!\n";
                     }
@@ -172,15 +186,21 @@ namespace ClassLibrary
                 {
                     error += $"customerid:{customerid} is less than zero!\n";
                 }
-                if (orderid < 0)
-                {
-                    error += $"orderid:{orderid} is less than zero!\n";
-                }
-                if (price < 0)
-                {
-                    error += $"price:{price} is less than zero!\n";
-                }
 
+                int testInt = 0;
+                if (price.GetType() != testInt.GetType())
+                {
+                    error += $"timeOfOrder is not the correct data type.";
+                } else { 
+                    if (price <= 0)
+                    {
+                        error += $"price:{price} is less than or equal to zero!\n";
+                    }
+                    if (price > 100000000)
+                    {
+                        error += $"price:{price} is greater than a billion!\n";
+                    }
+                }
 
             } catch (Exception e)
             {
@@ -227,9 +247,9 @@ namespace ClassLibrary
         /// <param name="strtName">Name of the street</param>
         /// <param name="city">Name of the city</param>
         /// <param name="postcode">Postcode of the customer</param>
-        public void setStandardAddress(string houseNo, string strtName, string city, string postcode)
+        public string getStandardAddress(string houseNo, string strtName, string city, string postcode)
         {   
-            this.setOrderAddress($"[HouseNo={houseNo},StreetName={strtName},City={city},Postcode={postcode}]");
+            return $"[HouseNo={houseNo},StreetName={strtName},City={city},Postcode={postcode}]";
         }
 
         public void breakupOrder(string order)

@@ -8,13 +8,103 @@ using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
 {
+    clsOrders orders = new clsOrders();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsOrders orders = new clsOrders();
+        int orderNo = Convert.ToInt32(Session["Order"]);
+        if (IsPostBack == false)
+        {
+            if (orderNo != -1)
+            {
+                DisplayAddress(orderNo);
+            }
+        }
+    }
 
-        orders = (clsOrders) Session["Orders"];
-        Response.Write("Order Description: " + orders.getOrderDescription() + "<br><br>");
-        Response.Write("Order address: " + orders.getOrderAddress() + "<br><br>");
-        Response.Write("Time of order: " + orders.getDateTime().ToString());
+    protected void DisplayAddress(int orderNo)
+    {
+        clsOrderCollection collection = new clsOrderCollection();
+        collection.getOrder().find(orderNo);
+        OrderIDReq.Text = Convert.ToString(collection.getOrder().getOrderNo());
+        OrderAddressReq.Text = collection.getOrder().getOrderAddress();
+        OrderAddressReq.ReadOnly = false;
+        OrderDescReq.Text = collection.getOrder().getOrderDescription();
+        OrderDescReq.ReadOnly = false;
+        OrderTimeReq.Text = Convert.ToString(collection.getOrder().getDateTime());
+        OrderTimeReq.ReadOnly = false;
+        OrderPriceReq.Text = Convert.ToString(collection.getOrder().getOrderPrice());
+        OrderPriceReq.ReadOnly = false;
+        CustomerIDReq.Text = Convert.ToString(collection.getOrder().getCustomerId());
+        CustomerIDReq.ReadOnly = false;
+        Update.Visible = true;
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+        try
+        {
+            int orderid = Convert.ToInt32(OrderIDSub.Text);
+            string v = orders.find(orderid);
+
+            QueryInfo.Text = v;
+
+            if (!String.IsNullOrEmpty(v))
+            {
+                OrderIDReq.Text = Convert.ToString(orders.getOrderNo());
+                OrderAddressReq.Text = orders.getOrderAddress();
+                OrderDescReq.Text = orders.getOrderDescription();
+                OrderTimeReq.Text = Convert.ToString(orders.getDateTime());
+                OrderPriceReq.Text = Convert.ToString(orders.getOrderPrice());
+                CustomerIDReq.Text = Convert.ToString(orders.getCustomerId());
+
+            }
+
+        }
+        catch
+        {
+            QueryInfo.Text = "Conversion Failed. Mistype of OrderID. Must be integer.";
+        }
+    }
+
+
+    protected void OrderIDSub_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void OrderAddressReq_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void OrderPriceReq_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void OrderDescReq_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void OrderIDReq_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void CustomerIDReq_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Button1_Click1(object sender, EventArgs e)
+    {
+        string error = orders.validate(OrderAddress.Text, OrderDesc.Text, Convert.ToDateTime(OrderTime.Text), Convert.ToInt32(CustomerID.Text), Convert.ToInt32(OrderPrice.Text));
+        if (error == "")
+        {
+
+        }
     }
 }

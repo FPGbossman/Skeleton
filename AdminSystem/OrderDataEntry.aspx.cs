@@ -46,14 +46,40 @@ public partial class _1_List : System.Web.UI.Page
     protected void Confirm_Click(object sender, EventArgs e)
     {
         clsOrders orders = new clsOrders();
-        orders.breakupOrder(StockQuantity.Text);
-        orders.setDateTime(DateTime.Now);
-        orders.setStandardAddress(HouseNo.Text, StrtName.Text, City.Text, Postcode.Text);
-        Session["Orders"] = orders;
-        Response.Redirect("OrderViewer.aspx");
+
+        try
+        {
+            DateTime current = DateTime.Now;
+            string address = orders.getStandardAddress(HouseNo.Text, StrtName.Text, City.Text, Postcode.Text);
+            int price = Convert.ToInt32(Price.Text);
+            int customerid = Convert.ToInt32(CustomerID.Text);
+            string description = StockQuantity.Text;
+            string validate = orders.validate(address, description, current, customerid, price);
+            if (validate == "")
+            {
+                orders.setOrderAddress(address);
+                orders.setOrderDescription(description);
+                orders.setOrderPrice(price);
+                orders.setDateTime(current);
+                orders.setCustomerId(customerid);
+                Session["Orders"] = orders;
+                Response.Redirect("OrderList.aspx");
+            } else
+            {
+                Error.Text = validate;
+            }
+        } catch (Exception ex)
+        {
+            Error.Text = ex.Message;
+        } 
     }
 
     protected void Cancel_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
     {
 
     }
