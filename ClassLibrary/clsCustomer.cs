@@ -9,7 +9,7 @@ namespace ClassLibrary
     public class clsCustomer
     {
         public string CustomerFirstname;
-        public string CustomerSurnamename;
+        public string CustomerSurname;
         public string CustomerEmail;
         public string Gender;
         public DateTime CustomerDOB;
@@ -45,6 +45,11 @@ namespace ClassLibrary
                 mCustomerFirstname = value;
             }
         }
+
+        public bool Find(int customerId)
+        {
+            throw new NotImplementedException();
+        }
     }
     private string mCustomerSurname;
     public string CustomerSurname
@@ -66,12 +71,12 @@ namespace ClassLibrary
 
         get
         {
-            return CustomerEmail;
+            return mCustomerEmail;
 
         }
         set
         {
-            CustomerEmail = value;
+            mCustomerEmail = value;
         }
     }
 
@@ -108,7 +113,7 @@ namespace ClassLibrary
 
                 DB.AddParameter("@CustomerId", CustomerId);
 
-                DB.Execute("sproc_tblCustomerId_FilterbyCustomerId");
+                DB.Execute("sproc_dbo.tblCustomerId_FilterbyCustomerId");
 
                 if (DB.Count == 1)
                 {
@@ -116,7 +121,7 @@ namespace ClassLibrary
                     mCustomerFirstname = Convert.ToString(DB.DataTable.Rows[0]["CustomerFirstname"]);
                     mCustomerSurname = Convert.ToString(DB.DataTable.Rows[0]["CustomerSurname"]);
                     mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
-                    mCustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDOB "]);
+                    mCustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDOB"]);
                     mGender = Convert.ToString(DB.DataTable.Rows[0]["Gender"]);
                     return true;
                 }
@@ -145,7 +150,7 @@ namespace ClassLibrary
                     try
                     {
                         //copy the dateAdded value to the DateTemp variable
-                        DateTemp = Convert.ToDateTime(CustomerDOB);
+                        DateTemp = Convert.ToDateTime("CustomerDOB");
                         if (DateTemp < DateTime.Now.Date)
                         {
                             //record the error
