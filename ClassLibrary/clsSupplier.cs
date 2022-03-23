@@ -45,7 +45,7 @@ namespace ClassLibrary
             {
                 mSupplierName = value;
             }
-            
+
         }
 
         private bool mCurrentSupplier;
@@ -94,14 +94,24 @@ namespace ClassLibrary
         //==============================================================================
         public bool Find(int SupplierID)
         {
-            mSupplierID = 21;
-            mSupplierSince = "12/12/2022";
-            mSupplierName = "Nike";
-            mCurrentSupplier = false;
-            mSupplierAddress = "Test Street";
-            mContactNumber = 123456789;
 
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierID", SupplierID);
+            DB.Execute("sproc_tblSupplier_FilterBySupplierID");
+            if (DB.Count == 1)
+            {
+                mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
+                mSupplierSince = Convert.ToString(DB.DataTable.Rows[0]["SupplierSince"]);
+                mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
+                mCurrentSupplier = Convert.ToBoolean(DB.DataTable.Rows[0]["CurrentSupplier"]);
+                mSupplierAddress = Convert.ToString(DB.DataTable.Rows[0]["SupplierAddress"]);
+                mContactNumber = Convert.ToInt64(DB.DataTable.Rows[0]["ContactNumber"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
