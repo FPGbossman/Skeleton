@@ -76,7 +76,7 @@ namespace Testing3
         {
             clssupplier ASupplier = new clssupplier();
             Boolean Found = false;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 4;
             Found = ASupplier.Find(SupplierID);
             Assert.IsTrue(Found);
         }
@@ -87,9 +87,9 @@ namespace Testing3
             clssupplier ASupplier = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 4;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierID != 21)
+            if (ASupplier.SupplierID != 4)
             {
                 OK = false;
             }
@@ -102,9 +102,9 @@ namespace Testing3
             clssupplier ASupplier = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 4;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierSince != "12/12/2022")
+            if (ASupplier.SupplierSince != "2022-02-22")
             {
                 OK = false;
             }
@@ -116,9 +116,9 @@ namespace Testing3
             clssupplier ASupplier = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 4;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierName != "Nike"){
+            if (ASupplier.SupplierName != "TheTrainerPeople"){
                 OK = false;
             }
             Assert.IsTrue(OK);
@@ -129,7 +129,7 @@ namespace Testing3
             clssupplier ASupplier = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 4;
             Found = ASupplier.Find(SupplierID);
             if (ASupplier.CurrentSupplier != false )
             {
@@ -144,9 +144,9 @@ namespace Testing3
             clssupplier ASupplier = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 4;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierAddress != "Test Street")
+            if (ASupplier.SupplierAddress != "12 Lane")
             {
                 OK = false;
             }
@@ -159,9 +159,9 @@ namespace Testing3
                 clssupplier ASupplier = new clssupplier();
                 Boolean Found = false;
                 Boolean OK = true;
-                Int32 SupplierID = 21;
+                Int32 SupplierID = 4;
                 Found = ASupplier.Find(SupplierID);
-                if (ASupplier.ContactNumber != 123456789)
+                if (ASupplier.ContactNumber != 68543865)
                 {
                     OK = false;
                 }
