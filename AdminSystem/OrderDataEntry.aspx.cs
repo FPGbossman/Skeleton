@@ -62,7 +62,9 @@ public partial class _1_List : System.Web.UI.Page
                 orders.setOrderPrice(price);
                 orders.setDateTime(current);
                 orders.setCustomerId(customerid);
-                Session["Orders"] = orders;
+                clsOrderCollection collection = new clsOrderCollection();
+                collection.setOrder(orders);
+                collection.Add();
                 Response.Redirect("OrderList.aspx");
             } else
             {

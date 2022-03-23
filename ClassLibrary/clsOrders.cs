@@ -7,13 +7,11 @@ namespace ClassLibrary
 {  
     public class clsOrders {
 
-        private ArrayList orders;
         private int orderNo;
         private string orderDescription;
         private string orderAddress;
         private int orderPrice;
         private DateTime dateTime;
-        private int stockID;
         private int customerId;
 
         public string OrderDescription { get => orderDescription; set => orderDescription = value; }
@@ -31,8 +29,8 @@ namespace ClassLibrary
                 clsDataConnection db = new clsDataConnection();
                 if (db != null)
                 {
-                    db.AddParameter("@orderid", orderId);
-                    db.Execute("proc_Order_Search");
+                    db.AddParameter("@orderNo", orderId);
+                    db.Execute("proc_Order_OrderIDSearch");
                     if (db.Count == 1)
                     {
                         OrderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);
@@ -190,9 +188,13 @@ namespace ClassLibrary
 
                 }
 
-                if (customerid < 0)
+                if (customerid < 1)
                 {
                     error += $"customerid:{customerid} is less than zero!\n";
+                } 
+                if (customerid > 99999)
+                {
+                    error += $"customerid:{customerid} is greater than 5 numerical characters!\n";
                 }
 
                 int testInt = 0;
@@ -233,19 +235,9 @@ namespace ClassLibrary
             return this.dateTime;
         }
 
-        public void getStockId()
-        {
-            
-        }
-
         public int getCustomerId()
         {
             return this.customerId;
-        }
-
-        public void deleteOrder()
-        {
-
         }
 
         /// <summary>
@@ -258,21 +250,6 @@ namespace ClassLibrary
         public string getStandardAddress(string houseNo, string strtName, string city, string postcode)
         {   
             return $"[HouseNo={houseNo},StreetName={strtName},City={city},Postcode={postcode}]";
-        }
-
-        public void breakupOrder(string order)
-        {
-            //string regex = "((.*?))|(.+?(?=<|$))";
-            //Regex tag = new Regex(regex);
-            //List<string> list = tag.Split(order).ToList();
-
-            //for (int i = 0; i < order.Length; i++)
-            //{
-            //    string[] operands = Regex.Split(order, @"(?<=<.*?>)");
-            //}
-
-            this.setOrderDescription(order);
-            //this.setOrderDescription(operands.ToString());
         }
     }
 }

@@ -129,7 +129,7 @@ namespace Testing1
         DateTime timeOfOrder = new DateTime(2022, 1, 2);
         int customerid = 100;
         int price = 10;
-        
+
         /** ===============
          *  Address testing
          *  ===============*/
@@ -213,7 +213,7 @@ namespace Testing1
 
             string bAddr2 = new string('#', 999);
             //185
-            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"address:{bAddr2} is greater than 100 characters!\n", error);
         }
 
@@ -224,7 +224,7 @@ namespace Testing1
 
             string bAddr2 = null;
             //185
-            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"address is Null or Empty!\n", error);
         }
 
@@ -246,7 +246,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             string bDesc2 = new string('#', 9);
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual($"description:{bDesc2} is less than 10 characters!\n", error);
         }
 
@@ -256,7 +256,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             string bDesc2 = new string('#', 10); ;
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
 
@@ -266,7 +266,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             string bDesc2 = new string('#', 11);
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
 
@@ -277,7 +277,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             string bDesc2 = new string('#', 99);
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -287,7 +287,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             string bDesc2 = new string('#', 100);
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -297,7 +297,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             string bDesc2 = new string('#', 101);
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual($"description:{bDesc2} is greater than 100 characters!\n", error);
         }
 
@@ -307,7 +307,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             string bDesc2 = new string('#', 50);
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
 
@@ -318,7 +318,7 @@ namespace Testing1
 
             string bDesc2 = new string('#', 999); ;
             //185
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual($"description:{bDesc2} is greater than 100 characters!\n", error);
         }
 
@@ -329,7 +329,7 @@ namespace Testing1
 
             string bDesc2 = null;
             //185
-            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
             Assert.AreEqual($"description is Null or Empty!\n", error);
         }
 
@@ -352,7 +352,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             DateTime timeOfOrder = DateTime.MinValue;
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n", error);
         }
 
@@ -363,7 +363,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             DateTime timeOfOrder = Convert.ToDateTime("31/12/2021");
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is too far in the past!\n", error);
         }
 
@@ -373,7 +373,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             DateTime timeOfOrder = Convert.ToDateTime("01/01/2022");
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -384,7 +384,7 @@ namespace Testing1
 
             DateTime timeOfOrder = Convert.ToDateTime("02/01/2022");
 
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -395,7 +395,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             DateTime timeOfOrder = DateTime.Now.AddDays(-1);
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -405,7 +405,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             DateTime timeOfOrder = DateTime.Now;
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -416,7 +416,7 @@ namespace Testing1
 
             DateTime timeOfOrder = DateTime.Now.AddDays(1);
 
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n", error);
         }
 
@@ -427,7 +427,7 @@ namespace Testing1
 
             DateTime timeOfOrder = Convert.ToDateTime("02/02/2022");
 
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
 
@@ -438,7 +438,7 @@ namespace Testing1
 
             DateTime timeOfOrder = DateTime.MaxValue;
             //185
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"timeOfOrder:{timeOfOrder.ToString("dd/mm/yy")} is in the future!\n", error);
         }
 
@@ -460,7 +460,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             price = int.MinValue;
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"price:{price} is less than or equal to zero!\n", error);
         }
 
@@ -471,7 +471,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             price = 0 - 1;
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"price:{price} is less than or equal to zero!\n", error);
         }
 
@@ -481,7 +481,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             price = 0;
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"price:{price} is less than or equal to zero!\n", error);
         }
 
@@ -492,7 +492,7 @@ namespace Testing1
 
             price = 1;
 
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -503,7 +503,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             price = 100000000 - 1;
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -513,7 +513,7 @@ namespace Testing1
             clsOrders orderTest = new clsOrders();
 
             price = 100000000;
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual("", error);
         }
 
@@ -524,7 +524,7 @@ namespace Testing1
 
             price = 100000000 + 1;
 
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"price:{price} is greater than a billion!\n", error);
         }
 
@@ -535,7 +535,7 @@ namespace Testing1
 
             price = 100000000 / 2;
 
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"", error);
         }
 
@@ -546,13 +546,115 @@ namespace Testing1
 
             price = int.MaxValue;
 
-            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid,  price);
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
             Assert.AreEqual($"price:{price} is greater than a billion!\n", error);
         }
 
-        /** END OF VALIDATION TESTING **/
+        /** ====================
+         *  End of Price testing
+         *  ====================
+         */
 
         [TestMethod]
+        public void extremeMinimumCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = int.MinValue;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{ customerid} is less than zero!\n", error);
+        }
+
+
+        [TestMethod]
+        public void minMinusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 0 - 1;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{customerid} is less than zero!\n", error);
+        }
+
+        [TestMethod]
+        public void minBoundaryCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 0;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{customerid} is less than zero!\n", error);
+        }
+
+        [TestMethod]
+        public void minPlusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 1;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual("", error);
+        }
+
+
+        [TestMethod]
+        public void maxMinusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 99998;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 99999;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxPlusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 100000;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{customerid} is greater than 5 numerical characters!\n", error);
+        }
+
+        [TestMethod]
+        public void midCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 100000 / 2;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"", error);
+        }
+
+        [TestMethod]
+        public void extremeCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = int.MaxValue;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{ customerid} is greater than 5 numerical characters!\n", error);
+        }
+
+
+             /** END OF VALIDATION TESTING **/
+
+             [TestMethod]
         public void ListAndCountOK()
         {
             clsOrderCollection orders = new clsOrderCollection();
@@ -565,5 +667,53 @@ namespace Testing1
             Assert.AreEqual(orders.getCount(), orderList.Count);
         }
 
+        [TestMethod]
+        public void addToDatabase()
+        {
+            clsOrderCollection orders = new clsOrderCollection();
+            orders.getOrder().setOrderAddress(bAddr);
+            orders.getOrder().setDateTime(DateTime.Now);
+            orders.getOrder().setOrderDescription(bDesc);
+            orders.getOrder().setOrderNo(100);
+            orders.getOrder().setOrderPrice(100);
+            orders.Add();
+            int temp = orders.getOrder().getCustomerId();
+            orders.getOrder().find(123213);
+            Assert.AreEqual(temp, orders.getOrder().getCustomerId());
+        }
+
+        [TestMethod]
+        public void reportByOrderDescriptionZero()
+        {
+            clsOrderCollection allOrders = new clsOrderCollection();
+
+            clsOrderCollection filtered = new clsOrderCollection();
+
+            filtered.reportByOrderDescription("NULL");
+
+            Assert.AreEqual(0, filtered.getCount());
+        }
+
+        [TestMethod]
+        public void reportByOrderDescriptionFound()
+        {
+            clsOrderCollection collection = new clsOrderCollection();
+            Boolean found = true;
+            collection.reportByOrderDescription("duplicate duplicate");
+            if (collection.getCount() == 2)
+            {
+                if (collection.getOrders()[0].getOrderNo() != 31)
+                {
+                    found = false; 
+                } if (collection.getOrders()[1].getOrderNo() != 34)
+                {
+                    found = false;
+                }
+            } else
+            {
+                found = false;
+            }
+            Assert.IsTrue(found);
+        }
     }
 }

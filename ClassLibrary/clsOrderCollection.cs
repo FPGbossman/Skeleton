@@ -13,33 +13,19 @@ namespace ClassLibrary
         clsOrders orders = new clsOrders();
         int count;
 
-        public clsOrderCollection() {
+        public clsOrderCollection()
+        {
             //Instantiation of orderlist
-            int index = 0;
-            int recordCount = 0;
 
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("proc_Order_SelectAll");
-            recordCount = DB.Count;
 
-            while (index < recordCount)
-            {
-                clsOrders tempOrders = new clsOrders();
-
-                tempOrders.setCustomerId(Convert.ToInt32(DB.DataTable.Rows[index]["CustomerID"]));
-                tempOrders.setDateTime(Convert.ToDateTime(DB.DataTable.Rows[index]["OrderDate"]));
-                tempOrders.setOrderAddress(Convert.ToString(DB.DataTable.Rows[index]["Address"]));
-                tempOrders.setOrderDescription(Convert.ToString(DB.DataTable.Rows[index]["OrderDescription"]));
-                tempOrders.setOrderNo(Convert.ToInt32(DB.DataTable.Rows[index]["OrderNo"]));
-                tempOrders.setOrderPrice(Convert.ToInt32(DB.DataTable.Rows[index]["OrderPrice"]));
-
-                orderList.Add(tempOrders);
-                index++;
-            }
+            PopulateArray(DB);
         }
 
-
-
+        /**
+         * Utility classes
+         */
         public clsOrders getOrder()
         {
             return orders;
@@ -65,19 +51,39 @@ namespace ClassLibrary
             return this.orderList.Count;
         }
 
+        public void PopulateArray(clsDataConnection DB)
+        {
+            Int32 index = 0;
+            Int32 recordCount = DB.Count;
+            orderList = new List<clsOrders>();
+
+            while (index < recordCount)
+            {
+                clsOrders tempOrders = new clsOrders();
+
+                tempOrders.setCustomerId(Convert.ToInt32(DB.DataTable.Rows[index]["CustomerID"]));
+                tempOrders.setDateTime(Convert.ToDateTime(DB.DataTable.Rows[index]["OrderDate"]));
+                tempOrders.setOrderAddress(Convert.ToString(DB.DataTable.Rows[index]["Address"]));
+                tempOrders.setOrderDescription(Convert.ToString(DB.DataTable.Rows[index]["OrderDescription"]));
+                tempOrders.setOrderNo(Convert.ToInt32(DB.DataTable.Rows[index]["OrderNo"]));
+                tempOrders.setOrderPrice(Convert.ToInt32(DB.DataTable.Rows[index]["OrderPrice"]));
+
+                orderList.Add(tempOrders);
+                index++;
+            }
+        }
 
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
 
+            DB.AddParameter("@address", orders.getOrderDescription());
             DB.AddParameter("@orderDescription", orders.getOrderDescription());
-            DB.AddParameter("@orderDate", orders.getDateTime());
-            DB.AddParameter("@orderPrice", orders.getOrderPrice());
+            DB.AddParameter("@orderDate", orders.getDateTime().ToString("MM/dd/yyyy"));
             DB.AddParameter("@customerID", orders.getCustomerId());
             DB.AddParameter("@orderPrice", orders.getOrderPrice());
             return DB.Execute("proc_Order_Insert");
         }
-
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
@@ -91,6 +97,24 @@ namespace ClassLibrary
             DB.Execute("proc_Order_Update");
 
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@orderNo", orders.getOrderNo());
+            DB.Execute("proc_Order_Delete");
+        }
+
+        public void reportByOrderDescription(string orderDesc)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@orderDesc", orderDesc);
+            DB.Execute("proc_Orders_FilterByOrderDesc");
+            PopulateArray(DB);
+        }
+
 
     }
 }

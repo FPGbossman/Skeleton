@@ -10,13 +10,6 @@ public partial class _1_List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        /*clsOrders orders = new clsOrders();
-
-        orders = (clsOrders)Session["Orders"];
-        Response.Write("Order Description: " + orders.getOrderDescription() + "<br><br>");
-        Response.Write("Order address: " + orders.getOrderAddress() + "<br><br>");
-        Response.Write("Time of order: " + orders.getDateTime().ToString());*/
-
         if (IsPostBack == false)
         {
             DisplayAddresses();
@@ -30,7 +23,6 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void Edit_Click(object sender, EventArgs e)
     {
-        int stockId;
 
         if (OrderList.SelectedIndex != -1)
         {
@@ -39,7 +31,7 @@ public partial class _1_List : System.Web.UI.Page
             Response.Redirect("OrderViewer.aspx");
         } else
         {
-            Error.Text = "Please select a record to edit";
+            Error.Text = "Please select a record to edit.";
         }
     }
 
@@ -55,5 +47,44 @@ public partial class _1_List : System.Web.UI.Page
     protected void OrderList_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+
+    protected void Delete_Click(object sender, EventArgs e)
+    {
+        if (OrderList.SelectedIndex != -1)
+        {
+            Session["OrderNo"] = Convert.ToInt32(OrderList.SelectedValue); ;
+
+            Response.Redirect("OrderConfirmDelete.aspx");
+        }
+        else
+        {
+            Error.Text = "Please select a record to delete.";
+        }
+    }
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection collection = new clsOrderCollection();
+        collection.reportByOrderDescription(txtBoxSearch.Text);
+        OrderList.DataSource = collection.getOrders();
+        OrderList.DataValueField = "orderNo";
+        OrderList.DataTextField = "orderDescription";
+        OrderList.DataBind();
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection collection = new clsOrderCollection();
+        collection.reportByOrderDescription("");
+        OrderList.DataSource = collection.getOrders();
+        OrderList.DataValueField = "orderNo";
+        OrderList.DataTextField = "orderDescription";
+        OrderList.DataBind();
     }
 }
