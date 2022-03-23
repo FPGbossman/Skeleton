@@ -115,6 +115,7 @@ public partial class _1Viewer : System.Web.UI.Page
             tempOrder.setOrderNo(Convert.ToInt32(OrderIDReq.Text));
             collect.setOrder(tempOrder);
             collect.Update();
+            Response.Redirect("OrderList.aspx");
 
         } else
         {

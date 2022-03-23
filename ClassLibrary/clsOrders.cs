@@ -31,8 +31,8 @@ namespace ClassLibrary
                 clsDataConnection db = new clsDataConnection();
                 if (db != null)
                 {
-                    db.AddParameter("@orderid", orderId);
-                    db.Execute("proc_Order_Search");
+                    db.AddParameter("@orderNo", orderId);
+                    db.Execute("proc_Order_OrderIDSearch");
                     if (db.Count == 1)
                     {
                         OrderNo = Convert.ToInt32(db.DataTable.Rows[0]["OrderNo"]);

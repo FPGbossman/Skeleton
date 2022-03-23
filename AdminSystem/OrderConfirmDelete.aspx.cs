@@ -8,19 +8,26 @@ using System.Web.UI.WebControls;
 
 public partial class _1_ConfirmDelete : System.Web.UI.Page
 {
+
+    int orderNo;
     protected void Page_Load(object sender, EventArgs e)
     {
-    }
-
-    protected void orderNo_TextChanged(object sender, EventArgs e)
-    {
+        orderNo = Convert.ToInt32(Session["OrderNo"]);
 
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        clsOrderCollection collection = new clsOrderCollection();
+        collection.getOrder().find(orderNo);
+        collection.Delete();
+        Response.Redirect("OrderList.aspx");
 
-        clsOrders orders = new clsOrders();
-        orders = (clsOrders)Session["Orders"];
+
+    }
+
+    protected void No_Click(object sender, EventArgs e)
+    {
+
     }
 }
