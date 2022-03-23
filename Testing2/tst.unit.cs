@@ -56,9 +56,9 @@ namespace Testing2
 
             String gt = "fredson22@gmail.com";
 
-            Ancustomer.CustomerSurname = gt;
+            Ancustomer.CustomerEmail = gt;
 
-            Assert.AreEqual(Ancustomer.CustomerSurname, gt);
+            Assert.AreEqual(Ancustomer.CustomerEmail, gt);
         }
 
 
@@ -232,8 +232,9 @@ namespace Testing2
             String Error = "";
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
-
-            Assert.AreEqual(Error, "");
+            if (Error == "")
+            
+                Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void CustomerFirstnameMinLessOne()
@@ -255,7 +256,7 @@ namespace Testing2
 
             String Error = "";
 
-            string CustomerFirstName = "g";
+            string CustomerFirstname = "g";
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
@@ -321,9 +322,9 @@ namespace Testing2
 
             String Error = "";
 
-            string CustomerFirstname = "ggg";
+            string CustomerFirstname, CustomerSurname = "ggg";
 
-            Error = gg.Valid(CustomerName, DateJoined, Gender);
+            Error = gg.Valid(CustomerFirstname, CustomerSurname, Gender);
 
             Assert.AreEqual(Error, "");
         }
@@ -512,7 +513,7 @@ namespace Testing2
 
             string Gender = "gggggg";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = gg.Valids(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreEqual(Error, "");
         }

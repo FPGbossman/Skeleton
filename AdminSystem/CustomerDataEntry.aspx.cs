@@ -24,10 +24,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the house no
         AnCustomer.CustomerId = Convert.ToInt32(txt_CustomerId.Text);
         AnCustomer.CustomerFirstname = txtCustomerFirstname.Text;
-        AnCustomer.CustomerSurnamename = txtCustomerSurname.Text;
+        AnCustomer.CustomerSurname = txtCustomerSurname.Text;
         AnCustomer.CustomerEmail = txtCustomerEmail.Text;
-        AnCustomer.CustomerDOB = Convert.ToDateTime (txtCustomerSurname.CustomerDOB.Text);
+        AnCustomer.CustomerDOB = Convert.ToDateTime (txtCustomerDOB.Text);
         AnCustomer.Gender = txtGender.Text;
+
         //Store the customer in the ssession object 
         Session["AnCustomer"] = AnCustomer;
         //navigate to the viewer page
@@ -38,13 +39,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
  clsCustomer gg = new clsCustomer();
 
-        Int32 CustomerID;
+        Int32 CustomerId;
 
         Boolean Found = false;
 
-        CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        CustomerId = Convert.ToInt32(txt_CustomerId.Text);
 
-        Found = gg.Find(CustomerID);
+        Found = gg.Find(CustomerId);
 
         if (Found == true)
         {
@@ -54,7 +55,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerEmail.Text = gg.CustomerEmail;
             txtCustomerDOB.Text = gg.CustomerDOB.ToString();
             txtGender.Text = gg.Gender;
+           
             
+
 
         }
 
