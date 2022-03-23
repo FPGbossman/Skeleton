@@ -550,9 +550,111 @@ namespace Testing1
             Assert.AreEqual($"price:{price} is greater than a billion!\n", error);
         }
 
-        /** END OF VALIDATION TESTING **/
+        /** ====================
+         *  End of Price testing
+         *  ====================
+         */
 
         [TestMethod]
+        public void extremeMinimumCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = int.MinValue;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{ customerid} is less than zero!\n", error);
+        }
+
+
+        [TestMethod]
+        public void minMinusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 0 - 1;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{customerid} is less than zero!\n", error);
+        }
+
+        [TestMethod]
+        public void minBoundaryCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 0;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{customerid} is less than zero!\n", error);
+        }
+
+        [TestMethod]
+        public void minPlusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 1;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual("", error);
+        }
+
+
+        [TestMethod]
+        public void maxMinusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 99998;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 99999;
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual("", error);
+        }
+
+        [TestMethod]
+        public void maxPlusOneCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 100000;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{customerid} is greater than 5 numerical characters!\n", error);
+        }
+
+        [TestMethod]
+        public void midCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = 100000 / 2;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"", error);
+        }
+
+        [TestMethod]
+        public void extremeCustomerId()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            customerid = int.MaxValue;
+
+            string error = orderTest.validate(bAddr, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"customerid:{ customerid} is greater than 5 numerical characters!\n", error);
+        }
+
+
+             /** END OF VALIDATION TESTING **/
+
+             [TestMethod]
         public void ListAndCountOK()
         {
             clsOrderCollection orders = new clsOrderCollection();
