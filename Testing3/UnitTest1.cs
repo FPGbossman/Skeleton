@@ -20,9 +20,9 @@ namespace Testing3
         public void SupplierSinceOK()
         {
             clssupplier ASupplier = new clssupplier();
-            string SupplierSince = "12/12/22";
-            ASupplier.SupplierSince = SupplierSince;
-            Assert.AreEqual(ASupplier.SupplierSince, "12/12/22");
+            DateTime TestData = DateTime.Now.Date;
+            ASupplier.SupplierSince =  TestData;
+            Assert.AreEqual(ASupplier.SupplierSince, TestData);
         }
 
         // ======================================================================
@@ -64,9 +64,9 @@ namespace Testing3
         public void ContactNumberOK()
         {
             clssupplier ASupplier = new clssupplier();
-            long TestData = 7647766891;
-            ASupplier.ContactNumber = TestData;
-            Assert.AreEqual(ASupplier.ContactNumber, TestData);
+            string ContactNumber = "7647766891";
+            ASupplier.ContactNumber = ContactNumber;
+            Assert.AreEqual(ASupplier.ContactNumber, "7647766891");
         }
 
         // ======================================================================
@@ -104,7 +104,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 SupplierID = 4;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierSince != "2022-02-22")
+            if (ASupplier.SupplierSince != Convert.ToDateTime("2022-02-22"))
             {
                 OK = false;
             }
@@ -161,12 +161,31 @@ namespace Testing3
                 Boolean OK = true;
                 Int32 SupplierID = 4;
                 Found = ASupplier.Find(SupplierID);
-                if (ASupplier.ContactNumber != 68543865)
+                if (ASupplier.ContactNumber != "68543865")
                 {
                     OK = false;
                 }
                 Assert.IsTrue(OK);
             }
+
+        // ======================================================================
+
+        //Good data to pass to the method:
+        string SupplierSince = DateTime.Now.Date.ToString();
+        string SupplierName = "Nike";
+        //string CurrentSupplier = "false";
+        string SupplierAddress = "12 Street";
+        string ContactNumber = "12345678";
+
+        [TestMethod] 
+        public void ValidMethodOK()
+        {
+            clssupplier ASupplier = new clssupplier();
+            string Error = "";
+            Error = ASupplier.Valid(SupplierSince, SupplierName, SupplierAddress, ContactNumber);
+            Assert.AreEqual(Error, "");
+        }
+
     }
 }
 

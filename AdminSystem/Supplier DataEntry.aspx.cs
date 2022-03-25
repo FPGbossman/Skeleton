@@ -12,14 +12,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clssupplier ASupplier = new clssupplier();     
         ASupplier.SupplierName = tbxName.Text;
         ASupplier.CurrentSupplier = chkCurrent.Checked;
-        ASupplier.SupplierSince = tbxSupplierSince.Text;
+        ASupplier.SupplierSince = Convert.ToDateTime(tbxSupplierSince.Text);
         ASupplier.SupplierAddress = tbxAddress.Text;
-        ASupplier.ContactNumber = long.Parse(tbxContactNumber.Text);
+        ASupplier.ContactNumber = tbxContactNumber.Text;
 
         Session["ASupplier"]= ASupplier;      
         Response.Redirect("SupplierViewer.aspx");
@@ -42,9 +43,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             tbxSupplierID.Text = Convert.ToString(ASupplier.SupplierID);
             tbxName.Text = ASupplier.SupplierName;
             chkCurrent.Checked = Convert.ToBoolean(ASupplier.CurrentSupplier);
-            tbxSupplierSince.Text = ASupplier.SupplierSince;
+            tbxSupplierSince.Text = Convert.ToString(ASupplier.SupplierSince);
             tbxAddress.Text = ASupplier.SupplierAddress;
-            tbxContactNumber.Text = Convert.ToString(ASupplier.ContactNumber);
+            tbxContactNumber.Text = ASupplier.ContactNumber;
         }
     }
 
