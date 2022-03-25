@@ -21,8 +21,8 @@ namespace ClassLibrary
             }
         }
 
-        private string mSupplierSince;
-        public string SupplierSince
+        private DateTime mSupplierSince;
+        public DateTime SupplierSince
         {
             get
             {
@@ -75,8 +75,8 @@ namespace ClassLibrary
             }
         }
 
-        private long mContactNumber;
-        public long ContactNumber
+        private string mContactNumber;
+        public string ContactNumber
         {
             get
             {
@@ -101,11 +101,11 @@ namespace ClassLibrary
             if (DB.Count == 1)
             {
                 mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
-                mSupplierSince = Convert.ToString(DB.DataTable.Rows[0]["SupplierSince"]);
+                mSupplierSince = Convert.ToDateTime(DB.DataTable.Rows[0]["SupplierSince"]);
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mCurrentSupplier = Convert.ToBoolean(DB.DataTable.Rows[0]["CurrentSupplier"]);
                 mSupplierAddress = Convert.ToString(DB.DataTable.Rows[0]["SupplierAddress"]);
-                mContactNumber = Convert.ToInt64(DB.DataTable.Rows[0]["ContactNumber"]);
+                mContactNumber = Convert.ToString(DB.DataTable.Rows[0]["ContactNumber"]);
                 return true;
             }
             else
@@ -113,5 +113,11 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string SupplierSince, string SupplierName, string SupplierAddress, string ContactNumber)
+        {
+            return "";
+        }
+        
     }
 }
