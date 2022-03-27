@@ -88,10 +88,8 @@ namespace ClassLibrary
             }
         }
 
-
-
-
         //==============================================================================
+
         public bool Find(int SupplierID)
         {
 
@@ -114,10 +112,67 @@ namespace ClassLibrary
             }
         }
 
+        //==============================================================================
+
         public string Valid(string SupplierSince, string SupplierName, string SupplierAddress, string ContactNumber)
         {
-            return "";
+            string Error = "";
+            DateTime DateTemp;
+            //Supplier Name is greater than 0 characters
+            if(SupplierName.Length == 0)
+            {
+                Error = Error + "The Name must not be left blank";
+            }
+            //SupplierName is less than 50 characters
+            if (SupplierName.Length> 50)
+            {
+                Error = Error + "Name must be less than 50 characters";
+            }
+            
+
+            //SupplierSince validation
+            try
+            {
+                DateTemp = Convert.ToDateTime(SupplierSince);
+
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date entered is cannot be in the past";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date entered is cannot be in the future";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "Not a valid date";
+            }
+
+            //Supplier Address is greater than 0 characters
+            if (SupplierAddress.Length == 0)
+            {
+                Error = Error + "The address must not be left blank";
+            }
+            //Supplier Address is less than 50 characters
+            if (SupplierAddress.Length > 50)
+            {
+                Error = Error + "Address must be less than 50 characters";
+            }
+
+            //Contact Number is greater than 0 characters
+            if (ContactNumber.Length == 0)
+            {
+                Error = Error + "The contact number must not be left blank";
+            }
+            //Contact Number is less than 11 characters
+            if (ContactNumber.Length > 11)
+            {
+                Error = Error + "Contact Number must be less than 11 characters";
+            }
+            return Error;
         }
-        
     }
 }
