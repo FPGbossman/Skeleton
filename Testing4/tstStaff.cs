@@ -2,14 +2,23 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
+
 namespace Testing4
 {
     [TestClass]
     public class tstStaff
     {
         private int staffId;
+        public string Valid(string staffId,
+                            string staffFullname,
+                            string staffRole,
+                            string availability,
+                            string startDate,
+                            string customerId)
+            public class tstStaff
+        {
 
-        [TestMethod]
+            [TestMethod]
         public void InstanceOK()
         {
             clsStaff AnStaff = new clsStaff();
@@ -26,7 +35,7 @@ namespace Testing4
             //assign the data to the property
             AnStaff.staffId = TestData;
             //test to see if the two values are the same 
-            Assert.AreEqual(AnStaff.staffId, TestData);
+            Assert.AreEqual(AnStaff.staffId,TestData);
         }
 
         [TestMethod]
@@ -46,7 +55,7 @@ namespace Testing4
         {     //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
             //create some test data
-            DateTime TestData = DateTime.Now.Date;
+            startDate TestData = startDate.Now.Date;
             //assign the data to the property
             AnStaff.startDate = TestData;
             //test to see if the two values are the same 
@@ -198,6 +207,219 @@ namespace Testing4
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+
+        public void ValidMethodOK()
+        {
+            clsstaff = Anstaff = new clsstaff();
+            string Error = "";
+            Error = Anstaff.Valid(StaffId, staffFullname, staffRole, availability, startDate);
+            //test to see that the result is correct 
+            Assert.AreEqual(Error, "");
+
+        }
+        public void StaffIdMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff Anstaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string StaffId = "a"; //this should be ok
+            //invoke the method
+            Error = AnStaff.Valid(StaffId, staffFullname, staffRole, startDate, availability);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string StaffId = "aa"; //this should be ok
+            //invoke the method
+            Error = AnStaff.Valid(StaffId, StaffFullname, StaffRole, StartDate, Availability);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string StaffId = "aaaaa"; //this should be ok
+            //invoke the method
+            Error = AnStaff.Valid(StaffId, staffFullname, staffRole, startDate, availability);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIdMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string StaffId = "aaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnStaff.Valid(StaffId, staffFullname, staffRole, startDate, availability);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string StaffId = "aaa"; //this should be ok
+            //invoke the method
+            Error = AnStaff.Valid(StaffId, StaffFullname, StaffRole, StartDate, Availability);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        
+        public void StartDateExtremeMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string StartDate = TestDate.ToString();
+            Error = AnStaff.Valid(staffId, StaffFullname, staffRole, StartDate, availability);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            StartDate TestDate;
+            //set the date totodays date
+            TestDate = StartDate.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(staffId, staffFullname, staffRole, StartDate, availability);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            StartDate TestDate;
+            //set the date totodays date
+            TestDate = StartDate.Now.Date;
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(staffId, staffFullname, staffRole, StartDate, availability);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StartDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            startDate TestDate;
+            //set the date totodays date
+            TestDate = startDate.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(staffId, staffFullname, staffRole, StartDate, availability);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            StartDate TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(staffId, staffRole, staffFullname, StartDate, availability);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        
+public string Valid(string staffId, string staffFullname, string staffRole, string availability, string startDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            startDate DateTemp;
+            //if the staffId is blank
+            if (staffId.Length == 0)
+            {
+                //record the error
+                Error = Error + "The staff id may not be blank : ";
+            }
+            //if the staffId is greater than 6 characters
+            if (staffId.Length > 6)
+            {
+                //record the error
+                Error = Error + "The staff id must be less than 6 characters : ";
+            }
+            //copy the startDate value to the DateTemp variable
+            DateTemp = Convert.ToDateTime(startDate);
+            if (DateTemp < startDate.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+            //check to see if the date is greater than today's date
+            if (DateTemp > startDate.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future : ";
+            }
+            //return any error messages
+            return Error;
+        }
+
 
     }
 }
