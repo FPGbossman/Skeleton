@@ -1,17 +1,17 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using StockTesting;
+
 
 namespace StockTesting
-{ 
+{
     [TestClass]
     public class tstStock
     {
 
+
         //=========
-
-
-
         [TestMethod]
         public void InstanceOK()
         {
@@ -113,9 +113,9 @@ namespace StockTesting
             Boolean Found = false;
 
             Int32 StockId = 1;
-            Found = AStock.Find(StockId); 
+            Found = AStock.Find(StockId);
 
-            Assert.IsTrue(Found); 
+            Assert.IsTrue(Found);
 
         }
 
@@ -125,7 +125,7 @@ namespace StockTesting
         [TestMethod]
         public void TestStockIdFound()
         {
-            
+
             clsStock AStock = new clsStock();
 
             Boolean Found = false;
@@ -135,12 +135,12 @@ namespace StockTesting
             Int32 StockId = 9;
 
             Found = AStock.Find(StockId);
-           
+
             if (AStock.StockId != 9)
             {
-                OK = false; 
+                OK = false;
             }
-           
+
             Assert.IsTrue(OK);
         }
 
@@ -269,4 +269,5 @@ namespace StockTesting
     }
 }
 
-
+        //============================================= Validation =========================================================
+                                                    //"Continue to next file"

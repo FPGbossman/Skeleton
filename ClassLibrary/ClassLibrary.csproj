@@ -44,6 +44,7 @@
     <Compile Include="clsOrders.cs" />
     <Compile Include="clsStaff.cs" />
     <Compile Include="clsDataConnection.cs" />
+    <Compile Include="clsStockBase.cs" />
     <Compile Include="clsSupplier.cs" />
   </ItemGroup>
   <ItemGroup>
