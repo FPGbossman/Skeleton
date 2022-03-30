@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 namespace StockTesting
 {
-    class clsStock
+     class clsStock
 
     {
         private Int32 mStockId;
@@ -47,7 +47,7 @@ namespace StockTesting
             }
             set
             {
-                mProductCategory = value;
+                mProductCategory = value; 
             }
         }
 
@@ -122,95 +122,11 @@ namespace StockTesting
             }
             else
             {
-                return false;
+                return false; 
 
             }
         }
-
-        public string Valid(string productCategory, int quantity, DateTime date, string available, string productName)
-        {
-
-            String Error = " ";
-            // =============== ProductCategory ===================
-
-            if (string.IsNullOrEmpty(ProductCategory))
-            {
-                Error += $"ProductCategory is Null or Empty!\n";
-            }
-
-
-
-
-
-
-
-
-
-
-            else
-            {
-                if (ProductCategory.Length < 1)
-                {
-                    Error += $"ProductCategory:{ProductCategory} is less than 2 characters!\n";
-
-                }
-                if (ProductCategory.Length > 50)
-                {
-                    Error += $"ProductCategory:{ProductCategory} is greater than 50 characters!\n";
-                }
-            }
-
-            // =============== Quantity ===================
-            if (Quantity < 0)
-            {
-                Error += $"Quantity is Null or Empty!\n";
-            }
-            if (Quantity > 1000)
-            {
-                Error += $"Quantity cannot be more than 1000!\n";
-            }
-
-            // =============== Date ===================
-            if (Date.GetType() != new DateTime().GetType())
-            {
-                Error += $"timeOfOrder is not the correct data type.";
-            }
-            else
-            {
-                if (DateTime.Now < Date)
-                {
-                    Error += $"timeOfOrder:{Date.ToString("dd/mm/yy")} is in the future!\n";
-                }
-                if (Date < Convert.ToDateTime("1/1/2022"))
-                {
-                    Error += $"timeOfOrder:{Date.ToString("dd/mm/yy")} is too far in the past!\n";
-                }
-            }
-
-            // =============== Available ===================
-            //For Available, i am using drop down menu hence customer will submit the form by available by default.
-            //Hence, i do not need any validation for that. 
-
-
-            // =============== ProductName ===================
-            if (string.IsNullOrEmpty(ProductName))
-            {
-                Error += $"address is Null or Empty!\n";
-            }
-            else
-            {
-                if (ProductName.Length < 10)
-                {
-                    Error += $"ProductName:{ProductCategory} is less than 2 characters!\n";
-
-                }
-                if (ProductCategory.Length > 50)
-                {
-                    Error += $"ProductName:{ProductCategory} is greater than 50 characters!\n";
-                }
-            }
-
-            return Error;
+           
         }
-    }
+    
 }
