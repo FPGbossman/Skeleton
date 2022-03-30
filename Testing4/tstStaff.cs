@@ -15,7 +15,6 @@ namespace Testing4
                             string availability,
                             string startDate,
                             string customerId)
-            public class tstStaff
         {
 
             [TestMethod]
@@ -125,6 +124,7 @@ namespace Testing4
                 }
                 Assert.IsTrue(OK);
             }
+
 
             [TestMethod]
             public void TestStaffRoleFound()

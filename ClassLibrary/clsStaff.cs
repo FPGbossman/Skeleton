@@ -11,7 +11,7 @@ namespace ClassLibrary
 
 
         public string staffFullname;
-        public Int32 staffId;
+        public int staffId;
         public DateTime startDate;
         public bool availability;
         public string staffRole;
@@ -31,7 +31,6 @@ namespace ClassLibrary
     }
     public class clsStaff
     {
-
 
 
         private Int32 mstaffId;
