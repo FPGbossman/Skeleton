@@ -14,6 +14,7 @@ namespace Testing2
         string CustomerEmail = "fredson22@gmail.com";
         string CustomerDOB  = DateTime.Now.Date.ToString();
         string Gender = "Male";
+        string CustomerID = 9;
 
         [TestMethod]
         public void CustomerIdPropertyOK()
@@ -22,9 +23,9 @@ namespace Testing2
 
             int gt = 9;
 
-            Ancustomer.CustomerId = gt;
+            Ancustomer.CustomerID = gt;
 
-            Assert.AreEqual(Ancustomer.CustomerId, gt);
+            Assert.AreEqual(Ancustomer.CustomerID, gt);
         }
         [TestMethod]
         public void CustomerFirstnamePropertyOk()
@@ -33,7 +34,7 @@ namespace Testing2
 
             String gt = "Fred";
 
-            Ancustomer.CustomerFirtname = gt;
+            Ancustomer.CustomerFirstname = gt;
 
             Assert.AreEqual(Ancustomer.CustomerFirstname, gt);
         }
@@ -101,7 +102,7 @@ namespace Testing2
             Assert.IsTrue(Found);
         }
         [TestMethod]
-        public void TestCustomerIdFound()
+        public void TestCustomerIDFound()
         {
             clsCustomer gg = new clsCustomer();
 
@@ -231,7 +232,11 @@ namespace Testing2
 
             String Error = "";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = gg.Valid(CustomerFirstname,
+                             CustomerSurname,
+                             CustomerEmail,
+                             CustomerDOB,
+                             Gender);
             if (Error == "")
             
                 Assert.AreEqual(Error, "");

@@ -18,7 +18,7 @@
 <body style="height: 294px">
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="IblCustomerno" runat="server" Text="CustomerNumber"></asp:Label>
+            <asp:Label ID="lblCustomerID" runat="server" Text="CustomerID"></asp:Label>
             <asp:TextBox ID="txt_CustomerId" runat="server" style="margin-left: 18px" Width="137px"></asp:TextBox>
             <br />
             <br />
