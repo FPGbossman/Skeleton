@@ -16,137 +16,101 @@ namespace ClassLibrary
         public bool availability;
         public string staffRole;
         public string CustomerID;
-        public object tbstaffFullname;
-
+        public string tbstaffFullname;
 
         public bool Find(int staffId)
         {
             throw new NotImplementedException();
         }
 
-        public bool Find(object staffId)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class clsStaff
-    {
-
-
-
         private Int32 mstaffId;
         public int staffId
-
         {
 
             get
             { 
-
-        return mstaffId;
-        }
-            set
+                return mstaffId;
             }
-
-
-        mstaffId = value;
-}
-
-}
-
-
+            set 
+            {
+                 mstaffId = value;
+            }
+        }
  
-private DateTime mstartDate;
-public DateTime startDate
-
-    {
-        get
+        private DateTime mstartDate;
+        public DateTime startDate
         {
-            return mstartDate;
+            get
+            {
+                return mstartDate;
+            }
+            set
+            {
+                mstartDate = value;
+            }
         }
-        set
+
+        private string mstaffFullname;
+        public string staffFullname
         {
-            mstartDate = value;
+            get
+            {
+                return mstaffFullname;
+            }
+            set
+            {
+                mstaffFullname = value;
+            }
         }
-    }
 
-
-    private string mstaffFullname;
-public string staffFullname
-
-{
-    get
-    {
-        return mstaffFullname;
-
-    }
-
-    set
-
-    {
-        mstaffFullname = value;
-
-    }
-
-
-}
-
-private Boolean mavailability;
-
-public bool availability
-
-{
-    get
-    { 
-
-return mavailability;
-}
-
-set
-{ 
-    mavailability = value;
-
-}
-
-}
-private string mstaffRole;
-
-public string staffRole
-
-{
-    get
-    { 
-
-return mstaffRole;
-}
-set
-
-{
-    mstaffRole = value;
-
-}
-
-}
-public bool Find(int staffId)
-{
-    clsDataConnection DB = new clsDataConnection();
-    DB.AddParameter("@staffId", staffId);
-    DB.Execute("sproc_tblstaffId_FilterBystaffId");
-    if (DB.Count == 1)
-    {
-        mstaffId = Convert.ToInt(DB.DataTable.Rows[0]["staffId"]);
-        mstaffFullname = Convert.ToString(DB.DataTable.Rows[0]["staffFullname"]);
-        mstaffRole = Convert.ToString(DB.DataTable.Rows[0]["staffRole"]);
-        mstartDate = Convert.ToDateTime(DB.DataTable.Rows[0]["startDate"]);
-        mavailability = Convert.ToBoolean(DB.DataTable.Rows[0]["availability"])
-            return true;
-    }
-    else
-    {
-        return false;
-    }
-    //===================================================================================================================================================
-    //===================================================================================================================================================
-    public string Valid(string staffId, string staffFullname, string staffRole, string availability, string startDate)
+        private Boolean mavailability;
+        public bool availability
+        {
+            get
+            { 
+                return mavailability;
+            }   
+            set
+            { 
+                mavailability = value;
+            }
+        }
+        
+        private string mstaffRole;
+        public string staffRole
+        {
+            get
+            { 
+                return mstaffRole;
+            }
+            set
+            {
+                mstaffRole = value;
+            }
+        }
+        
+        public bool Find(int staffId)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@staffId", staffId);
+            DB.Execute("sproc_tblstaffId_FilterBystaffId");
+            if (DB.Count == 1)
+            {
+                mstaffId = Convert.ToInt(DB.DataTable.Rows[0]["staffId"]);
+                mstaffFullname = Convert.ToString(DB.DataTable.Rows[0]["staffFullname"]);
+                mstaffRole = Convert.ToString(DB.DataTable.Rows[0]["staffRole"]);
+                mstartDate = Convert.ToDateTime(DB.DataTable.Rows[0]["startDate"]);
+                mavailability = Convert.ToBoolean(DB.DataTable.Rows[0]["availability"])
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //===================================================================================================================================================
+        //===================================================================================================================================================
+        public string Valid(string staffId, string staffFullname, string staffRole, string availability, string startDate)
         {
             String Error = "";
             startDate DateTemp;
@@ -160,21 +124,21 @@ public bool Find(int staffId)
             }
 
             //validation for start date
-             DateTemp = Convert.ToDateTime(startDate);
-            if (DateTemp < DateTime.Now.Date)
-            {
-                Error = Error + "The date cannot be in the past : ";
-            }
-            if (DateTemp > DateTime.Now.Date)
-            {
-                Error = Error + "The date cannot be in the future : ";
+            try {
+                DateTemp = Convert.ToDateTime(startDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
             }
             catch
-        {
-            Error = Error + "Not a valid date";
-
-        }
-        
+            {
+                Error = Error + "Not a valid date";
+            }
 
             if (staffFullname.Length == 0)
             {
@@ -192,10 +156,7 @@ public bool Find(int staffId)
             {
                 Error = Error + "The staffRole must be less than 50 characters ; ")
             }
-
-           
-            //return any error messages
-            return Error;
-
+        }
+    }
 }
 
