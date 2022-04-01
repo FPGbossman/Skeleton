@@ -24,21 +24,21 @@ namespace ClassLibrary
         }
 
         private Int32 mstaffId;
-        public int staffId
+        public int StaffId
         {
 
             get
-            { 
+            {
                 return mstaffId;
             }
-            set 
+            set
             {
-                 mstaffId = value;
+                mstaffId = value;
             }
         }
- 
+
         private DateTime mstartDate;
-        public DateTime startDate
+        public DateTime StartDate
         {
             get
             {
@@ -51,7 +51,7 @@ namespace ClassLibrary
         }
 
         private string mstaffFullname;
-        public string staffFullname
+        public string StaffFullname
         {
             get
             {
@@ -64,23 +64,23 @@ namespace ClassLibrary
         }
 
         private Boolean mavailability;
-        public bool availability
+        public bool Availability
         {
             get
-            { 
+            {
                 return mavailability;
-            }   
+            }
             set
-            { 
+            {
                 mavailability = value;
             }
         }
-        
+
         private string mstaffRole;
-        public string staffRole
+        public string StaffRole
         {
             get
-            { 
+            {
                 return mstaffRole;
             }
             set
@@ -88,7 +88,7 @@ namespace ClassLibrary
                 mstaffRole = value;
             }
         }
-        
+
         public bool Find(int staffId)
         {
             clsDataConnection DB = new clsDataConnection();
@@ -96,13 +96,15 @@ namespace ClassLibrary
             DB.Execute("sproc_tblstaffId_FilterBystaffId");
             if (DB.Count == 1)
             {
-                mstaffId = Convert.ToInt(DB.DataTable.Rows[0]["staffId"]);
+                mstaffId = Convert.ToInt32(DB.DataTable.Rows[0]["staffId"]);
                 mstaffFullname = Convert.ToString(DB.DataTable.Rows[0]["staffFullname"]);
                 mstaffRole = Convert.ToString(DB.DataTable.Rows[0]["staffRole"]);
                 mstartDate = Convert.ToDateTime(DB.DataTable.Rows[0]["startDate"]);
-                mavailability = Convert.ToBoolean(DB.DataTable.Rows[0]["availability"])
+                mavailability = Convert.ToBoolean(DB.DataTable.Rows[0]["availability"]);
                 return true;
             }
+
+
             else
             {
                 return false;
@@ -110,10 +112,10 @@ namespace ClassLibrary
         }
         //===================================================================================================================================================
         //===================================================================================================================================================
-        public string Valid(string staffId, string staffFullname, string staffRole, string availability, string startDate)
+        public string Valid(string staffId, string staffFullname, string staffRole, string startDate)
         {
             String Error = "";
-            startDate DateTemp;
+            DateTime DateTemp;
             if (staffId.Length == 0)
             {
                 Error = Error + "The staff id may not be blank : ";
@@ -124,7 +126,8 @@ namespace ClassLibrary
             }
 
             //validation for start date
-            try {
+            try
+            {
                 DateTemp = Convert.ToDateTime(startDate);
                 if (DateTemp < DateTime.Now.Date)
                 {
@@ -152,9 +155,9 @@ namespace ClassLibrary
             {
                 Error = Error + "The staffRole must not be blank : ";
             }
-            if (staffRole.Length > 50) 
+            if (staffRole.Length > 50)
             {
-                Error = Error + "The staffRole must be less than 50 characters ; ")
+                Error = Error + "The staffRole must be less than 50 characters ; ";
             }
         }
     }
