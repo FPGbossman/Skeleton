@@ -1,7 +1,7 @@
-﻿using System;
+﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ClassLibrary;
-
+using System;
+using System.Collections.Generic;
 namespace Testing2
 {
     [TestClass]
@@ -14,7 +14,7 @@ namespace Testing2
         string CustomerEmail = "fredson22@gmail.com";
         string CustomerDOB  = DateTime.Now.Date.ToString();
         string Gender = "Male";
-        string CustomerID = 9;
+        int CustomerID = 9;
 
         [TestMethod]
         public void CustomerIdPropertyOK()

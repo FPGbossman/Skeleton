@@ -8,12 +8,12 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        public string CustomerFirstname;
-        public string CustomerSurname;
-        public string CustomerEmail;
-        public string Gender;
-        public DateTime CustomerDOB;
-        public int CustomerID;
+       // public string CustomerFirstname;
+        //public string CustomerSurname;
+        //public string CustomerEmail;
+        //public string Gender;
+        //public DateTime CustomerDOB;
+        //public int CustomerID;
 
         private Int32 mCustomerID;
 
@@ -47,10 +47,6 @@ namespace ClassLibrary
         }
     
 
-        public bool Find(int customerId)
-        {
-            throw new NotImplementedException();
-        }
 
         private string mCustomerSurname;
         public string CustomerSurname

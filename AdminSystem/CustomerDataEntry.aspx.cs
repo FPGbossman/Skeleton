@@ -34,7 +34,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any err messages
         string Error = "";
         //valiable the data
-        Error = AnCustomer.Valid(CustomerID, CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+        Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, Gender);
         if (Error == "")
         {
 
