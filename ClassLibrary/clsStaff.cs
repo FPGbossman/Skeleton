@@ -28,13 +28,8 @@ namespace ClassLibrary
         {
             throw new NotImplementedException();
         }
-    }
-    public class clsStaff
-    {
-
-
-
-        private Int32 mstaffId;
+    
+        /*private Int32 mstaffId;
         public int staffId
 
         {
@@ -49,13 +44,13 @@ namespace ClassLibrary
 
 
         mstaffId = value;
-}
+}*/
 
 }
 
 
  
-private DateTime mstartDate;
+/*private DateTime mstartDate;
 public DateTime startDate
 
     {
@@ -86,8 +81,6 @@ public string staffFullname
         mstaffFullname = value;
 
     }
-
-
 }
 
 private Boolean mavailability;
@@ -125,8 +118,8 @@ set
 
 }
 
-}
-public bool Find(int staffId)
+}*/
+/*public bool Find(int staffId)
 {
     clsDataConnection DB = new clsDataConnection();
     DB.AddParameter("@staffId", staffId);
@@ -143,10 +136,10 @@ public bool Find(int staffId)
     else
     {
         return false;
-    }
+    }*/
     //===================================================================================================================================================
     //===================================================================================================================================================
-    public string Valid(string staffId, string staffFullname, string staffRole, string availability, string startDate)
+    /*public string Valid(string staffId, string staffFullname, string staffRole, string availability, string startDate)
         {
             String Error = "";
             startDate DateTemp;
@@ -196,6 +189,6 @@ public bool Find(int staffId)
            
             //return any error messages
             return Error;
-
+    */
 }
 

@@ -35,16 +35,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
         //valiable the data
         Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, Gender);
-        if (Error == "")
-        {
+        //if (Error == "")
+        /*{
 
             //capture the Customer no
-            AnCustomer.CustomerID = Convert.ToInt32(txt_CustomerId.Text);
-            AnCustomer.CustomerFirstname = txtCustomerFirstname.Text;
-            AnCustomer.CustomerSurname = txtCustomerSurname.Text;
-            AnCustomer.CustomerEmail = txtCustomerEmail.Text;
-            AnCustomer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
-            AnCustomer.Gender = txtGender.Text;
+            //AnCustomer.CustomerID = Convert.ToInt32(txt_CustomerId.Text);
+            //AnCustomer.CustomerFirstname = txtCustomerFirstname.Text;
+            //AnCustomer.CustomerSurname = txtCustomerSurname.Text;
+            //AnCustomer.CustomerEmail = txtCustomerEmail.Text;
+            //AnCustomer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
+            /AnCustomer.Gender = txtGender.Text;
 
             //Store the customer in the ssession object 
             Session["AnCustomer"] = AnCustomer;
@@ -55,7 +55,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //display the error message 
             lblError.Text = Error;
-        }
+        }*/
     }
 
 
@@ -69,16 +69,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         CustomerID = Convert.ToInt32(txt_CustomerId.Text);
 
-        Found = gg.Find(CustomerId);
+        //Found = gg.Find(CustomerId);
 
         if (Found == true)
         {
 
-            txtCustomerFirstname.Text = gg.CustomerFirstname;
-            txtCustomerSurname.Text = gg.CustomerSurname;
-            txtCustomerEmail.Text = gg.CustomerEmail;
-            txtCustomerDOB.Text = gg.CustomerDOB.ToString();
-            txtGender.Text = gg.Gender;
+            //txtCustomerFirstname.Text = gg.CustomerFirstname;
+            //txtCustomerSurname.Text = gg.CustomerSurname;
+            //txtCustomerEmail.Text = gg.CustomerEmail;
+            //txtCustomerDOB.Text = gg.CustomerDOB.ToString();
+            //txtGender.Text = gg.Gender;
         }       
 
 
@@ -86,7 +86,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    
+
+
+    protected void txtGender_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtCustomerDOB_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
 
      

@@ -14,7 +14,7 @@ public partial class _1Viewer : System.Web.UI.Page
 
         customer = (clsCustomer) Session["AnCustomer"];
 
-        Response.Write("CustomerFirstname: " + customer.CustomerSurnamename);
+        //Response.Write("CustomerFirstname: " + customer.CustomerSurnamename);
         Response.Write(customer.CustomerEmail);
         Response.Write(customer.CustomerDOB);
 
