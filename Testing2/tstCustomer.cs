@@ -1,6 +1,7 @@
-﻿using ClassLibrary;
+﻿using System;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+
 using System.Collections.Generic;
 namespace Testing2
 {

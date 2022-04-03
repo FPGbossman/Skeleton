@@ -8,15 +8,15 @@ namespace Testing4
     [TestClass]
     public class tstStaff
     {
-        private int staffId;
-        public string Valid(string staffId,
-                            string staffFullname,
-                            string staffRole,
-                            string availability,
-                            string startDate,
-                            string customerId)
-            public class tstStaff
-        {
+        String StaffFullname = "John Smith";
+        String StaffRole = "User";
+        String Gender = "Male";
+        Boolean availability = false;
+        String StartDate = DateTime.Now.Date.ToString();
+        int StaffId = 1;
+
+          
+        
 
             [TestMethod]
             public void InstanceOK()
@@ -30,15 +30,15 @@ namespace Testing4
             public void StaffIdPropertyOK()
             { 
                 clsStaff AnStaff = new clsStaff();
-                int AnStaff = 101;
+                int TestData = 101;
                 //assign the data to the property
-                AnStaff.staffId = TestData;
-                Assert.AreEqual(AnStaff.staffId, TestData);
+                AnStaff.StaffId = TestData;
+                Assert.AreEqual(AnStaff.StaffId, TestData);
             }
 
             [TestMethod]
             public void StaffFullnamePropertyOK()
-        { 
+            { 
                 clsStaff AnStaff = new clsStaff();
                 String TestData = "";
                 AnStaff.staffFullname = TestData;
@@ -47,14 +47,16 @@ namespace Testing4
 
             [TestMethod]
             public void startDatePropertyOK()
+            { 
                 clsStaff AnStaff = new clsStaff();
-                startDate TestData = startDate.Now.Date;
+                DateTime TestData = DateTime.Now.Date;
                 AnStaff.startDate = TestData;
                 Assert.AreEqual(AnStaff.startDate, TestData);
             }
 
             [TestMethod]
             public void staffRolePropertyOK()
+            { 
                 clsStaff AnStaff = new clsStaff();
                 String TestData = "";
                 AnStaff.staffRole = TestData;
@@ -63,6 +65,7 @@ namespace Testing4
 
             [TestMethod]
             public void availabilityPropertyOK()
+            { 
                 clsStaff AnStaff = new clsStaff();
                 bool TestData = true;
                 AnStaff.availability = TestData;
@@ -91,7 +94,7 @@ namespace Testing4
                 Boolean OK = true;
                 int staffId = 1;
                 Found = AnStaff.Find(staffId);
-                if (AnStaff.staffId != 1)
+                if (AnStaff.StaffId != 1)
                 {
                     OK = false;
                 }
@@ -105,7 +108,7 @@ namespace Testing4
                 Boolean OK = true;
                 int staffId = 1;
                 Found = AnStaff.Find(staffId);
-                if (AnStaff.staffFullname != "")
+                if (AnStaff.staffFullname != "Micheal Jordan")
                 {
                     OK = false;
                 }
@@ -119,7 +122,7 @@ namespace Testing4
                 Boolean OK = true;
                 int staffId = 1;
                 Found = AnStaff.Find(staffId);
-                if (AnStaff.startDate != Convert.ToDateTime(""))
+                if (AnStaff.startDate != Convert.ToDateTime("17/02/2022"))
                 {
                     OK = false;
                 }
@@ -134,7 +137,7 @@ namespace Testing4
                 Boolean OK = true;
                 int staffId = 1;
                 Found = AnStaff.Find(staffId);
-                if (AnStaff.staffRole != "")
+                if (AnStaff.staffRole != "Owner")
                 {
                     OK = false;
                 }
@@ -149,19 +152,19 @@ namespace Testing4
                 Boolean OK = true;
                 int staffId = 1;
                 Found = AnStaff.Find(staffId);
-                if (AnStaff.availability != true)
-                {
-                    OK = false;
-                
+            if (AnStaff.availability != false)
+            {
+                OK = false;
+            }
                 Assert.IsTrue(OK);
             }
             [TestMethod]
 
             public void ValidMethodOK()
             {
-                clsstaff = Anstaff = new clsstaff();
+                clsStaff Anstaff = new clsStaff();
                 string Error = "";
-                Error = Anstaff.Valid(StaffId, staffFullname, staffRole, availability, startDate);
+                Error = Anstaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
                 Assert.AreEqual(Error, "");
 
             }
@@ -170,8 +173,8 @@ namespace Testing4
                 clsStaff Anstaff = new clsStaff();
                 String Error = "";
                 string StaffId = "a"; //this should be ok
-                Error = AnStaff.Valid(StaffId, staffFullname, staffRole, startDate, availability);
-                Assert.AreEqual(Error, "");
+                Error = Anstaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreEqual(Error, "");
             }
 
             [TestMethod]
@@ -180,8 +183,8 @@ namespace Testing4
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
                 string StaffId = "aa";
-                Error = AnStaff.Valid(StaffId, StaffFullname, StaffRole, StartDate, Availability);
-                Assert.AreEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreEqual(Error, "");
             }
 
             [TestMethod]
@@ -190,8 +193,8 @@ namespace Testing4
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
                 string StaffId = "aaaaa"; //this should be ok
-                Error = AnStaff.Valid(StaffId, staffFullname, staffRole, startDate, availability);
-                Assert.AreEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreEqual(Error, "");
             }
             [TestMethod]
             public void StaffIdMax()
@@ -199,9 +202,9 @@ namespace Testing4
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
                 string StaffId = "aaaaaa"; //this should be ok
-                Error = AnStaff.Valid(StaffId, staffFullname, staffRole, startDate, availability);
-                //test to see that the result is correct
-                Assert.AreEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
             }
 
             [TestMethod]
@@ -210,8 +213,8 @@ namespace Testing4
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
                 string StaffId = "aaa"; //this should be ok
-                Error = AnStaff.Valid(StaffId, StaffFullname, StaffRole, StartDate, Availability);
-                Assert.AreEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreEqual(Error, "");
             }
             [TestMethod]
 
@@ -223,8 +226,8 @@ namespace Testing4
                 TestDate = DateTime.Now.Date;
                 TestDate = TestDate.AddYears(-100);
                 string StartDate = TestDate.ToString();
-                Error = AnStaff.Valid(staffId, StaffFullname, staffRole, StartDate, availability);
-                Assert.AreNotEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreNotEqual(Error, "");
             }
 
             [TestMethod]
@@ -232,12 +235,12 @@ namespace Testing4
             {
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
-                StartDate TestDate;
-                TestDate = StartDate.Now.Date;
+                DateTime TestDate;
+                TestDate = DateTime.Now.Date;
                 TestDate = TestDate.AddDays(-1);
                 string StartDate = TestDate.ToString();
-                Error = AnStaff.Valid(staffId, staffFullname, staffRole, StartDate, availability);
-                Assert.AreNotEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreNotEqual(Error, "");
             }
 
             [TestMethod]
@@ -245,24 +248,24 @@ namespace Testing4
             {
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
-                StartDate TestDate;
-                TestDate = StartDate.Now.Date;
+                DateTime TestDate;
+                TestDate = DateTime.Now.Date;
                 string StartDate = TestDate.ToString();
                 //invoke the method
-                Error = AnStaff.Valid(staffId, staffFullname, staffRole, StartDate, availability);
-                Assert.AreEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreEqual(Error, "");
             }
             [TestMethod]
             public void StartDateMinPlusOne()
             {
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
-                startDate TestDate;
-                TestDate = startDate.Now.Date;
+                DateTime TestDate;
+                TestDate = DateTime.Now.Date;
                 TestDate = TestDate.AddDays(1);
                 string StartDate = TestDate.ToString();
-                Error = AnStaff.Valid(staffId, staffFullname, staffRole, StartDate, availability);
-                Assert.AreNotEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreNotEqual(Error, "");
             }
 
             [TestMethod]
@@ -270,58 +273,31 @@ namespace Testing4
             {
                 clsStaff AnStaff = new clsStaff();
                 String Error = "";
-                StartDate TestDate;
+                DateTime TestDate;
                 TestDate = DateTime.Now.Date;
                 TestDate = TestDate.AddYears(100);
                 string StartDate = TestDate.ToString();
-                Error = AnStaff.Valid(staffId, staffRole, staffFullname, startDate, availability);
-                Assert.AreNotEqual(Error, "");
+                Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
+            Assert.AreNotEqual(Error, "");
             }
             [TestMethod]
-            {
+            
             public void StartDateInvalidData()
+        { 
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffId = "101";
-            string staffFullname = "Hakim Ziyech";
-            string staffRole = "admin";
-            string startDate = "this is not a date!";
-            string availability = "yes";
-            Error = Anstaff.Valid(staffId, staffFullname, staffRole, availability, startDate);
-            Assert.ArenNotEqual(Error, "");
+            string JoinDate = "this is not a date!";
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, JoinDate);
+            Assert.AreNotEqual(Error, "");
         }
-public string Valid(string staffId, string staffFullname, string staffRole, string availability, string startDate)
-        {
-            String Error = "";
-            startDate DateTemp;
-            if (staffId.Length == 0)
-            {
-                Error = Error + "The staff id may not be blank : ";
-            }
-            if (staffId.Length > 6)
-            {
-                Error = Error + "The staff id must be less than 6 characters : ";
-            }
-            //copy the startDate value to the DateTemp variable
-            DateTemp = Convert.ToDateTime(startDate);
-            if (DateTemp < startDate.Now.Date)
-            {
-                Error = Error + "The date cannot be in the past : ";
-            }
-            if (DateTemp > startDate.Now.Date)
-            {
-                //record the error
-                Error = Error + "The date cannot be in the future : ";
-            }
-            return Error;
-        }
+
         [TestMethod]
         public void StaffRoleMinLessOne()
         {
-            clsAddress AnAddress = new clsAddress();
+            clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            string staffRoleX = "";
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, staffRoleX, StartDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -330,8 +306,8 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "o"
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            string staffRole = "o";
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -341,7 +317,7 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string staffRole = "oo";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -351,7 +327,7 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string staffRole = "oooooooo";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -361,7 +337,7 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string staffRole = "ooooooooo";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -370,18 +346,19 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "oooooooooo";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            string staffRoleX = "";
+            staffRoleX.PadRight(51, 'x');
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, staffRoleX, StartDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
         public void StaffRoleMid()
         {
-            clsStaff AnStaff = new clsStaff()
+            clsStaff AnStaff = new clsStaff();
             String Error = "";
             string staffRole = "oooo";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -391,17 +368,17 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string staffFullname = "";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
         public void StaffFullnameMin()
         {
-            clsStaff AnStaff = new clsStaff
+            clsStaff AnStaff = new clsStaff();
             String Error = "";
             string staffFullname = "a";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -409,23 +386,23 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
         [TestMethod]
         public void StaffFullnameMinPlusOne()
         {
-            clsStaff AnStaff = new clsStaff
+            clsStaff AnStaff = new clsStaff();
             String Error = "";
             //this should pass
             string staffFullname = "aa";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
         public void StaffFullnameMaxLessOne()
         {
-            clsAddress AnAddress = new clsAddress();
+            clsStaff AnStaff = new clsStaff();
             //string variable to store any error message
             String Error = "";
             string staffFullname = "";
             staffFullname = staffFullname.PadRight(50, 'a');
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -436,7 +413,7 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
             String Error = "";
             string staffFullname = "";
             staffFullname = staffFullname.PadRight(49, 'a');
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -447,22 +424,21 @@ public string Valid(string staffId, string staffFullname, string staffRole, stri
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string staffFullname = "";
-            Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
 
-            [TestMethod]
+        }
+
+        [TestMethod]
         public void StaffFullnameMid()
         {
-            clsAddress AnAddress = new clsAddress();
+            clsStaff AnStaff = new clsStaff();
             String Error = "";
-                string staffFullname = "";
-                staffFullname = staffFullname.PadRight(25, 'a');
-                Error = AnStaff.Valid(staffId, staffRole, staffFullname, availability, startDate);
-                Assert.AreEqual(Error, "");
-            }
-
-
-
+            string staffFullname = "";
+            staffFullname = staffFullname.PadRight(25, 'a');
+            Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate); ;
+            Assert.AreEqual(Error, "");
+        }
 
     }
 }
