@@ -46,9 +46,10 @@
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsStockBase.cs" />
     <Compile Include="clsSupplier.cs" />
-	<Compile Include="clsOrderCollection.cs" />
+    <Compile Include="clsOrderCollection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsSupplierCollection.cs" />
     <Compile Include="date.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
