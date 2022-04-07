@@ -14,9 +14,14 @@ public partial class _1Viewer : System.Web.UI.Page
 
         customer = (clsCustomer) Session["AnCustomer"];
 
-        Response.Write("CustomerFirstname: " + customer.CustomerSurname);
+        Response.Write("CustomerID" + " = " + customer.CustomerID + "<br><br>");
+        Response.Write("CustomerFirstname" + " = " + customer.CustomerFirstname + "<br><br>");
+        Response.Write("CustomerSurname" + " = " + customer.CustomerSurname + "<br><br>");
         Response.Write(customer.CustomerEmail);
         Response.Write(customer.CustomerDOB);
+        Response.Write(customer.Gender);
+
+
 
 
 

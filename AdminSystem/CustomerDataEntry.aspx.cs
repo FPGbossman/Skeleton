@@ -69,7 +69,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         CustomerID = Convert.ToInt32(txt_CustomerId.Text);
 
-        Found = gg.Find(CustomerId);
+        Found = gg.Find(CustomerID);
 
         if (Found == true)
         {
