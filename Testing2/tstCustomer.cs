@@ -14,7 +14,7 @@ namespace Testing2
         string CustomerEmail = "fredson22@gmail.com";
         string CustomerDOB  = DateTime.Now.Date.ToString();
         string Gender = "Male";
-        int CustomerID = 9;
+        
 
         [TestMethod]
         public void CustomerIdPropertyOK()
@@ -228,42 +228,34 @@ namespace Testing2
         [TestMethod]
         public void ValidMethodOK()
         {
-            clsCustomer gg = new clsCustomer();
-
+            clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-
-            Error = gg.Valid(CustomerFirstname,
-                             CustomerSurname,
-                             CustomerEmail,
-                             CustomerDOB,
-                             Gender);
-            if (Error == "")
-            
-                Assert.AreEqual(Error, "");
+            Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+           Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void CustomerFirstnameMinLessOne()
         {
-            clsCustomer gg = new clsCustomer();
+            clsCustomer AnCustomer = new clsCustomer();
 
             String Error = "";
 
             string CustomerFirstname = "";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void CustomerFirstnameMin()
         {
-            clsCustomer gg = new clsCustomer();
+            clsCustomer AnCustomer = new clsCustomer();
 
             String Error = "";
 
             string CustomerFirstname = "g";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreEqual(Error, "");
         }
@@ -323,13 +315,13 @@ namespace Testing2
         [TestMethod]
         public void CustomerFistnameMid()
         {
-            clsCustomer gg = new clsCustomer();
+            clsCustomer AnCustomer = new clsCustomer();
 
             String Error = "";
 
             string CustomerFirstname = "ggg";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, Gender);
+            Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, Gender);
 
             Assert.AreEqual(Error, "");
         }
@@ -445,7 +437,7 @@ namespace Testing2
         [TestMethod]
         public void CustomerDOBInvalidData()
         {
-            clsCustomer gg = new clsCustomer();
+            clsCustomer Ancustomer = new clsCustomer();
 
             String Error = "";
 
@@ -453,20 +445,20 @@ namespace Testing2
 
             string CustomerDOB = "this is not a date";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = Ancustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void GenderMinLessOne()
         {
-            clsCustomer gg = new clsCustomer();
+            clsCustomer AnCustomer = new clsCustomer();
 
             String Error = "";
 
             string Gender = "";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreNotEqual(Error, "");
         }
@@ -518,7 +510,7 @@ namespace Testing2
 
             string Gender = "gggggg";
 
-            Error = gg.Valids(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreEqual(Error, "");
         }
@@ -551,18 +543,19 @@ namespace Testing2
         [TestMethod]
         public void GenderExtremeMax()
         {
-            clsCustomer gg = new clsCustomer();
+            clsCustomer AnCustomer = new clsCustomer();
 
             String Error = "";
 
             string Gender = "";
             Gender = Gender.PadRight(500, 'g');
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreNotEqual(Error, "");
         }
     }
 
 }
+
 

@@ -35,10 +35,10 @@
             <asp:TextBox ID="txtCustomerEmail" runat="server" style="margin-left: 35px; margin-top: 0px" Width="144px"></asp:TextBox>
         </p>
         <asp:Label ID="lblGender" runat="server" Text="Gender"></asp:Label>
-        <asp:TextBox ID="txtGender" runat="server" style="margin-left: 80px" Width="140px" OnTextChanged="txtGender_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtGender" runat="server" style="margin-left: 80px" Width="140px" ></asp:TextBox>
         <br />
         <asp:Label ID="LBLDOB" runat="server" Text="CustomerDOB"></asp:Label>
-        <asp:TextBox ID="txtCustomerDOB" runat="server" style="margin-left: 21px; margin-top: 1px" Width="143px" OnTextChanged="txtCustomerDOB_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtCustomerDOB" runat="server" style="margin-left: 21px; margin-top: 1px" Width="143px" ></asp:TextBox>
         <br />
         <br />
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />

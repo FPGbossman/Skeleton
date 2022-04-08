@@ -16,8 +16,8 @@ namespace ClassLibrary
         //public int CustomerID;
 
         private Int32 mCustomerID;
-
-        public int CustomerID
+        
+        public Int32 CustomerID
         {
 
             get
@@ -59,7 +59,7 @@ namespace ClassLibrary
             }
             set
             {
-                CustomerSurname = value;
+                mCustomerSurname = value;
             }
         }
         private string mCustomerEmail;
@@ -105,11 +105,11 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int CustomerId)
+        public bool Find(int CustomerID)
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.AddParameter("@CustomerId", CustomerId);
+            DB.AddParameter("@CustomerId", CustomerID);
 
             DB.Execute("sproc_dbo.tblCustomerId_FilterbyCustomerId");
 
@@ -130,7 +130,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string CustomerFirstname, string CustomerSurname, string CustomerEmail, string Gender, string gender)
+        public string Valid(string CustomerFirstname, string CustomerSurname, string CustomerEmail, string CustomerDOB, string Gender)
         {
 
             String Error = "";
@@ -176,7 +176,7 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The street may not be blank : ";
             }
-            //if the gender is too long
+            //if the Gender is too long
             if (Gender.Length > 6)
             {
                 //record the error
@@ -186,16 +186,7 @@ namespace ClassLibrary
 
             return Error;
         
-        }
-
-        public string Valids(string customerFirstname, string customerSurname, string customerEmail, string customerDOB, string gender)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string Valid(string customerFirstname, string customerSurname, string gender)
-        {
-            throw new NotImplementedException();
+        
         }
     }
 }
