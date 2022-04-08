@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ClassLibrary
 {
@@ -17,7 +18,7 @@ namespace ClassLibrary
 
         private Int32 mCustomerID;
 
-        public int CustomerID
+        public Int32 CustomerID
         {
 
             get

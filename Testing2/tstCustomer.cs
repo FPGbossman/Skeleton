@@ -21,7 +21,7 @@ namespace Testing2
         {
             clsCustomer Ancustomer = new clsCustomer();
 
-            int gt = 9;
+            Int32 gt = 9;
 
             Ancustomer.CustomerID = gt;
 
@@ -95,9 +95,9 @@ namespace Testing2
 
             Boolean Found = false;
 
-            Int32 CustomerId = 1;
+            Int32 CustomerID = 1;
 
-            Found = Ancustomer.Find(CustomerId);
+            Found = Ancustomer.Find(CustomerID);
 
             Assert.IsTrue(Found);
         }
@@ -110,11 +110,11 @@ namespace Testing2
 
             Boolean OK = true;
 
-            Int32 CustomerId = 1;
+            Int32 CustomerID = 1;
 
-            Found = gg.Find(CustomerId);
+            Found = gg.Find(CustomerID);
 
-            if (gg.CustomerId != 1)
+            if (gg.CustomerID != 1)
             {
                 OK = false;
             }
@@ -232,11 +232,7 @@ namespace Testing2
 
             String Error = "";
 
-            Error = gg.Valid(CustomerFirstname,
-                             CustomerSurname,
-                             CustomerEmail,
-                             CustomerDOB,
-                             Gender);
+            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
             if (Error == "")
             
                 Assert.AreEqual(Error, "");
@@ -518,7 +514,7 @@ namespace Testing2
 
             string Gender = "gggggg";
 
-            Error = gg.Valids(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
+            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreEqual(Error, "");
         }
