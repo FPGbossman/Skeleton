@@ -131,7 +131,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string CustomerFirstname, string CustomerSurname, string CustomerEmail, string Gender)
+        public string Valid(string CustomerFirstname, string CustomerSurname, string CustomerEmail, string Gender, string gender)
         {
 
             String Error = "";
@@ -188,7 +188,16 @@ namespace ClassLibrary
             return Error;
         
         }
-       
+
+        public string Valids(string customerFirstname, string customerSurname, string customerEmail, string customerDOB, string gender)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Valid(string customerFirstname, string customerSurname, string gender)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

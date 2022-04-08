@@ -323,7 +323,7 @@ namespace Testing2
 
             String Error = "";
 
-            string CustomerFirstname, CustomerSurname = "ggg";
+            string CustomerFirstname = "ggg";
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, Gender);
 
