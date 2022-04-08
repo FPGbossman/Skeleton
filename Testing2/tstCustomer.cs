@@ -2,7 +2,6 @@
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using System.Collections.Generic;
 namespace Testing2
 {
     [TestClass]
@@ -111,11 +110,11 @@ namespace Testing2
 
             Boolean OK = true;
 
-            Int32 CustomerId = 1;
+            Int32 CustomerID = 1;
 
-            Found = gg.Find(CustomerId);
+            Found = gg.Find(CustomerID);
 
-            if (gg.CustomerId != 1)
+            if (gg.CustomerID != 1)
             {
                 OK = false;
             }
@@ -328,7 +327,7 @@ namespace Testing2
 
             String Error = "";
 
-            string CustomerFirstname, CustomerSurname = "ggg";
+            string CustomerFirstname = "ggg";
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, Gender);
 
