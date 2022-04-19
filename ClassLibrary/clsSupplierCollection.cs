@@ -73,9 +73,33 @@ namespace ClassLibrary
                 //worry about this later
             }
         }
-   
 
 
-        public clssupplier ThisSupplier { get; set; }
+        private clssupplier mThisSupplier;
+        public clssupplier ThisSupplier
+        {
+            get
+            {
+                return mThisSupplier;
+            }
+            set
+            {
+
+                mThisSupplier = value;
+            }
+        }
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("@CurrentSupplier", mThisSupplier.CurrentSupplier);
+            DB.AddParameter("@SupplierSince", mThisSupplier.SupplierSince);
+            DB.AddParameter("@SupplierAddress", mThisSupplier.SupplierAddress);
+            DB.AddParameter("@ContactNumber", mThisSupplier.ContactNumber);
+
+            return DB.Execute("Sproc_tblSupplier_Insert");
+        }
+           
+                
     }
 }
