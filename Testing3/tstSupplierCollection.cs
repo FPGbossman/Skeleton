@@ -68,7 +68,28 @@ namespace Testing3
             AllSuppliers.SupplierList = TestList;
             Assert.AreEqual(AllSuppliers.Count, TestList.Count);
         }
-         
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            clssupplier TestItem = new clssupplier();
+            Int32 PrimaryKey = 0;
+
+            TestItem.CurrentSupplier = true;
+            TestItem.SupplierID = 1;
+            TestItem.SupplierName = "Nike";
+            TestItem.SupplierSince = DateTime.Now.Date;
+            TestItem.SupplierAddress = "11 Stret";
+            TestItem.ContactNumber = "098765432";
+
+            AllSuppliers.ThisSupplier = TestItem;
+            PrimaryKey = AllSuppliers.Add();
+            TestItem.SupplierID = PrimaryKey;
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
+
+        }
     }
 
 }
