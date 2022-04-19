@@ -7,6 +7,25 @@ namespace ClassLibrary
     {
         public clsSupplierCollection()
         {
+
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblSupplier_SelectAll");
+            RecordCount = DB.Count;
+            while(Index < RecordCount)
+            {
+                clssupplier ASupplier = new clssupplier();
+                ASupplier.SupplierID = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierID"]);
+                ASupplier.SupplierSince = Convert.ToDateTime(DB.DataTable.Rows[Index]["SupplierSince"]);
+                ASupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
+                ASupplier.CurrentSupplier = Convert.ToBoolean(DB.DataTable.Rows[Index]["CurrentSupplier"]);
+                ASupplier.SupplierAddress = Convert.ToString(DB.DataTable.Rows[Index]["SupplierAddress"]);
+                ASupplier.ContactNumber = Convert.ToString(DB.DataTable.Rows[Index]["ContactNumber"]);
+
+                mSupplierList.Add(ASupplier);
+                Index++;
+            }
             // create items of test data
             clssupplier TestItem = new clssupplier();
             //set properties

@@ -33,14 +33,6 @@ namespace Testing3
             Assert.AreEqual(AllSuppliers.SupplierList, TestList); //Ensure the values are the same
         }
 
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
-            Int32 SomeCount = 2; //Assign test data
-            AllSuppliers.Count = SomeCount;//Assign the data to the property
-            Assert.AreEqual(AllSuppliers.Count, SomeCount);
-        }
 
         [TestMethod]
         public void ThisSupplierPropertyOK()
@@ -76,13 +68,7 @@ namespace Testing3
             AllSuppliers.SupplierList = TestList;
             Assert.AreEqual(AllSuppliers.Count, TestList.Count);
         }
-
-        [TestMethod]
-        public void TworecordsPresent()
-        {
-            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
-            Assert.AreEqual(AllSuppliers.Count, 2);
-        }
+         
     }
 
 }
