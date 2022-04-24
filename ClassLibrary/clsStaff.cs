@@ -171,6 +171,11 @@ namespace ClassLibrary
    
       
         }
+
+        public string Valid(string v, string staffFullname, string staffRole, string startDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -10,9 +10,13 @@ namespace Testing4
     {
         String StaffFullname = "John Smith";
         String StaffRole = "User";
-        String Gender = "Male";
-        Boolean availability = false;
-        String StartDate = DateTime.Now.Date.ToString();
+        string StartDate = DateTime.Now.Date.ToString();
+
+        public tstStaff(string startDate)
+        {
+            StartDate = startDate;
+        }
+
         int StaffId = 1;
 
           
@@ -306,7 +310,6 @@ namespace Testing4
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "o";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -316,7 +319,6 @@ namespace Testing4
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "oo";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -326,7 +328,6 @@ namespace Testing4
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "oooooooo";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -336,7 +337,6 @@ namespace Testing4
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "ooooooooo";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -357,7 +357,6 @@ namespace Testing4
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffRole = "oooo";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -367,7 +366,6 @@ namespace Testing4
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffFullname = "";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -377,7 +375,6 @@ namespace Testing4
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffFullname = "a";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -389,7 +386,6 @@ namespace Testing4
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             //this should pass
-            string staffFullname = "aa";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
         }
@@ -423,7 +419,6 @@ namespace Testing4
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string staffFullname = "";
             Error = AnStaff.Valid(Convert.ToString(StaffId), StaffFullname, StaffRole, StartDate);
             Assert.AreEqual(Error, "");
 
