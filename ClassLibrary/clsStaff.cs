@@ -77,6 +77,8 @@ namespace ClassLibrary
 
         }
         private string mstaffRole;
+        public int staffId;
+
         public string staffRole
 
         {
@@ -118,7 +120,7 @@ namespace ClassLibrary
             //===================================================================================================================================================
 
         }
-        public string Valid(string staffId, string staffFullname, string staffRole, string startDate)
+        public string Valid(string staffId, string staffFullname, string staffRole, string startDate, string availability)
         {
             String Error = "";
             DateTime DateTemp;

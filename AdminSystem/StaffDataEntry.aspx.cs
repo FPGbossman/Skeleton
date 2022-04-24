@@ -63,9 +63,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         protected void btnOK_Click(object sender, EventArgs e)
         {
+        clsStaff Anstaff = new clsStaff();
+        string staffId = tbstaffId.Text;
+        string staffFullname = tbstaffFullname.Text;
+        string staffRole = tbstaffRole.Text;
+        string startDate = tbstartDate.Text;
+        string availability = tbavailability.Text;
+
+        string Error = "";
+        Error = Anstaff.Valid(staffId, staffFullname, staffRole, startDate, availability);
 
 
-             clsStaff Anstaff = new clsStaff();
         Anstaff.staffFullname = tbstaffFullname.Text;
         Anstaff.startDate = DateTime.Parse(tbstartDate.Text);
         Anstaff.staffRole = tbstaffRole.Text;
