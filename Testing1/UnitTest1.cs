@@ -135,6 +135,16 @@ namespace Testing1
          *  ===============*/
 
         [TestMethod]
+        public void extremeMinimumAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"address is Null or Empty!\n", error);
+        }
+
+        [TestMethod]
         public void minMinusOneAddress()
         {
             clsOrders orderTest = new clsOrders();
@@ -239,6 +249,16 @@ namespace Testing1
          *  Description testing
          *  ===================
          **/
+
+        [TestMethod]
+        public void extremeMinimumDescripiton()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
+            Assert.AreEqual($"description is Null or Empty!\n", error);
+        }
 
         [TestMethod]
         public void minMinusOneDescription()
@@ -652,9 +672,9 @@ namespace Testing1
         }
 
 
-             /** END OF VALIDATION TESTING **/
+        /** END OF VALIDATION TESTING **/
 
-             [TestMethod]
+        [TestMethod]
         public void ListAndCountOK()
         {
             clsOrderCollection orders = new clsOrderCollection();
@@ -704,12 +724,14 @@ namespace Testing1
             {
                 if (collection.getOrders()[0].getOrderNo() != 31)
                 {
-                    found = false; 
-                } if (collection.getOrders()[1].getOrderNo() != 34)
+                    found = false;
+                }
+                if (collection.getOrders()[1].getOrderNo() != 34)
                 {
                     found = false;
                 }
-            } else
+            }
+            else
             {
                 found = false;
             }
