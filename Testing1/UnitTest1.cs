@@ -135,6 +135,16 @@ namespace Testing1
          *  ===============*/
 
         [TestMethod]
+        public void extremeMinimumAddress()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bAddr2 = "";
+            string error = orderTest.validate(bAddr2, bDesc, timeOfOrder, customerid, price);
+            Assert.AreEqual($"address:{bAddr2} is less than 10 characters!\n", error);
+        }
+
+        [TestMethod]
         public void minMinusOneAddress()
         {
             clsOrders orderTest = new clsOrders();
@@ -239,6 +249,16 @@ namespace Testing1
          *  Description testing
          *  ===================
          **/
+
+        [TestMethod]
+        public void extremeMinimumDescripiton()
+        {
+            clsOrders orderTest = new clsOrders();
+
+            string bDesc2 = "";
+            string error = orderTest.validate(bAddr, bDesc2, timeOfOrder, customerid, price);
+            Assert.AreEqual($"address:{bDesc2} is less than 10 characters!\n", error);
+        }
 
         [TestMethod]
         public void minMinusOneDescription()
@@ -654,7 +674,7 @@ namespace Testing1
 
              /** END OF VALIDATION TESTING **/
 
-             [TestMethod]
+        [TestMethod]
         public void ListAndCountOK()
         {
             clsOrderCollection orders = new clsOrderCollection();
