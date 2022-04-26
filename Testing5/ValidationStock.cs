@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using ClassLibrary;
 
 
 namespace ValidationStock
@@ -10,10 +10,8 @@ namespace ValidationStock
     [TestClass]
     public class tstStock
     {
-
-       
         string ProductCategory = "Nike Air Max 90";
-        string Quantity = "";
+        string Quantity = "12";
         string Date = DateTime.Now.Date.ToString();
         string ProductName = "Nike";
 
@@ -25,22 +23,27 @@ namespace ValidationStock
             clsStock AStock = new clsStock();
             String Error = "";
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
-            Assert.AreEqual(Error, ""); 
+            Assert.AreEqual(Error, "");
         }
-        // ========================================== ProductCategory Validation Testing =========================
+
+
+        // ================================================================================================================================== //
+       //                                                      ProductCategory Validation Testing                                            //
+      // ================================================================================================================================== //
+
         [TestMethod]
-        public void ProductCategoryMin_1_minus()
+        public void ProductCategoryMin_1_minus()  // To cheek 1 less than Minimum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
-            string ProductCategory = ""; 
+            string ProductCategory = "";
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreNotEqual(Error, "");
 
         }
 
         [TestMethod]
-        public void ProductCategoryMin()
+        public void ProductCategoryMin()         // To check Minimum value.
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -51,7 +54,7 @@ namespace ValidationStock
         }
 
         [TestMethod]
-        public void ProductCategoryMin_1_Plus()
+        public void ProductCategoryMin_1_Plus()   // To check 1 more than Minimum value.
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -62,7 +65,7 @@ namespace ValidationStock
         }
 
         [TestMethod]
-        public void ProductCategoryMax_1_minus()
+        public void ProductCategoryMax_1_minus()  // To check 1 less than Maximum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -74,7 +77,19 @@ namespace ValidationStock
         }
 
         [TestMethod]
-        public void ProductCategoryMax()
+        public void ProductCategoryMax()          // To check Maximum value. 
+        { 
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string ProductCategory = "";
+            ProductCategory = ProductCategory.PadRight(50, 'a');
+            Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void ProductCategoryMax_1_Plus()   // To check Maximum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -86,19 +101,7 @@ namespace ValidationStock
         }
 
         [TestMethod]
-        public void ProductCategoryMax_1_Plus()
-        {
-            clsStock AStock = new clsStock();
-            String Error = "";
-            string ProductCategory = "";
-            ProductCategory = ProductCategory.PadRight(50, 'a');
-            Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
-            Assert.AreEqual(Error, "");
-
-        }
-
-        [TestMethod]
-        public void ProductCategoryMid()
+        public void ProductCategoryMid()        // To check Medium value
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -108,71 +111,88 @@ namespace ValidationStock
             Assert.AreEqual(Error, "");
         }
 
-        // ========================================== Quantity Validation Testing =========================
+        // ================================================================================================================================== //
+       //                                                      Quantity Validation Testing                                                   //
+      // ================================================================================================================================== //
+
 
         [TestMethod]
-        public void QuantityMin_1_minus()
+        public void QuantityMin_1_minus()       // To cheek 1 less than Minimum value. 
+
         {
             clsStock AStock = new clsStock();
             String Error = "";
-            string Quantity = "aaa";
+            string Quantity = "";
+            Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void QuantityMin()               // To check Minimum value.
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Quantity = "b";
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
         }
 
+
         [TestMethod]
-        public void QuantityMin()
+        public void QuantityMax_1_Minus()       // To check 1 less than Maximum value.
         {
             clsStock AStock = new clsStock();
             String Error = "";
-            string Quantity = "a";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(5, 'b');
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
         }
 
+
         [TestMethod]
-        public void QuantityMax_1_Minus()
+        public void QuantityMax()               //To check Maximum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
             string Quantity = "aaaaa";
+            Quantity = Quantity.PadRight(5, 'b');
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
         }
 
+
         [TestMethod]
-        public void QuantityMax()
+        public void QuantityMid()               // To check Medium value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
-            string Quantity = "aaaaa";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(3, 'b');
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
         }
+
+
         [TestMethod]
-        public void QuantityMid()
+        public void QuantityMax_1_Plus()        // To check 1 more than Minimum value.
         {
             clsStock AStock = new clsStock();
             String Error = "";
-            string Quantity = "aaa";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(5, 'b');
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
         }
 
-        [TestMethod]
-        public void QuantityMax_1_Plus()
-        {
-            clsStock AStock = new clsStock();
-            String Error = "";
-            string Quantity = "aaaaaaa";
-            Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
-            Assert.AreEqual(Error, "");
-        }
+        // ================================================================================================================================== //
+       //                                                          Date Validation Testing                                                   //
+      // ================================================================================================================================== //
 
-        // ========================================== Date Validation Testing =========================
 
         [TestMethod]
-        public void DateAddedExtremeMin()
+        public void DateExtremeMin()            // To check Extreme Minimum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -184,10 +204,11 @@ namespace ValidationStock
             Assert.AreNotEqual(Error, "");
         }
 
+
         [TestMethod]
-        public void DateAddedMinLessOne()
+        public void DateMinLessOne()           // To check 1 less than Minimum value. 
         {
-            
+
             clsStock AStock = new clsStock();
             String Error = "";
             DateTime TestDate;
@@ -198,10 +219,11 @@ namespace ValidationStock
             Assert.AreNotEqual(Error, "");
         }
 
-        [TestMethod]
-        public void DateAddedMin()
-        {
 
+        [TestMethod]
+        public void DateMin()                  // To check Minimum value.
+
+        {
             clsStock AStock = new clsStock();
             String Error = "";
             DateTime TestDate;
@@ -210,8 +232,10 @@ namespace ValidationStock
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
         }
+
+
         [TestMethod]
-        public void DateAddedMinPlusOne()
+        public void DateMinPlusOne()           // To check 1 more than Minumum value. 
 
         {
             clsStock AStock = new clsStock();
@@ -225,7 +249,7 @@ namespace ValidationStock
         }
 
         [TestMethod]
-        public void DateAddedExtremeMax()
+        public void DateExtremeMax()           // To check Extreme Maximum value
         {
 
             clsStock AStock = new clsStock();
@@ -238,43 +262,43 @@ namespace ValidationStock
             Assert.AreNotEqual(Error, "");
         }
 
-        // ========================================== ProductName Validation Testing =========================
+        // ================================================================================================================================== //
+       //                                                       ProductName Validation Testing                                               //
+      // ================================================================================================================================== //
+
 
         [TestMethod]
-        public void ProductNameMin_1_minus()
+        public void ProductNameMin_1_minus()        // To cheek 1 less than Minimum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
             string ProductName = "";
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreNotEqual(Error, "");
-
         }
 
         [TestMethod]
-        public void ProductNameMin()
+        public void ProductNameMin()                // To check Minimum value.
         {
             clsStock AStock = new clsStock();
             String Error = "";
             string ProductName = "a";
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
-
         }
 
         [TestMethod]
-        public void ProductNameMin_1_Plus()
-        {
+        public void ProductNameMin_1_Plus()        // To check 1 more than Minimum value. 
+        {  
             clsStock AStock = new clsStock();
             String Error = "";
             string ProductName = "aa";
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
-
         }
 
         [TestMethod]
-        public void ProductNameyMax_1_minus()
+        public void ProductNameMax_1_minus()      // To check 1 less than Maximum value.  
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -282,11 +306,10 @@ namespace ValidationStock
             ProductName = ProductName.PadRight(49, 'a');
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
-
         }
 
         [TestMethod]
-        public void ProductNameMax()
+        public void ProductNameMax()            // To check Maximum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -294,11 +317,10 @@ namespace ValidationStock
             ProductName = ProductName.PadRight(50, 'a');
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
-
         }
 
         [TestMethod]
-        public void ProductNameyMax_1_Plus()
+        public void ProductNameMax_1_Plus()     // To check 1 more less than Maximum value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -306,11 +328,10 @@ namespace ValidationStock
             ProductName = ProductName.PadRight(50, 'a');
             Error = AStock.Validation(ProductCategory, Quantity, Date, ProductName);
             Assert.AreEqual(Error, "");
-
         }
 
         [TestMethod]
-        public void ProductNameMid()
+        public void ProductNameMid()           //To check Medium value. 
         {
             clsStock AStock = new clsStock();
             String Error = "";
@@ -321,4 +342,3 @@ namespace ValidationStock
         }
     }
 }
-       

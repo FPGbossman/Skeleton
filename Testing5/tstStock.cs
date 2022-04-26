@@ -11,7 +11,7 @@ namespace StockTesting
     {
 
 
-        //=========
+        
         [TestMethod]
         public void InstanceOK()
         {
@@ -20,7 +20,7 @@ namespace StockTesting
         }
 
 
-        //====================================================
+    
         [TestMethod]
         public void StockIdPropertyOK()
         {
@@ -34,7 +34,7 @@ namespace StockTesting
 
         }
 
-        //=====================================================
+       
 
         [TestMethod]
 
@@ -50,7 +50,7 @@ namespace StockTesting
 
         }
 
-        //====================================================================
+   
 
         [TestMethod]
         public void QuantityPropertyOK()
@@ -65,7 +65,7 @@ namespace StockTesting
 
         }
 
-        //===========================================================
+    
         [TestMethod]
         public void DatePropertyOK()
         {
@@ -76,7 +76,7 @@ namespace StockTesting
             Assert.AreEqual(AStock.Date, Date);
 
         }
-        // ===================================================================
+      
 
         [TestMethod]
         public void AvailablePropertyOK()
@@ -84,12 +84,12 @@ namespace StockTesting
 
             clsStock AStock = new clsStock();
 
-            bool Available = true;
-            AStock.Available = Available;
-            Assert.AreEqual(AStock.Available, Available);
+            Boolean TestData = true;
+            AStock.Available = TestData;
+            Assert.AreEqual(AStock.Available, TestData);
 
         }
-        //==================================================================== 
+   
         [TestMethod]
         public void ProductNamePropertyOK()
         {
@@ -102,8 +102,13 @@ namespace StockTesting
             Assert.AreEqual(AStock.ProductName, ProductName);
 
         }
+
+
         //=============================================================
         //==================================                                                    Find and Found method                                   ============================
+
+
+
         [TestMethod]
         public void FindMethodOk()
         {
