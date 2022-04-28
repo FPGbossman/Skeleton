@@ -14,9 +14,18 @@
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="Button1_Click" Text="Add" />
             <asp:Button ID="btnEdit" runat="server" Text="Edit" />
+            <asp:Button ID="btndelete" runat="server" OnClick="btndelete_Click" Text="Delete" />
         </p>
         <p>
-            <asp:Label ID="lblEroor" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Enter a staff name"></asp:Label>
+            <asp:TextBox ID="txtbox" runat="server" OnTextChanged="txtbox_TextChanged"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+        </p>
+        <p>
+            <asp:Label ID="lblEroor" runat="server" Text="lblError"></asp:Label>
         </p>
     </form>
 </body>
