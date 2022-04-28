@@ -28,9 +28,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="tbstaffRole" runat="server"></asp:TextBox>
         <p>
-            <asp:Label ID="lblavailability" runat="server" Text="availability" width="53px"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="tbavailability" runat="server"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblavaible" runat="server" Text="Avalaible"></asp:Label>
+            &nbsp;&nbsp;&nbsp;
+            <asp:CheckBox ID="chkAvailable" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text=":" />
         </p>
         <p>
             &nbsp;</p>
