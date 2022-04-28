@@ -40,6 +40,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="clsCustomerCollection.cs" />
     <Compile Include="clsStaffCollection.cs" />
     <Compile Include="DB\Count.cs" />
     <Compile Include="DB\DataTable.cs" />

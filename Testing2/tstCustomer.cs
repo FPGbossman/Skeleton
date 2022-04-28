@@ -12,9 +12,9 @@ namespace Testing2
         string CustomerFirstname = "Fred";
         string CustomerSurname = "Son";
         string CustomerEmail = "fredson22@gmail.com";
-        string CustomerDOB  = DateTime.Now.Date.ToString();
+        string CustomerDOB = DateTime.Now.Date.ToString();
         string Gender = "Male";
-        
+
 
         [TestMethod]
         public void CustomerIdPropertyOK()
@@ -234,7 +234,7 @@ namespace Testing2
 
             Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
             if (Error == "")
-            
+
                 Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -561,4 +561,3 @@ namespace Testing2
     }
 
 }
-
