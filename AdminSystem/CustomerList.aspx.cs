@@ -104,7 +104,7 @@ public partial class _1_List : System.Web.UI.Page
     {
         Session["CustomerID"] = -1;
 
-        Response.Redirect("CustDataEntry.aspx")
+        Response.Redirect("CustDataEntry.aspx");
     }
 
     protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
