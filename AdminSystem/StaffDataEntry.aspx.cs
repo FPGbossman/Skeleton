@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnStaff = (clsStaff)Session["AnStaff"];
         //display the the staff number for this entry
         Response.Write(AnStaff.staffId);
-    }
+    }   
         protected void Page_Load2(object sender, EventArgs e)
         {
             //create a new instance of clsStaff
@@ -68,19 +68,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string staffFullname = tbstaffFullname.Text;
         string staffRole = tbstaffRole.Text;
         string startDate = tbstartDate.Text;
-        string availability = tbavailability.Text;
+        bool availability = chkAvailable.Checked;
 
         string Error = "";
-        Error = Anstaff.Valid(staffId, staffFullname, staffRole, startDate, availability);
+        Error = Anstaff.Valid(staffId, staffFullname, staffRole, startDate);
+        if(Error == "")
+        {
+            Anstaff.staffFullname = tbstaffFullname.Text;
+            Anstaff.startDate = DateTime.Parse(tbstartDate.Text);
+            Anstaff.staffRole = tbstaffRole.Text;
+            Anstaff.availability = chkAvailable.Checked;
+            Anstaff.staffId = int.Parse(tbstaffId.Text);
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = Anstaff;
+            StaffList.Add();
+            Response.Redirect("StaffList.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
 
-        Anstaff.staffFullname = tbstaffFullname.Text;
-        Anstaff.startDate = DateTime.Parse(tbstartDate.Text);
-        Anstaff.staffRole = tbstaffRole.Text;
-        Anstaff.availability = bool.Parse(tbavailability.Text);
-        Anstaff.staffId = int.Parse(tbstaffId.Text);
+    }
 
-        Session["Anstaff"] = Anstaff;
-        Response.Redirect("Staff Viewer.aspx");
+    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+    {
+
     }
 }

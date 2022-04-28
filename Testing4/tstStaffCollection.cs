@@ -2,111 +2,177 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Testing4
+namespace Test_Framework
 {
+    [TestClass]
     public class tstStaffCollection
     {
-    
-    [TestClass]
-    public class TstStaffCollection        {
-            public object AllStaff { get; private set; }
-
-            [TestMethod]
-        public void InstanceOK()
+        [TestMethod]
+        public void TestMethod1()
         {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            Assert.IsNotNull(AllStaff);
-        }
 
+        }
+        [TestMethod]
+        public void InstanceOk()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            Assert.IsNotNull(AllStaffs);
+
+        }
         [TestMethod]
         public void StaffListOK()
         {
-            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection AllStaffs = new clsStaffCollection();
             List<clsStaff> TestList = new List<clsStaff>();
             clsStaff TestItem = new clsStaff();
             TestItem.availability = true;
-            TestItem.staffId = 1001;
-            TestItem.staffFullname = "Joe Bloggs";
+            TestItem.staffId = 5;
             TestItem.startDate = DateTime.Now.Date;
-            TestItem.staffRole = "admin";
-            
+            TestItem.staffRole = "Owner";
+            TestItem.staffFullname = "Alex Jordan";
+            TestList.Add(TestItem);
+            AllStaffs.StaffList = TestList;
+            Assert.AreEqual(AllStaffs.StaffList, TestList);
 
-            TestList.Add(TestItem); //Add item to the test list
-            AllStaff.StaffList = TestList; //Assign the data to the property
-            Assert.AreEqual(AllStaff.StaffList, TestList); //Ensure the values are the same
         }
-
 
         [TestMethod]
         public void ThisStaffPropertyOK()
         {
-            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection AllStaffs = new clsStaffCollection();
             clsStaff TestStaff = new clsStaff();
             TestStaff.availability = true;
-            TestStaff.staffId = 1001;
-            TestStaff.staffFullname = "Joe Bloggs";
+            TestStaff.staffId = 1;
             TestStaff.startDate = DateTime.Now.Date;
-            TestStaff.staffRole = "admin";
-
-
-                AllStaff.ThisStaff = TestStaff;
-            Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
+            TestStaff.staffRole = "Admin";
+            TestStaff.staffFullname = "Alehandro Junior";
+            AllStaffs.ThisStaff = TestStaff;
+            Assert.AreEqual(AllStaffs.ThisStaff, TestStaff);
         }
-
         [TestMethod]
         public void ListAndCountOK()
         {
-                clsStaffCollection AllStaff = new clsStaffCollection();
-                List<clsStaff> TestList = new List<clsStaff>();
-                clsStaff TestItem = new clsStaff();
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            List<clsStaff> TestList = new List<clsStaff>();
+            clsStaff TestItem = new clsStaff();
+            TestItem.availability = true;
+            TestItem.staffId = 1;
+            TestItem.startDate = DateTime.Now.Date;
+            TestItem.staffRole = "User";
+            TestItem.staffFullname = "Robert Smiths";
+            TestList.Add(TestItem);
+            AllStaffs.StaffList = TestList;
+            Assert.AreEqual(AllStaffs.Count, TestList.Count);
 
-                clsStaffCollection AllSuppliers = new clsStaffCollection();
-                clsStaff TestStaff = new clsStaff();
-                TestStaff.availability = true;
-                TestStaff.staffId = 1001;
-                TestStaff.staffFullname = "Joe Bloggs";
-                TestStaff.startDate = DateTime.Now.Date;
-                TestStaff.staffRole = "admin";
-
-
-                AllStaff.ThisStaff = TestStaff;
-                Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
-            }
-
+        }
         [TestMethod]
         public void AddMethodOK()
         {
-                clsStaffCollection AllStaff = new clsStaffCollection();
-                List<clsStaff> TestList = new List<clsStaff>();
-                clsStaff TestItem = new clsStaff();
-                Int32 PrimaryKey = 0;
-
-                clsStaffCollection AllSuppliers = new clsStaffCollection();
-                clsStaff TestStaff = new clsStaff();
-                TestStaff.availability = true;
-                TestStaff.staffId = 1001;
-                TestStaff.staffFullname = "Joe Bloggs";
-                TestStaff.startDate = DateTime.Now.Date;
-                TestStaff.staffRole = "admin";
-
-
-                AllStaff.ThisStaff = TestStaff;
-                Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
-
-                AllStaff.ThisStaff = TestItem;
-            PrimaryKey = AllStaff.Add();
-            TestItem.StaffId = PrimaryKey;
-            AllSuppliers.ThisStaff.Find(PrimaryKey);
-            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.availability = false;
+            TestItem.staffId = 20;
+            TestItem.startDate = DateTime.Now.Date;
+            TestItem.staffRole = "Admin";
+            TestItem.staffFullname = "Alessia Sanguini";
+            AllStaffs.ThisStaff = TestItem;
+            PrimaryKey = AllStaffs.Add();
+            TestItem.staffId = PrimaryKey;
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.availability = true;
+            TestItem.staffId = 20;
+            TestItem.startDate = DateTime.Now.Date;
+            TestItem.staffRole = "Administrator";
+            TestItem.staffFullname = "MO Seller";
+            AllStaffs.ThisStaff = TestItem;
+            PrimaryKey = AllStaffs.Add();
+            TestItem.staffId = PrimaryKey;
+            TestItem.availability = false;
+            TestItem.staffId = 12;
+            TestItem.startDate = DateTime.Now.Date;
+            TestItem.staffRole = "User";
+            TestItem.staffFullname = "Mo Sow";
+            AllStaffs.ThisStaff = TestItem;
+            AllStaffs.Update();
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
 
         }
-            
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.availability = true;
+            TestItem.staffId = 20;
+            TestItem.startDate = DateTime.Now.Date;
+            TestItem.staffRole = "Administrator";
+            TestItem.staffFullname = " Rida Seller";
+            AllStaffs.ThisStaff = TestItem;
+            PrimaryKey = AllStaffs.Add();
+            TestItem.staffId = PrimaryKey;
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            AllStaffs.Delete();
+            Boolean Found = AllStaffs.ThisStaff.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
+        [TestMethod]
+        public void ReportByStaffNameMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            FilteredStaffs.ReportByStaffName("");
+            Assert.AreEqual(AllStaffs.Count, FilteredStaffs.Count);
+
+        }
+        [TestMethod]
+        public void ReportByStaffIDNoneFound()
+        {
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            FilteredStaffs.ReportByStaffName("xxx xxx");
+            Assert.AreEqual(0, FilteredStaffs.Count);
+        }
+        [TestMethod]
+        public void ReportByStaffNameTestDataFound()
+        {
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            Boolean OK = true;
+            FilteredStaffs.ReportByStaffName("yyy yyy");
+            if (FilteredStaffs.Count == 2)
+            {
+                if (FilteredStaffs.StaffList[0].staffId != 13)
+                {
+                    OK = false;
+                }
+                if (FilteredStaffs.StaffList[1].staffId != 15)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+
+
+
+
+
     }
-
-}
-
 }

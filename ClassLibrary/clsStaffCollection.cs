@@ -1,110 +1,123 @@
-﻿using ClassLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace ClassLibrary
 {
     public class clsStaffCollection
     {
-        public clsStaffCollection
+        List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
 
 
-        public List<clsStaff> StaffList;
-        public clsStaff ThisStaff;
 
-        Int32 Index = 0;
-        Int32 RecordCount = 0;
-        clsDataConnection DB = new clsDataConnection();
-        DB.Execute("sproc_tblStaff_SelectAll");
-            RecordCount = DB.Count;
-            while(Index<RecordCount)
-public int Add()
+
+
+        public List<clsStaff> StaffList
         {
-            throw new NotImplementedException();
+            get
+            {
+                return mStaffList;
+            }
+            set
+            {
+                mStaffList = value;
+            }
         }
-    }
-}
 
 
-    
+        public int Count
+        {
+            get
+            {
+                return mStaffList.Count;
+            }
+            set
+            {
 
-clsSupplier AnStaff = new clsStaff();
-        AnStaff.staffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
-                AnStaff.startDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["StartDate"]);
-                AnStaff.staffFullname = Convert.ToString(DB.DataTable.Rows[Index]["StaffFullname"]);
+            }
+        }
+
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+
+            }
+            set
+            {
+                mThisStaff = value;
+            }
+        }
+
+
+        public clsStaffCollection()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblStaff_SelectALL");
+            PopulateArray(DB);
+
+        }
+
+        public int Add()
+        {
+
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffFullame", mThisStaff.staffFullname);
+            DB.AddParameter("@StaffRole", mThisStaff.staffRole);
+            DB.AddParameter("@StartDate", mThisStaff.startDate);
+            DB.AddParameter("@Availability", mThisStaff.availability);
+            return DB.Execute("Sproc_tblStaff_Insert");
+
+
+
+
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", mThisStaff.staffId);
+            DB.AddParameter("@StaffFullame", mThisStaff.staffFullname);
+            DB.AddParameter("@StaffRole", mThisStaff.staffRole);
+            DB.AddParameter("@StartDate", mThisStaff.startDate);
+            DB.AddParameter("@Availability", mThisStaff.availability);
+            DB.Execute("sproc_tblStaff_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", mThisStaff.staffId);
+            DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportByStaffName(string StaffFullName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffName", StaffFullName);
+            DB.Execute("sproc_tblStaff_FilterByStaffName");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mStaffList = new List<clsStaff>();
+            while (Index < RecordCount)
+            {
+                clsStaff AnStaff = new clsStaff();
+                AnStaff.staffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
                 AnStaff.availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
+                AnStaff.staffFullname = Convert.ToString(DB.DataTable.Rows[Index]["StaffFullname"]);
                 AnStaff.staffRole = Convert.ToString(DB.DataTable.Rows[Index]["StaffRole"]);
-                
+                AnStaff.startDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["StartDate"]);
                 mStaffList.Add(AnStaff);
                 Index++;
             }
-}
-List<clsStaff> mStaffList = new List<clsStaff>();
-public List<clsStaff> StaffList
-{
-    get
-    {
-        return mStaffList;
-    }
-    set
-    {
-        mStaffList = value;
-    }
-}
-
-public int Count
-{
-    get
-    {
-        return mStaffList.Count;
-    }
-    set
-    {
-        //worry about this later
-    }
-}
 
 
-private clsStaff mThisStaff;
-public clsStaff ThisStaff
-{
-    get
-    {
-        return mThisStaff;
-    }
-    set
-    {
-
-        mThisStaff = value;
-    }
-}
-
-{
-    clsDataConnection DB = new clsDataConnection();
-    DB.AddParameter("@StaffFullame", mThisStaff.StaffFullname);
-    DB.AddParameter("@StaffId", mThisStaff.StaffId);
-    DB.AddParameter("@StaffRole", mThisStaff.StaffRole);
-    DB.AddParameter("@StartDate", mThisStaff.StartDate);
-    
-
-    return DB.Execute("Sproc_tblStaff_Insert");
-}
-           
-                
-    }
-}
-
-
-
-    public int Add()
-        {
-            throw new NotImplementedException();
         }
     }
 }
-
-       
