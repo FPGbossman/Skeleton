@@ -53,6 +53,13 @@ public partial class _1Viewer : System.Web.UI.Page
 
             if (!String.IsNullOrEmpty(v))
             {
+                OrderAddressReq.ReadOnly = true;
+                OrderDescReq.ReadOnly = true;
+                OrderTimeReq.ReadOnly = true;
+                OrderPriceReq.ReadOnly = true;
+                CustomerIDReq.ReadOnly = true;
+
+
                 OrderIDReq.Text = Convert.ToString(orders.getOrderNo());
                 OrderAddressReq.Text = orders.getOrderAddress();
                 OrderDescReq.Text = orders.getOrderDescription();
