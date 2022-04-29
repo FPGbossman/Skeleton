@@ -12,17 +12,18 @@ namespace ClassLibrary
 
 
 
-        clsDataConnection DBNames = new clsDataConnection();
-
-        //Int32 Index = 0;
-
-        //Int32 RecordCount = 0;
-
-        DB.Execute(".sproc_tblCustomer_SelectAll");
-            PopulateArray(DB);
+        
 
         public clsCustomerCollection()
         {
+            clsDataConnection DB = new clsDataConnection();
+
+            //Int32 Index = 0;
+
+            //Int32 RecordCount = 0;
+
+            DB.Execute("sproc_tblCustomer_SelectAll")
+            PopulateArray(DB);
         }
 
         // RecordCount = DB.Count;
