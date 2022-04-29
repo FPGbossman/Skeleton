@@ -45,10 +45,6 @@
     <Compile Include="DB\Count.cs" />
     <Compile Include="DB\DataTable.cs" />
     <Compile Include="DB\Execute.cs" />
-    <Compile Include="SqlDatabaseSetup.cs" />
-    <Compile Include="SqlServerUnitTest1.cs">
-      <SubType>Designer</SubType>
-    </Compile>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -68,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsSupplierCollection.cs" />
-    <Compile Include="date.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
