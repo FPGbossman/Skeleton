@@ -18,8 +18,12 @@ namespace ClassLibrary
 
         //Int32 RecordCount = 0;
 
-        DB.Execute("sproc_tblCustomer_SelectAll");
+        DB.Execute(".sproc_tblCustomer_SelectAll");
             PopulateArray(DB);
+
+        public clsCustomerCollection()
+        {
+        }
 
         // RecordCount = DB.Count;
 
@@ -111,11 +115,10 @@ namespace ClassLibrary
             DBNames.Execute("sproc_tblCustomer_Delete");
         }
 
-        public void ReportByCustomername(string CustomerFirstname, string CustomerSurname)
+        public void ReportByCustomername(string CustomerFirstname)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerFirstname", CustomerFirstname);
-            DB.AddParameter("@CustomerSurname", CustomerSurname);
+            DB.AddParameter("@CustomerFirstname", CustomerFirstname);            
             DB.Execute("sproc_tblCustomer_FilterByCustomerName");
             PopulateArray(DB);
         }
