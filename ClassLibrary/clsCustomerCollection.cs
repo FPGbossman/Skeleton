@@ -22,8 +22,8 @@ namespace ClassLibrary
 
             //Int32 RecordCount = 0;
 
-            DB.Execute("sproc_tblCustomer_SelectAll")
-            PopulateArray(DB);
+            DB.Execute("sproc_tblCustomer_SelectAll");
+            PopulateArray (DB); 
         }
 
         // RecordCount = DB.Count;
