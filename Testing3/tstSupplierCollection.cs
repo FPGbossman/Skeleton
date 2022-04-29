@@ -44,7 +44,7 @@ namespace Testing3
             TestSupplier.SupplierName = "Nike";
             TestSupplier.SupplierSince = DateTime.Now.Date;
             TestSupplier.SupplierAddress = "11 Stret";
-            TestSupplier.ContactNumber= "098765432";
+            TestSupplier.ContactNumber = "098765432";
 
             AllSuppliers.ThisSupplier = TestSupplier;
             Assert.AreEqual(AllSuppliers.ThisSupplier, TestSupplier);
@@ -89,6 +89,48 @@ namespace Testing3
             AllSuppliers.ThisSupplier.Find(PrimaryKey);
             Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
 
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            clssupplier TestItem = new clssupplier();
+            Int32 PrimaryKey = 0;
+
+            TestItem.CurrentSupplier = true;
+            TestItem.SupplierID = 1;
+            TestItem.SupplierName = "Nike";
+            TestItem.SupplierSince = DateTime.Now.Date;
+            TestItem.SupplierAddress = "11 Stret";
+            TestItem.ContactNumber = "098765432";
+
+            AllSuppliers.ThisSupplier = TestItem;
+            AllSuppliers.Update();
+            AllSuppliers.SupplierID = PrimaryKey;
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            clssupplier TestItem = new clssupplier();
+            Int32 PrimaryKey = 0;
+
+            TestItem.CurrentSupplier = true;
+            TestItem.SupplierID = 1;
+            TestItem.SupplierName = "Nike";
+            TestItem.SupplierSince = DateTime.Now.Date;
+            TestItem.SupplierAddress = "11 Stret";
+            TestItem.ContactNumber = "098765432";
+
+            AllSuppliers.ThisSupplier = TestItem;
+            PrimaryKey = AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            AllSuppliers.Delete();
+            Boolean Found = AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            Assert.IsFalse(Found);
         }
     }
 
