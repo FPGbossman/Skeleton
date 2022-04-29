@@ -8,32 +8,66 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplierID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        SupplierID = Convert.ToInt32(Session["SupplierID"]);
+        if (IsPostBack == false)
+        {
+            if(SupplierID != -1)
+            {
+                DisplaySupplier();
+            }
+        }
+    }
 
+    public void DisplaySupplier()
+    {
+        clsSupplierCollection ASupplier = new clsSupplierCollection();
+        ASupplier.ThisSupplier.Find(SupplierID);
+        tbxSupplierID.Text = ASupplier.ThisSupplier.SupplierID.ToString();
+        tbxName.Text = ASupplier.ThisSupplier.SupplierName;
+        chkCurrent.Checked = ASupplier.ThisSupplier.CurrentSupplier;
+        tbxSupplierSince.Text = ASupplier.ThisSupplier.SupplierSince.ToString();
+        tbxAddress.Text = ASupplier.ThisSupplier.SupplierAddress;
+        tbxContactNumber.Text=ASupplier.ThisSupplier.ContactNumber;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-
+        
         clssupplier ASupplier = new clssupplier();  
         string SupplierName = tbxName.Text;
         string SupplierSince = tbxSupplierSince.Text;
         string SupplierAddress = tbxAddress.Text;
         string ContactNumber = tbxContactNumber.Text;
         string Error = "";
+        
 
         Error = ASupplier.Valid(SupplierName, SupplierSince, SupplierAddress, ContactNumber);
         if (Error == "")
         {
+            ASupplier.SupplierID = SupplierID;
             ASupplier.SupplierName = SupplierName;
             ASupplier.CurrentSupplier = chkCurrent.Checked;
-            ASupplier.SupplierSince = Convert.ToDateTime(tbxSupplierSince.Text);
+            ASupplier.SupplierSince = Convert.ToDateTime(SupplierSince);
             ASupplier.SupplierAddress = SupplierAddress;
             ASupplier.ContactNumber = ContactNumber;
 
-
-            Session["ASupplier"] = ASupplier;
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            if (SupplierID == -1)
+            {
+                SupplierList.ThisSupplier = ASupplier; 
+                SupplierList.Add();
+            }
+            else
+            {
+                SupplierList.ThisSupplier.Find(SupplierID);
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Update();
+            }
+           
             Response.Redirect("SupplierViewer.aspx");
 
         }

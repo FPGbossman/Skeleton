@@ -24,4 +24,37 @@ public partial class _1_List : System.Web.UI.Page
         lbxSupplierList.DataTextField = "SupplierName";
         lbxSupplierList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["SupplierID"] = -1;
+        Response.Redirect("SupplierDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 SupplierID;
+
+        if (lbxSupplierList.SelectedIndex != 1)
+        {
+            SupplierID = Convert.ToInt32(lbxSupplierList.SelectedValue);
+            Session["SupplierID"] = SupplierID;
+            Response.Redirect("SupplierDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to edit from the list";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 SupplierID;
+        if (lbxSupplierList.SelectedIndex != 1)
+        {
+            SupplierID = Convert.ToInt32(lbxSupplierList.SelectedValue);
+            Session["SupplierID"] = SupplierID;
+            Response.Redirect("SupplierConfirmDelete.aspxx");
+        }
+    }
 }
