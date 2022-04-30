@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace Testing3
 {
+
     [TestClass]
     public class tstSupplierCollection
     {
@@ -107,7 +108,6 @@ namespace Testing3
 
             AllSuppliers.ThisSupplier = TestItem;
             AllSuppliers.Update();
-            AllSuppliers.SupplierID = PrimaryKey;
             AllSuppliers.ThisSupplier.Find(PrimaryKey);
             Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
         }
@@ -127,11 +127,56 @@ namespace Testing3
             TestItem.ContactNumber = "098765432";
 
             AllSuppliers.ThisSupplier = TestItem;
-            PrimaryKey = AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            PrimaryKey = AllSuppliers.Add();
+            TestItem.SupplierID = PrimaryKey;
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
             AllSuppliers.Delete();
             Boolean Found = AllSuppliers.ThisSupplier.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            clsSupplierCollection FilteredSupplier = new clsSupplierCollection();
+            FilteredSupplier.ReportByName("");
+            Assert.AreEqual(AllSuppliers.Count, FilteredSupplier.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameNoneFound()
+        {
+            clsSupplierCollection FilteredSupplier = new clsSupplierCollection();
+            FilteredSupplier.ReportByName("XXXXX");
+            Assert.AreEqual(0, FilteredSupplier.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            clsSupplierCollection FilteredSupplier = new clsSupplierCollection();
+            Boolean OK = true;
+            FilteredSupplier.ReportByName("YYYYY");
+            if (FilteredSupplier.Count == 2)
+            {
+                 if (FilteredSupplier.SupplierList[0].SupplierID != 6)
+                {
+                    OK = false;
+                }
+                if (FilteredSupplier.SupplierList[0].SupplierID != 7)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        
+
     }
 
 }

@@ -7,8 +7,10 @@ namespace ClassLibrary
     {
         public clsSupplierCollection()
         {
-
-            Int32 Index = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblSupplier_SelectAll");
+            PopulateArray(DB);
+           /* Int32 Index = 0;
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblSupplier_SelectAll");
@@ -25,7 +27,7 @@ namespace ClassLibrary
 
                 mSupplierList.Add(ASupplier);
                 Index++;
-            }
+            }*/
             // create items of test data
             clssupplier TestItem = new clssupplier();
             //set properties
@@ -118,7 +120,34 @@ namespace ClassLibrary
             DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
             DB.Execute("sproc_tblSupplier_Delete");
         }
-           
-                
+
+        public void ReportByName(string SupplierName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierName", SupplierName);
+            DB.Execute("sproc_tblSupplier_FilterBySupplierName");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mSupplierList = new List<clssupplier>();
+            while (Index< RecordCount)
+            {
+                clssupplier ASupplier = new clssupplier();
+                ASupplier.SupplierID = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierID"]);
+                ASupplier.SupplierSince = Convert.ToDateTime(DB.DataTable.Rows[Index]["SupplierSince"]);
+                ASupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
+                ASupplier.CurrentSupplier = Convert.ToBoolean(DB.DataTable.Rows[Index]["CurrentSupplier"]);
+                ASupplier.SupplierAddress = Convert.ToString(DB.DataTable.Rows[Index]["SupplierAddress"]);
+                ASupplier.ContactNumber = Convert.ToString(DB.DataTable.Rows[Index]["ContactNumber"]);
+
+                mSupplierList.Add(ASupplier);
+                Index++;
+            }
+        }
     }
 }
