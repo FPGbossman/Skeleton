@@ -15,12 +15,16 @@ public partial class SupplierConfirmDelete : System.Web.UI.Page
         SupplierID = Convert.ToInt32(Session["SupplierID"]);
     }
 
-
     protected void btnYes_Click(object sender, EventArgs e)
     {
         clsSupplierCollection ASupplier = new clsSupplierCollection();
         ASupplier.ThisSupplier.Find(SupplierID);
         ASupplier.Delete();
+        Response.Redirect("SupplierList.aspx");
+    }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
         Response.Redirect("SupplierList.aspx");
     }
 }

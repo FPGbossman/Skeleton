@@ -12,9 +12,20 @@
             <asp:ListBox ID="lbxSupplierList" runat="server" Height="346px" Width="511px"></asp:ListBox>
         </div>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+        &nbsp;
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+        &nbsp;
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
-        <p>
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="Enter a Name:"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="tbxNameSearch" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+&nbsp;
+        <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
+&nbsp;<p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
     </form>
