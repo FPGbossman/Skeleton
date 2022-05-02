@@ -43,7 +43,7 @@ namespace Testing2
         {
             clsCustomer Ancustomer = new clsCustomer();
 
-            String gt = "Son";
+            String gt = "James";
 
             Ancustomer.CustomerSurname = gt;
 
@@ -87,7 +87,6 @@ namespace Testing2
             Assert.AreEqual(Ancustomer.Gender, gt);
         }
 
-
         [TestMethod]
         public void FindMethodOK()
         {
@@ -95,7 +94,7 @@ namespace Testing2
 
             Boolean Found = false;
 
-            Int32 CustomerID = 1;
+            int CustomerID = 1;
 
             Found = Ancustomer.Find(CustomerID);
 
@@ -205,7 +204,7 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestGenderFound()
+        public void GenderFound()
         {
             clsCustomer gg = new clsCustomer();
 
@@ -325,7 +324,7 @@ namespace Testing2
 
             string CustomerFirstname = "ggg";
 
-            Error = gg.Valid(CustomerFirstname, CustomerSurname, Gender);
+            Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
 
             Assert.AreEqual(Error, "");
         }
@@ -383,21 +382,14 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void CustomerDOBMin()
+        public void CustomerENDMin()
         {
             clsCustomer gg = new clsCustomer();
-
             String Error = "";
-
             DateTime TestDate;
-
             TestDate = DateTime.Now.Date;
-
-
             string CustomerDOB = TestDate.ToString();
-
             Error = gg.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
-
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
