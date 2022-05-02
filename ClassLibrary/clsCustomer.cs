@@ -46,9 +46,6 @@ namespace ClassLibrary
                 mCustomerFirstname = value;
             }
         }
-    
-
-
         private string mCustomerSurname;
         public string CustomerSurname
         {
@@ -78,7 +75,6 @@ namespace ClassLibrary
             }
         }
 
-
         private DateTime mCustomerDOB;
         public DateTime CustomerDOB
         {
@@ -91,7 +87,6 @@ namespace ClassLibrary
                 mCustomerDOB = value;
             }
         }
-
         private string mGender;
         public string Gender
         {
@@ -112,7 +107,7 @@ namespace ClassLibrary
 
             DB.AddParameter("@CustomerId", CustomerId);
 
-            DB.Execute("sproc_dbo.tblCustomerId_FilterbyCustomerId");
+            DB.Execute("Sproc_dbo.tblCustomer_FilterByCustomerID");
 
             if (DB.Count == 1)
             {
@@ -131,7 +126,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string CustomerFirstname, string CustomerSurname, string CustomerEmail, string Gender, string gender)
+        public string Valid(string CustomerFirstname, string CustomerSurname, string CustomerEmail, string CustomerDOB, string Gender)
         {
 
             String Error = "";
@@ -147,10 +142,23 @@ namespace ClassLibrary
             {
                 Error = Error + "Your Customer Name may not be blank";
             }
+            if (CustomerSurname.Length == 0)
+            {
+                Error = Error + "Your CustomerSurname may not be blank";
+            }
+            if (CustomerSurname.Length > 6)
+            {
+                Error = Error + "Your Customer Name may not be blank";
+            }
+            if (CustomerEmail.Length > 50)
+            {
+                Error = Error + "Your Customer Name may not be blank";
+            }
+
             try
             {
                 //copy the dateAdded value to the DateTemp variable
-                DateTemp = Convert.ToDateTime("CustomerDOB");
+                DateTemp = Convert.ToDateTime(CustomerDOB);
                 if (DateTemp < DateTime.Now.Date)
                 {
                     //record the error
@@ -188,16 +196,7 @@ namespace ClassLibrary
             return Error;
         
         }
-
-        public string Valids(string customerFirstname, string customerSurname, string customerEmail, string customerDOB, string gender)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string Valid(string customerFirstname, string customerSurname, string gender)
-        {
-            throw new NotImplementedException();
-        }
+                
     }
 }
 

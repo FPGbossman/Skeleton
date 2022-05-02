@@ -20,7 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Create a new instance of clsCustomer
         clsCustomer AnCustomer = new clsCustomer();
         //capture the Customer no
-        string CustomerID = txt_CustomerId.Text;
+        string CustomerId = txt_CustomerId.Text;
         //capture the Firstname
         string CustomerFirstname = txtCustomerFirstname.Text;
         //capture the Surname
@@ -34,7 +34,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any err messages
         string Error = "";
         //valiable the data
-        Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, "", Gender);
+        Error = AnCustomer.Valid(CustomerFirstname, CustomerSurname, CustomerEmail, CustomerDOB, Gender);
         if (Error == "")
         {
 

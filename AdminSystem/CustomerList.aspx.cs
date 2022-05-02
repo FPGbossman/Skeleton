@@ -17,7 +17,7 @@ public partial class _1_List : System.Web.UI.Page
     }
     void DisplayAddress()
     {
-        clsCustomerCollection Staffs = new clsCustomerCollection();
+        clsCustomerCollection Customer = new clsCustomerCollection();
         lstCustomer.DataValueField = "CustomerId";
         lstCustomer.DataTextField = "CustomerEmail";
         lstCustomer.DataBind();
@@ -30,7 +30,7 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Session["CustomerId"] = -1;
+        Session["CustomerID"] = -1;
         Response.Redirect("CustomerDataEntry.aspx");
     }
 
@@ -40,8 +40,8 @@ public partial class _1_List : System.Web.UI.Page
         if (lstCustomer.SelectedIndex != -1)
         {
             CustomerID = Convert.ToInt32(lstCustomer.SelectedValue);
-            Session["StaffId"] = CustomerID;
-            Response.Redirect("StaffConfirmDelete.aspx");
+            Session["CustomerID"] = CustomerID;
+            Response.Redirect("CustomerConfirmDelete.aspx");
         }
         else
         {
