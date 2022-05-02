@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 
 namespace ClassLibrary
-
 {
+
+
     public class clsCustomerCollection
     {
 
@@ -12,7 +13,7 @@ namespace ClassLibrary
 
 
 
-        
+
 
         public clsCustomerCollection()
         {
@@ -23,7 +24,7 @@ namespace ClassLibrary
             //Int32 RecordCount = 0;
 
             DB.Execute("sproc_tblCustomer_SelectAll");
-            PopulateArray (DB); 
+            PopulateArray(DB);
         }
 
         // RecordCount = DB.Count;
@@ -74,10 +75,8 @@ namespace ClassLibrary
             {
                 return mCustomerList.Count;
             }
-            set
-            {
+            
 
-            }
         }
 
 
@@ -95,18 +94,17 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DBNames = new clsDataConnection();
-            DBNames.AddParameter("@CustomerID", mThisCustomer.CustomerID);
 
+            DBNames.AddParameter("@CustomerID", mThisCustomer.CustomerID);
             DBNames.AddParameter("@CustomerFirstname", mThisCustomer.CustomerFirstname);
             DBNames.AddParameter("@CustomerSurname", mThisCustomer.CustomerSurname);
             DBNames.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
             DBNames.AddParameter("@CustomerDOB", mThisCustomer.CustomerDOB);
             DBNames.AddParameter("@Gender", mThisCustomer.Gender);
 
-
             DBNames.Execute("sproc_tblCustomer_Update");
         }
-    
+
         public void Delete()
         {
             clsDataConnection DBNames = new clsDataConnection();
@@ -119,11 +117,11 @@ namespace ClassLibrary
         public void ReportByCustomername(string CustomerFirstname)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerFirstname", CustomerFirstname);            
-            DB.Execute("sproc_tblCustomer_FilterByCustomerName");
+            DB.AddParameter("@CustomerFirstname", CustomerFirstname);
+            DB.Execute("sproc_tblCustomer_FilterByCustomerFirstname");
             PopulateArray(DB);
         }
-        void PopulateArray(clsDataConnection DB)
+        public void PopulateArray(clsDataConnection DB)
         {
             Int32 Index = 0;
 
@@ -132,8 +130,6 @@ namespace ClassLibrary
             RecordCount = DB.Count;
 
             mCustomerList = new List<clsCustomer>();
-
-
 
             while (Index < RecordCount)
             {
@@ -145,7 +141,6 @@ namespace ClassLibrary
                 gg.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
                 gg.CustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["CustomerDOB"]);
                 gg.Gender = Convert.ToString(DB.DataTable.Rows[Index]["Gender"]);
-
 
                 mCustomerList.Add(gg);
 

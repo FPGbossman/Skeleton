@@ -39,17 +39,16 @@ namespace Testing2
             Assert.AreEqual(Ancustomer.CustomerFirstname, gt);
         }
         [TestMethod]
-        public void CustomerSurnamePropertyOk()
+        private void CustomerSurnamePropertyOk()
         {
             clsCustomer Ancustomer = new clsCustomer();
 
-            String gt = "James";
+            String gt = "Son";
 
             Ancustomer.CustomerSurname = gt;
 
             Assert.AreEqual(Ancustomer.CustomerSurname, gt);
         }
-
         [TestMethod]
         public void CustomerEmailPropertyOk()
         {
@@ -88,7 +87,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void FindMethodOK()
+        private void FindMethodOK()
         {
             clsCustomer Ancustomer = new clsCustomer();
 
@@ -101,7 +100,7 @@ namespace Testing2
             Assert.IsTrue(Found);
         }
         [TestMethod]
-        public void TestCustomerIDFound()
+        private void TestCustomerIDFound()
         {
             clsCustomer gg = new clsCustomer();
 
@@ -121,7 +120,7 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestCustomerFirstnameFound()
+        private void TestCustomerFirstnameFound()
         {
             clsCustomer gg = new clsCustomer();
 
@@ -141,7 +140,7 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestCustomerSurnameFound()
+        private void TestCustomerSurnameFound()
         {
             clsCustomer gg = new clsCustomer();
 
@@ -153,7 +152,7 @@ namespace Testing2
 
             Found = gg.Find(CustomerId);
 
-            if (gg.CustomerSurname != "Son")
+            if (gg.CustomerSurname != "James")
             {
                 OK = false;
             }
@@ -162,7 +161,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void TestCustomerEmailFound()
+        private void TestCustomerEmailFound()
         {
             clsCustomer gg = new clsCustomer();
 
@@ -184,7 +183,7 @@ namespace Testing2
 
 
         [TestMethod]
-        public void TestCustomerDOBFound()
+        private void TestCustomerDOBFound()
         {
             clsCustomer gg = new clsCustomer();
 
@@ -204,7 +203,7 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void GenderFound()
+        private void GenderFound()
         {
             clsCustomer gg = new clsCustomer();
 
