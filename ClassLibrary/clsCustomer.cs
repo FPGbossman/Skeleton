@@ -18,7 +18,7 @@ namespace ClassLibrary
 
         private Int32 mCustomerID;
 
-        public Int32 CustomerID
+        public int CustomerID
         {
 
             get
@@ -39,7 +39,6 @@ namespace ClassLibrary
             get
             {
                 return mCustomerFirstname;
-
             }
             set
             {
@@ -53,7 +52,6 @@ namespace ClassLibrary
             get
             {
                 return mCustomerSurname;
-
             }
             set
             {
@@ -107,7 +105,7 @@ namespace ClassLibrary
 
             DB.AddParameter("@CustomerId", CustomerId);
 
-            DB.Execute("Sproc_dbo.tblCustomer_FilterByCustomerID");
+            DB.Execute("Sproc_tblCustomer_FilterByCustomerID");
 
             if (DB.Count == 1)
             {

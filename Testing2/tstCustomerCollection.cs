@@ -10,7 +10,7 @@ namespace Testing2
     public class tstCustomerCollection
     {
         [TestMethod]
-        public void InstanceOK()
+        private void InstanceOK()
         {
             clsCustomerCollection gg = new clsCustomerCollection();
 
@@ -18,7 +18,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void CustomerListOK()
+        private void CustomerListOK()
         {
 
             clsCustomerCollection gg = new clsCustomerCollection();
@@ -40,7 +40,7 @@ namespace Testing2
 
 
         [TestMethod]
-        public void ThisCustomerPropertyOK()
+        private void ThisCustomerPropertyOK()
         {
             clsCustomerCollection gg = new clsCustomerCollection();
 
@@ -61,7 +61,7 @@ namespace Testing2
 
         [TestMethod]
 
-        public void ListAndCountOK()
+        private void ListAndCountOK()
         {
             clsCustomerCollection gg = new clsCustomerCollection();
 
@@ -87,7 +87,7 @@ namespace Testing2
 
         [TestMethod]
 
-        public void AddMethodOK()
+        private void AddMethodOK()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
 
@@ -109,7 +109,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void UpdateMethodOK()
+        private void UpdateMethodOK()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
             clsCustomer TestItem = new clsCustomer();
@@ -134,7 +134,7 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
         [TestMethod]
-        public void DeleteMethod()
+        private void DeleteMethod()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
             clsCustomer TestItem = new clsCustomer();
@@ -161,7 +161,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void ReportByCustomerNameTestDataFound()
+        private void ReportByCustomerNameTestDataFound()
         {
             clsCustomerCollection FilteredNames = new clsCustomerCollection();
 
